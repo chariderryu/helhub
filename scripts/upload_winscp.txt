@@ -1,0 +1,15 @@
+option batch abort
+option confirm off
+
+open keioacjp
+
+cd /home/md202/aa107247/public_html/helhub/
+
+put -transfer=binary "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub\index.html" .
+put -transfer=binary "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub\styles.css" .
+put -transfer=binary "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub\data\links.json" ./data/
+# 画像があれば
+# put -transfer=binary "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub\assets\*.*" ./assets/
+
+close
+exit

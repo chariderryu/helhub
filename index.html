@@ -1,174 +1,132 @@
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HEL Hub — The Hub of the History of English</title>
-  <meta name="description" content="堀田隆一による英語史コンテンツの総合ポータル：hellog, heldio, helwa, heltube, khelf などを一枚で案内します。" />
-  <meta name="theme-color" content="#0e2a47" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="HEL Hub - The hub of the history of English" />
-  <meta property="og:description" content="英語史ブログ・音声・動画・コミュニティを一枚で。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="helhub_og.png" /> <!-- TODO: 代表画像を設置 -->
-  <meta property="og:url" content="https://example.com/helhub.html" /> <!-- TODO: 公開URL -->
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" />
-
-  <!-- 構造化データ -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"HEL Hub",
-    "url":"https://example.com/helhub.html",
-    "about":{
-      "@type":"Thing",
-      "name":"History of English"
-    },
-    "creator":{
-      "@type":"Person",
-      "name":"Ryuichi Hotta",
-      "affiliation":{"@type":"CollegeOrUniversity","name":"Keio University"},
-      "sameAs":[
-        "https://twitter.com/chariderryu",
-        "https://www.instagram.com/chariderryu",
-        "https://voicy.jp/channel/1950",
-        "https://www.youtube.com/channel/UCG4a3V4jvVQ8ebujHeQzN6Q"
-      ]
-    }
-  }
-  </script>
-
-  <style>
-    :root{
-      --ink:#0e2a47;        /* 深い紺 */
-      --garnet:#7b2e2f;     /* えんじ */
-      --parch:#fbf8f3;      /* 生成り */
-      --stone:#6b7280;      /* 補助グレー */
-      --card:#ffffff;
-      --radius:14px;
-      --shadow:0 8px 24px rgba(0,0,0,.08);
-    }
-    html{scroll-behavior:smooth}
-    body{
-      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
-      line-height:1.65; color:#1f2937; background:var(--parch);
-    }
-    a{color:var(--garnet); text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1100px; margin-inline:auto; padding:0 20px}
-    /* Header */
-    .topbar{
-      position:sticky; top:0; z-index:50; background:rgba(14,42,71,.96); backdrop-filter:saturate(140%) blur(6px);
-      color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.08)
-    }
-    .topbar .inner{display:flex; align-items:center; justify-content:space-between; padding:10px 0}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
-    .brand svg{width:28px;height:28px}
-    .nav a{color:#fff; opacity:.9; margin-left:16px}
-    .nav a:hover{opacity:1}
-    /* Hero */
-    .hero{
-      background:linear-gradient(160deg, rgba(14,42,71,.06), rgba(123,46,47,.06)), url('helhub_bg.jpg') center/cover no-repeat; /* TODO: 背景画像 */
-      padding:72px 0 56px; border-bottom:1px solid rgba(14,42,71,.12)
-    }
-    .hero h1{font-size:clamp(28px,4vw,44px); color:var(--ink); margin:0 0 10px}
-    .hero p.lead{color:#374151; font-size:clamp(16px,2.4vw,19px); margin:0 0 22px}
-    .ctas{display:flex; flex-wrap:wrap; gap:12px}
-    .btn{
-      display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:999px; font-weight:600;
-      border:1px solid transparent; box-shadow:var(--shadow); background:var(--garnet); color:#fff
-    }
-    .btn.alt{background:#fff;color:var(--ink); border-color:rgba(14,42,71,.18)}
-    .grid{display:grid; gap:18px}
-    /* Cards */
-    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
-    .card h3{margin:0 0 10px; font-size:20px; color:var(--ink)}
-    .card small{color:var(--stone)}
-    /* Sections */
-    section{padding:40px 0}
-    section h2{font-size:26px; color:var(--ink); margin:0 0 16px}
-    /* Platform table */
-    .platforms{overflow:auto}
-    table{border-collapse:collapse; width:100%; background:#fff; border-radius:var(--radius); overflow:hidden}
-    th,td{padding:14px 12px; border-bottom:1px solid #eee; text-align:left}
-    th{background:#f7f7fb; color:#374151; font-weight:700}
-    tr:last-child td{border-bottom:none}
-    /* Thematic nav */
-    .tilegrid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-    .tile{
-      display:flex; flex-direction:column; gap:6px; padding:16px; border:1px solid #eee; border-radius:var(--radius);
-      background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.04)
-    }
-    .tile b{color:var(--ink)}
-    /* Feeds */
-    .feeds{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .feed-list{list-style:none; padding:0; margin:0}
-    .feed-list li{padding:10px 0; border-bottom:1px dashed #e6e6ef}
-    .feed-list li:last-child{border-bottom:none}
-    .feed-list a{font-weight:600}
-    .feed-list time{display:block; color:var(--stone); font-size:12px}
-    /* Footer */
-    footer{padding:36px 0 60px; color:#4b5563}
-    .social a{margin-right:10px}
-    /* Small */
-    @media (max-width:720px){
-      .nav{display:none}
-      .ctas{gap:10px}
-    }
-  </style>
-</head>
-<body>
-
-<a href="#main" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">コンテンツへスキップ</a>
-
-<header class="topbar" role="banner">
-  <div class="container inner">
-    <div class="brand">
-      <!-- 書籍風ロゴ -->
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12a1 1 0 1 1 0 2H7a1 1 0 0 0-1 1v11.5A2.5 2.5 0 0 1 3.5 20H18a1 1 0 1 1 0 2H3.5A4.5 4.5 0 0 1  -1 17.5V6a1 1 0 0 1 1-1h2Z"/></svg>
-      <span>HEL Hub</span>
-    </div>
-    <nav class="nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#platforms">Platforms</a>
-      <a href="#themes">Themes</a>
-      <a href="#feeds">Updates</a>
-      <a href="#community">Community</a>
-      <a href="#books">Books & Events</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>HEL Hub — The Hub of the History of English</h1>
-      <p class="lead">hellog・heldio・helwa・heltube・khelf など、英語史コンテンツの“入口”を一枚に。</p>
-      <div class="ctas">
-        <a class="btn" href="http://user.keio.ac.jp/~rhotta/hellog/" target="_blank" rel="noopener">最新の hellog を読む</a>
-        <a class="btn alt" href="https://voicy.jp/channel/1950" target="_blank" rel="noopener">heldio を聴く</a>
-        <a class="btn alt" href="#feeds">新着まとめを見る</a>
-        <a class="btn" href="#newsletter">メルマガ登録</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HEL Hub — The Hub of the History of English</title>
+    <meta name="description" content="英語史の研究・教育・発信をつなぐ HEL Hub のランディングページ" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- （任意）OGP -->
+    <meta property="og:title" content="HEL Hub" />
+    <meta property="og:description" content="The Hub of the History of English" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <div class="brand" aria-label="HEL Hub">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12a8 8 0 1 0 16 0" stroke="url(#g1)" stroke-width="2" />
+            <path d="M2 12h20" stroke="url(#g2)" stroke-width="2" />
+            <defs>
+              <linearGradient id="g1" x1="0" x2="24" y1="0" y2="24">
+                <stop stop-color="#6ae1ff"/><stop offset="1" stop-color="#9ff8c9"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" x2="24" y1="0" y2="0">
+                <stop stop-color="#6ae1ff"/><stop offset="1" stop-color="#9ff8c9"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          HEL Hub
+        </div>
+        <p class="tagline">
+          The Hub of the History of English — 研究・教育・発信（hellog / heldio / helwa / heltube / いのほた言語学 / 朝カル / 書籍 / SNS / khelf）を一つに束ねる玄関ページ。
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="#streams">コンテンツ一覧</a>
+          <a class="btn" href="#about">HEL Hub とは</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container grid" style="grid-template-columns:1.2fr .8fr; align-items:start;">
-      <div class="card">
-        <h2>About HEL Hub</h2>
-        <p>HEL Hub は、堀田隆一（慶應義塾大学）が運営する英語史のブログ・音声・動画・コミュニティへの総合案内板です。研究・教育・啓蒙の<strong>ハブ＆ループ</strong>として、日々の更新にすばやくアクセスできます。</p>
-        <p><a href="2009-05-01-2.html" target="_blank" rel="noopener">業績一覧</a> ／ <a href="index.html" target="_blank" rel="noopener">hellog トップ</a></p>
+    <main id="streams" class="container">
+      <section class="section" id="featured">
+        <h2>Featured / 最新の見どころ</h2>
+        <div class="grid" id="featured-grid"></div>
+      </section>
+
+      <section class="section" id="blog">
+        <h2>hellog（英語史ブログ）</h2>
+        <div class="grid" id="blog-grid"></div>
+      </section>
+
+      <section class="section" id="audio">
+        <h2>音声配信（heldio / helwa / stand.fm 等）</h2>
+        <div class="grid" id="audio-grid"></div>
+      </section>
+
+      <section class="section" id="video">
+        <h2>動画（heltube / いのほた言語学チャンネル）</h2>
+        <div class="grid" id="video-grid"></div>
+      </section>
+
+      <section class="section" id="events">
+        <h2>講座・イベント（朝カル / 講演 / 英語史ライヴ / khelf）</h2>
+        <div class="grid" id="events-grid"></div>
+      </section>
+
+      <section class="section" id="books">
+        <h2>書籍・論文</h2>
+        <div class="grid" id="books-grid"></div>
+      </section>
+
+      <section class="section" id="social">
+        <h2>SNS / コミュニティ</h2>
+        <div class="grid" id="social-grid"></div>
+      </section>
+
+      <section class="section" id="about">
+        <h2>HEL Hub とは</h2>
+        <div class="card">
+          <p>英語史（History of English, HEL）の研究・教育・社会発信を横断して束ねるための玄関ページです。ファンの滞在時間と LTV を高め、迷わず次の行き先に辿りつけるよう、ハブとしての導線設計を行います。</p>
+          <div class="actions">
+            <span class="pill">#HEL</span><span class="pill">#英語史</span><span class="pill">#研究と教育</span><span class="pill">#アウトリーチ</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <small>© HEL Hub — The Hub of the History of English</small>
       </div>
-      <aside class="card" aria-label="Profile">
-        <h3>Profile</h3>
-        <p><b>堀田 隆一</b> — 英語史・歴史言語学。<br>Voicy「英語の語源が身につくラジオ（heldio）」、英語史ブログ「hellog」、有料コミュニティ「英語史の輪（helwa）」、YouTube「heltube」ほか。</p>
-        <div class="social">
-          <a href="https://twitter.com/chariderryu" target="_blank" rel="noopener">X</a> /
-          <a href="https://www.i
+    </footer>
+
+    <script>
+      async function loadData() {
+        try {
+          const res = await fetch('data/links.json');
+          const data = await res.json();
+          const sections = [
+            ['featured', 'featured-grid'],
+            ['blog', 'blog-grid'],
+            ['audio', 'audio-grid'],
+            ['video', 'video-grid'],
+            ['events', 'events-grid'],
+            ['books', 'books-grid'],
+            ['social', 'social-grid']
+          ];
+          for (const [key, gridId] of sections) {
+            const list = data[key] || [];
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = list.map(item => `
+              <article class="card">
+                <h3>${item.title}</h3>
+                <p>${item.description || ''}</p>
+                <div class="actions">
+                  <a class="btn" href="${item.url}" target="_blank" rel="noopener">開く</a>
+                  ${item.cta ? `<span class="pill">${item.cta}</span>` : ''}
+                </div>
+              </article>
+            `).join('');
+          }
+        } catch (e) {
+          console.error(e);
+          document.getElementById('featured-grid').innerHTML =
+            '<p>データの読み込みに失敗しました。`data/links.json` を確認してください。</p>';
+        }
+      }
+      loadData();
+    </script>
+  </body>
+</html>

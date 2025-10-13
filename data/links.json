@@ -1,0 +1,33 @@
+{
+  "featured": [
+    { "title": "英語史ライヴ 2025（総合案内）", "url": "#", "description": "年に一度のHEL祭。配信/会場情報、タイムテーブル、アーカイブへの導線。", "cta": "Live" },
+    { "title": "新刊『英語語源ハンドブック』", "url": "../hellog/lp/hee.html", "description": "語源の水平展開と学習ガイド。既刊との連携で3冊セット運用。", "cta": "New" }
+  ],
+  "blog": [
+    { "title": "hellog～英語史ブログ", "url": "../hellog", "description": "2009年から毎日更新。用語解説・史資料・最新の話題まで網羅。" }
+  ],
+  "audio": [
+    { "title": "heldio（英語の語源が身につくラジオ）", "url": "https://voicy.jp/channel/1950", "description": "毎朝6時配信。プレイリストやキーワード索引へ。" },
+    { "title": "helwa（英語史の輪／Voicyプレミアム）", "url": "https://voicy.jp/channel/1950/premium", "description": "週3本の深掘り。コミュニティ運営やオフ会情報。" },
+    { "title": "stand.fm　英語史つぶやきチャンネル", "url": "https://stand.fm/channels/650f4aef0bc9d6e1d67d6767", "description": "予約配信・シリーズ連載の入口。" }
+  ],
+  "video": [
+    { "title": "heltube（個人チャンネル）", "url": "https://www.youtube.com/channel/UCG4a3V4jvVQ8ebujHeQzN6Q", "description": "短編・講義クリップ・バナー解説など。" },
+    { "title": "いのほた言語学チャンネル", "url": "https://www.youtube.com/channel/UCth3mYbOZ9WsYgPQa0pxhvw", "description": "井上逸兵先生との対談・特番アーカイブ。" }
+  ],
+  "events": [
+    { "title": "朝日カルチャーセンター（講座）", "url": "https://www.asahiculture.com/asahiculture/asp-webapp/web/WWebKozaShosaiNyuryoku.do?kozaId=8452618", "description": "開催予定・申込への導線。" },
+    { "title": "khelf（Keio History of the English Language Forum）", "url": "https://sites.google.com/view/khelf-hotta", "description": "学生との研究・広報・英語史新聞。" }
+  ],
+  "books": [
+    { "title": "言語学でスッキリ解決！英語の「なぜ？」", "url": "../hellog/inohota_naze", "description": "2025年10月15日発売の「いのほたなぜ」。YouTube チャンネルから生まれた本。" },
+    { "title": "英語語源ハンドブック（研究社）", "url": "../hellog/lp/hee.html", "description": "語源の横断地図。既刊連携で三部作。" },
+    { "title": "英語語源辞典（研究社）", "url": "#", "description": "縦に深掘る辞典。詳解と豊富な用例。" },
+    { "title": "はじめての英語史（研究社）", "url": "#", "description": "HEL入門書。高校生?学部生に最適。" }
+  ],
+  "social": [
+    { "title": "X（@chariderryu）", "url": "https://x.com/chariderryu", "description": "最新発信・イベント告知・広報の中心。" },
+    { "title": "Instagram（@chariderryu）", "url": "https://www.instagram.com/chariderryu", "description": "ビジュアルで伝える英語史。" },
+    { "title": "note / ブログマガジン", "url": "https://note.com/chariderryu", "description": "長文・まとめ・テンプレ集。" }
+  ]
+}
