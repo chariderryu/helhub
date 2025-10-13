@@ -22,8 +22,8 @@
   "books": [
     { "title": "言語学でスッキリ解決！英語の「なぜ？」", "url": "../hellog/inohota_naze", "description": "2025年10月15日発売の「いのほたなぜ」。YouTube チャンネルから生まれた本。" },
     { "title": "英語語源ハンドブック（研究社）", "url": "../hellog/lp/hee.html", "description": "語源の横断地図。既刊連携で三部作。" },
-    { "title": "英語語源辞典（研究社）", "url": "#", "description": "縦に深掘る辞典。詳解と豊富な用例。" },
-    { "title": "はじめての英語史（研究社）", "url": "#", "description": "HEL入門書。高校生?学部生に最適。" }
+    { "title": "英語語源辞典（研究社）", "url": "https://amzn.to/4aT0CyX", "description": "縦に深掘る辞典。詳解と豊富な用例。" },
+    { "title": "はじめての英語史（研究社）", "url": "#", "description": "HEL入門書。高校生～学部生に最適。" }
   ],
   "social": [
     { "title": "X（@chariderryu）", "url": "https://x.com/chariderryu", "description": "最新発信・イベント告知・広報の中心。" },

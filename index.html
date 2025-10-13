@@ -6,6 +6,7 @@
     <title>HEL Hub — The Hub of the History of English</title>
     <meta name="description" content="英語史の研究・教育・発信をつなぐ HEL Hub のランディングページ" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="helhub_enhancer.css">
     <!-- （任意）OGP -->
     <meta property="og:title" content="HEL Hub" />
     <meta property="og:description" content="The Hub of the History of English" />
@@ -124,6 +125,23 @@
           console.error(e);
           document.getElementById('featured-grid').innerHTML =
             '<p>データの読み込みに失敗しました。`data/links.json` を確認してください。</p>';
+        }
+      }
+      loadData();
+    </script>
+    <script src="helhub_enhancer.js"></script>
+    <script>
+      async function loadData() {
+        const res = await fetch('data/links.json');
+        const data = await res.json();
+        const styles = (data._meta && data._meta.cta_styles) || {};
+        const sections = [ ['featured','featured-grid'], ['blog','blog-grid'], /*...*/ ];
+    
+        for (const [key, gridId] of sections) {
+          const list = data[key] || [];
+          const grid = document.getElementById(gridId);
+          // cta_jp / tooltip / cta色 をまとめて適用
+          window.helhubRenderSection(list, grid, key, styles);
         }
       }
       loadData();
