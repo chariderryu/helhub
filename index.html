@@ -1,150 +1,219 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>HEL Hub — The Hub of the History of English</title>
-    <meta name="description" content="英語史の研究・教育・発信をつなぐ HEL Hub のランディングページ" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="helhub_enhancer.css">
-    <!-- （任意）OGP -->
-    <meta property="og:title" content="HEL Hub" />
-    <meta property="og:description" content="The Hub of the History of English" />
-    <meta property="og:type" content="website" />
-  </head>
-  <body>
-    <header class="hero">
-      <div class="container">
-        <div class="brand" aria-label="HEL Hub">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 12a8 8 0 1 0 16 0" stroke="url(#g1)" stroke-width="2" />
-            <path d="M2 12h20" stroke="url(#g2)" stroke-width="2" />
-            <defs>
-              <linearGradient id="g1" x1="0" x2="24" y1="0" y2="24">
-                <stop stop-color="#6ae1ff"/><stop offset="1" stop-color="#9ff8c9"/>
-              </linearGradient>
-              <linearGradient id="g2" x1="0" x2="24" y1="0" y2="0">
-                <stop stop-color="#6ae1ff"/><stop offset="1" stop-color="#9ff8c9"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          HEL Hub
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The HEL Hub --- 堀田隆一のhel活ポータル</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+        .hero-bg { background-color: #E0F2FE; }
+        .section-title { font-size: 1.875rem; font-weight: 700; color: #1E3A8A; border-bottom: 3px solid #60A5FA; padding-bottom: 0.5rem; display: inline-block; }
+        .card { transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .content-list .list-item.is-hidden { display: none; }
+        .content-list.is-expanded .list-item.is-hidden { display: list-item; }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- ヘッダーとナビゲーションメニュー -->
+    <header class="sticky top-0 bg-white/80 backdrop-blur-md shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <div class="flex items-baseline gap-3">
+                    <h1 class="text-2xl font-bold text-blue-800"><a href="#">The HEL Hub</a></h1>
+                    <p class="text-xs sm:text-sm text-gray-600 hidden md:block">堀田隆一のhel活（英語史活動）ポータル</p>
+                </div>
+                <nav id="main-menu" class="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 mt-2 sm:mt-0"></nav>
+            </div>
         </div>
-        <p class="tagline">
-          The Hub of the History of English — 研究・教育・発信（hellog / heldio / helwa / heltube / いのほた言語学 / 朝カル / 書籍 / SNS / khelf）を一つに束ねる玄関ページ。
-        </p>
-        <div class="cta-row">
-          <a class="btn" href="#streams">コンテンツ一覧</a>
-          <a class="btn" href="#about">HEL Hub とは</a>
-        </div>
-      </div>
     </header>
 
-    <main id="streams" class="container">
-      <section class="section" id="featured">
-        <h2>Featured / 最新の見どころ</h2>
-        <div class="grid" id="featured-grid"></div>
-      </section>
+    <main class="container mx-auto px-4 py-8">
 
-      <section class="section" id="blog">
-        <h2>hellog（英語史ブログ）</h2>
-        <div class="grid" id="blog-grid"></div>
-      </section>
+        <!-- ヒーローセクション: helmaga -->
+        <section id="helmaga" class="hero-bg rounded-2xl p-8 md:p-12 text-center my-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">hel活の最新情報を見逃さない！</h2>
+            <p class="text-lg md:text-xl text-blue-800 mb-6">堀田隆一の日々の英語史活動（hel活）を凝縮したメールマガジン「helmaga」を準備中です。<br>ブログの更新情報、ラジオの新着、イベント案内などを余すところなくお届けします。</p>
+            <div class="bg-white/50 p-6 rounded-lg inline-block">
+                <p class="font-bold text-gray-700">運用開始まで、今しばらくお待ちください。</p>
+                <div class="mt-4 h-12 bg-gray-300 rounded-md animate-pulse w-64 mx-auto" aria-label="登録フォームプレースホルダー"></div>
+            </div>
+        </section>
 
-      <section class="section" id="audio">
-        <h2>音声配信（heldio / helwa / stand.fm 等）</h2>
-        <div class="grid" id="audio-grid"></div>
-      </section>
+        <!-- お知らせセクション -->
+        <section id="announcements" class="my-16">
+            <h2 class="section-title mb-6">お知らせ</h2>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <ul id="announcements-list" class="list-disc list-inside space-y-3 text-gray-700"></ul>
+            </div>
+        </section>
+        
+        <!-- 新着コンテンツセクション -->
+        <section id="new-content" class="my-16">
+            <h2 class="section-title mb-6">新着コンテンツ</h2>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                 <ul id="new-content-list" class="list-none space-y-4 text-gray-700"></ul>
+            </div>
+        </section>
 
-      <section class="section" id="video">
-        <h2>動画（heltube / いのほた言語学チャンネル）</h2>
-        <div class="grid" id="video-grid"></div>
-      </section>
+        <!-- メインコンテンツ: カードセクション -->
+        <section class="my-16">
+            <h2 class="section-title mb-8">hel活メディア一覧</h2>
+            <div id="card-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </section>
+        
+        <!-- お問い合わせ -->
+        <section id="contact" class="text-center my-16 py-10 bg-blue-100 rounded-lg">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4">お問い合わせ</h2>
+            <p class="text-gray-700">お問い合わせや講演のご依頼などについては、<a href="#" class="text-blue-600 font-semibold hover:underline">こちらのフォーム</a>をご利用ください。（準備中）</p>
+        </section>
 
-      <section class="section" id="events">
-        <h2>講座・イベント（朝カル / 講演 / 英語史ライヴ / khelf）</h2>
-        <div class="grid" id="events-grid"></div>
-      </section>
-
-      <section class="section" id="books">
-        <h2>書籍・論文</h2>
-        <div class="grid" id="books-grid"></div>
-      </section>
-
-      <section class="section" id="social">
-        <h2>SNS / コミュニティ</h2>
-        <div class="grid" id="social-grid"></div>
-      </section>
-
-      <section class="section" id="about">
-        <h2>HEL Hub とは</h2>
-        <div class="card">
-          <p>英語史（History of English, HEL）の研究・教育・社会発信を横断して束ねるための玄関ページです。ファンの滞在時間と LTV を高め、迷わず次の行き先に辿りつけるよう、ハブとしての導線設計を行います。</p>
-          <div class="actions">
-            <span class="pill">#HEL</span><span class="pill">#英語史</span><span class="pill">#研究と教育</span><span class="pill">#アウトリーチ</span>
-          </div>
-        </div>
-      </section>
     </main>
 
-    <footer>
-      <div class="container">
-        <small>© HEL Hub — The Hub of the History of English</small>
-      </div>
+    <!-- フッター -->
+    <footer class="bg-gray-800 text-white text-center p-6">
+        <div class="container mx-auto">
+            <p class="mb-2"><a href="https://note.com/chariderryu/n/na772fcace491" class="hover:underline">堀田隆一について</a></p>
+            <p class="text-sm">Copyright &copy; 2025 Ryuichi Hotta. All rights reserved.</p>
+            <p class="text-sm my-1">公開日: 2025年10月18日</p>
+            <p class="text-sm my-1">最終更新日: <span id="last-updated"></span></p>
+            <p class="text-xs mt-2">訪問者数: <span id="visitor-counter">0</span></p>
+        </div>
     </footer>
 
+    <script src="hel-data.js"></script>
     <script>
-      async function loadData() {
-        try {
-          const res = await fetch('data/links.json');
-          const data = await res.json();
-          const sections = [
-            ['featured', 'featured-grid'],
-            ['blog', 'blog-grid'],
-            ['audio', 'audio-grid'],
-            ['video', 'video-grid'],
-            ['events', 'events-grid'],
-            ['books', 'books-grid'],
-            ['social', 'social-grid']
-          ];
-          for (const [key, gridId] of sections) {
-            const list = data[key] || [];
-            const grid = document.getElementById(gridId);
-            grid.innerHTML = list.map(item => `
-              <article class="card">
-                <h3>${item.title}</h3>
-                <p>${item.description || ''}</p>
-                <div class="actions">
-                  <a class="btn" href="${item.url}" target="_blank" rel="noopener">開く</a>
-                  ${item.cta ? `<span class="pill">${item.cta}</span>` : ''}
+    document.addEventListener('DOMContentLoaded', function() {
+        // データファイルの読み込みチェック
+        if (typeof helData === 'undefined') {
+            console.error('hel-data.jsの読み込みに失敗しました。');
+            document.body.innerHTML = '<p class="text-center text-red-500 p-8">コンテンツデータの読み込みに失敗しました。hel-data.jsファイルを確認してください。</p>';
+            return;
+        }
+
+        const mainMenu = document.getElementById('main-menu');
+        const announcementsList = document.getElementById('announcements-list');
+        const newContentList = document.getElementById('new-content-list');
+        const cardGrid = document.getElementById('card-grid');
+        const VISIBLE_ITEMS_DEFAULT = 5;
+
+        // メニューの生成
+        helData.cards.forEach(card => {
+            const menuItem = document.createElement('a');
+            menuItem.href = `#${card.id}`;
+            menuItem.className = 'flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 hover:bg-gray-200 hover:text-gray-900 rounded-md transition-colors';
+            menuItem.innerHTML = `${card.icon} <span class="hidden sm:inline">${card.shortTitle}</span>`;
+            mainMenu.appendChild(menuItem);
+        });
+
+        // お知らせの生成
+        helData.announcements.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item;
+            announcementsList.appendChild(listItem);
+        });
+        
+        // 新着コンテンツの生成
+        helData.newContent.forEach(item => {
+            const cardInfo = helData.cards.find(c => c.id === item.media);
+
+            // エラー回避: 対応するカード情報が見つからない場合はスキップ
+            if (!cardInfo) {
+                console.warn(`[New Content] Card info for media "${item.media}" not found. Skipping.`);
+                return;
+            }
+
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <a href="${item.url}" class="flex items-center gap-3 p-2 rounded-md hover:bg-gray-100 transition-colors group">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full ${cardInfo.bgColor} flex items-center justify-center text-gray-600 group-hover:scale-110 transition-transform">
+                        ${cardInfo.icon}
+                    </span>
+                    <div>
+                        <span class="font-semibold text-blue-700 group-hover:underline">${item.title}</span>
+                        <span class="text-xs text-gray-500 block">${cardInfo.title}</span>
+                    </div>
+                </a>
+            `;
+            newContentList.appendChild(listItem);
+        });
+
+        // カードの生成
+        helData.cards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.id = card.id;
+            cardElement.className = `card ${card.bgColor} rounded-xl overflow-hidden shadow-lg flex flex-col`;
+            const items = card.contentItems || [];
+            
+            const createListHTML = (itemList) => {
+                return itemList.map((item, index) => {
+                    const isHidden = index >= VISIBLE_ITEMS_DEFAULT ? 'is-hidden' : '';
+                    let childrenHTML = '';
+                    if (item.children && item.children.length > 0) {
+                        childrenHTML = `<ul class="pl-5 mt-2 space-y-2">${createListHTML(item.children)}</ul>`;
+                    }
+                    const fixedIconPin = item.isFixed 
+                        ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 w-4 h-4 text-slate-400" title="固定項目"><path d="M15 4.5l-3-3-3 3"/><path d="M12 2v12.5"/><path d="M17 14h-2.5a2.5 2.5 0 0 0-5 0H7"/><path d="M12 22v-6"/></svg>`
+                        : `<svg class="flex-shrink-0 w-4 h-4 mt-1 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+
+                    return `<li class="list-item ${isHidden}">
+                        <a href="${item.url}" class="flex items-start gap-2 text-gray-700 hover:text-blue-600">
+                            ${fixedIconPin}
+                            <span class="hover:underline">${item.title}</span>
+                        </a>
+                        ${childrenHTML}
+                    </li>`;
+                }).join('');
+            };
+
+            const listHTML = createListHTML(items);
+            const toggleButtonHTML = items.length > VISIBLE_ITEMS_DEFAULT ?
+                `<button class="toggle-content mt-4 text-sm font-semibold text-blue-600 hover:text-blue-800" data-show-text="さらに${items.length - VISIBLE_ITEMS_DEFAULT}件表示..." data-hide-text="閉じる">
+                    さらに${items.length - VISIBLE_ITEMS_DEFAULT}件表示...
+                 </button>` : '';
+
+            cardElement.innerHTML = `
+                <div class="p-6">
+                    <a href="${card.link}" class="flex items-center gap-3 mb-3 group">
+                        <span class="text-blue-700 group-hover:scale-110 transition-transform">${card.icon.replace(/width="24"/g, 'width="32"').replace(/height="24"/g, 'height="32"')}</span>
+                        <h3 class="text-xl font-bold text-blue-900 group-hover:underline">${card.title}</h3>
+                    </a>
+                    <p class="text-gray-600 mb-5">${card.description}</p>
                 </div>
-              </article>
-            `).join('');
-          }
-        } catch (e) {
-          console.error(e);
-          document.getElementById('featured-grid').innerHTML =
-            '<p>データの読み込みに失敗しました。`data/links.json` を確認してください。</p>';
-        }
-      }
-      loadData();
+                <div class="px-6 pb-6 flex-grow flex flex-col">
+                    <ul class="content-list space-y-3 flex-grow">${listHTML}</ul>
+                    ${toggleButtonHTML}
+                </div>
+            `;
+            cardGrid.appendChild(cardElement);
+        });
+        
+        // 折りたたみ機能のイベントリスナー
+        cardGrid.addEventListener('click', function(e) {
+            if (e.target.classList.contains('toggle-content')) {
+                const button = e.target;
+                const list = button.previousElementSibling;
+                list.classList.toggle('is-expanded');
+                button.textContent = list.classList.contains('is-expanded') ? button.dataset.hideText : button.dataset.showText;
+            }
+        });
+        
+        // フッター情報の更新
+        const now = new Date();
+        document.getElementById('last-updated').textContent = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+        
+        const visitorCounter = document.getElementById('visitor-counter');
+        let count = parseInt(localStorage.getItem('helhub_visitor_count') || '0', 10) + 1;
+        localStorage.setItem('helhub_visitor_count', count);
+        visitorCounter.textContent = count.toLocaleString();
+    });
     </script>
-    <script src="helhub_enhancer.js"></script>
-    <script>
-      async function loadData() {
-        const res = await fetch('data/links.json');
-        const data = await res.json();
-        const styles = (data._meta && data._meta.cta_styles) || {};
-        const sections = [ ['featured','featured-grid'], ['blog','blog-grid'], /*...*/ ];
-    
-        for (const [key, gridId] of sections) {
-          const list = data[key] || [];
-          const grid = document.getElementById(gridId);
-          // cta_jp / tooltip / cta色 をまとめて適用
-          window.helhubRenderSection(list, grid, key, styles);
-        }
-      }
-      loadData();
-    </script>
-  </body>
+</body>
 </html>
+
