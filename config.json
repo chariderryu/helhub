@@ -21,7 +21,11 @@
             "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/cl.rdf",
             "x_post_template": {
                 "is_active": true,
-                "template": "【ブログ更新】\n{title}\n{link}\n#英語史 #hel活"
+                "template": "【ブログ更新】\n{title}\n{link}\n#英語史 #hel活",
+                "image_settings": {
+                    "attach_image": true,
+                    "mode": "auto"
+                }
             }
         },
         "heldio": {
@@ -32,18 +36,20 @@
             "description": "毎朝6時に配信．耳で学ぶ英語史．",
             "link": "https://voicy.jp/channel/1950",
             "fixedContentItems": [
-                { "title": "人気エピソードTOP10", "url": "#" },
                 { "title": "Spotify でも配信中", "url": "https://open.spotify.com/show/0xOyOIXBUrIZbnwSLeJsSb?si=64b97973770b4612" },
                 { "title": "YouTube でも配信中", "url": "https://www.youtube.com/playlist?list=PL0XaI4OKflBK1TneWM6WgEO8Kyjo7lLi2" },
-                { "title": "LISTEN でも配信中", "url": "https://listen.style/p/heldio" }
+                { "title": "LISTEN でも配信中", "url": "https://listen.style/p/heldio" },
+                { "title": "配信回一覧はこちら．", "url": "https://user.keio.ac.jp/~rhotta/hellog/hellog-radio/index.html" }
             ],
-
             "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/hellog-radio/heldio_rss.xml",
             "x_post_template": {
                 "is_active": true,
-                "template": "【毎日ラジオheldio】\n{title}\n{link}\n#英語史 #語源 #heldio",
+                "template": "【毎日ラジオheldio】\n\n{title}\n\n{link}\n#英語史 #語源 #heldio",
                 "filtering_rules": {
                     "exclude_regex": "【英語史の輪"
+                },
+                "image_settings": {
+                    "attach_image": false
                 }
             }
         },
@@ -70,8 +76,7 @@
             "description": "英語史をより熱く語る．hel活が最も盛んなコミュニティ（有料）．",
             "link": "https://voicy.jp/channel/1950/premium",
             "fixedContentItems": [
-                { "title": "月1回のオンライン勉強会", "url": "#" },
-                { "title": "会員限定Q&Aセッション", "url": "#" }
+                { "title": "", "url": "#" }
             ],
             "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/hellog-radio/heldio_rss.xml",
             "x_post_template": {
@@ -79,6 +84,9 @@
                 "template": "【helwa会員向けコンテンツ】\n{title}\n{link}\n#helwa",
                 "filtering_rules": {
                     "include_regex": "【英語史の輪"
+                },
+                "image_settings": {
+                    "attach_image": false
                 }
             }
         },
@@ -90,12 +98,15 @@
             "description": "井上逸兵先生と共に言語学の魅力を語るYouTubeチャンネル．",
             "link": "https://www.youtube.com/channel/UCth3mYbOZ9WsYgPQa0pxhvw",
             "fixedContentItems": [
-                { "title": "チャンネル登録はこちら", "url": "#" }
+                { "title": "", "url": "#" }
             ],
             "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCth3mYbOZ9WsYgPQa0pxhvw",
             "x_post_template": {
                 "is_active": true,
-                "template": "【YouTube更新のお知らせ】\nいのほた言語学チャンネルで新しい動画を公開しました！\n\n『{title}』\n{link}\n#いのほた #言語学"
+                "template": "【YouTube更新のお知らせ】\nいのほた言語学チャンネルで新しい動画を公開しました！\n\n『{title}』\n{link}\n#いのほた #言語学",
+                "image_settings": {
+                    "attach_image": false
+                }
             }
         },
         "sns": {
@@ -114,8 +125,8 @@
             "x_post_template": { "is_active": false }
         },
         "books": {
-            "title": "英語史関連出版物",
-            "shortTitle": "出版物",
+            "title": "英語史関連の書籍・記事等",
+            "shortTitle": "書籍",
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20\"/></svg>",
             "bgColor": "bg-indigo-50",
             "description": "英語史関連の最新の書籍・記事等．",
@@ -123,8 +134,8 @@
             "fixedContentItems": [
                 { "title": "井上 逸兵・堀田 隆一　『言語学でスッキリ解決！英語の「なぜ？」』　ナツメ社，2025年．", "url": "https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/" },
                 { "title": "唐澤 一友・小塚 良孝・堀田 隆一（著），福田 一貴・小河 舜（校閲協力）　『英語語源ハンドブック』　研究社，2025年．", "url": "https://user.keio.ac.jp/~rhotta/hellog/lp/hee.html" },
-                { "title": "家入 葉子・堀田 隆一　『文献学と英語史研究』　開拓社，2023年．", "https://amzn.to/3Ly7NTa": "#" },
-                { "title": "高田 博行・田中 牧郎・堀田 隆一（編著）　『言語の標準化を考える --- 日中英独仏「対照言語史」の試み』　大修館，2022年．", "https://amzn.to/3Ly7NTa": "https://amzn.to/4hh2vu8" },
+                { "title": "家入 葉子・堀田 隆一　『文献学と英語史研究』　開拓社，2023年．", "url": "https://amzn.to/3Ly7NTa" },
+                { "title": "高田 博行・田中 牧郎・堀田 隆一（編著）　『言語の標準化を考える --- 日中英独仏「対照言語史」の試み』　大修館，2022年．", "url": "https://amzn.to/4hh2vu8" },
                 { "title": "堀田隆一の研究業績一覧", "url": "https://user.keio.ac.jp/~rhotta/hellog/2009-05-01-2.html" }
             ],
             "feed_url": "",
@@ -146,14 +157,16 @@
             "x_post_template": { "is_active": true }
         },
         "helville": {
-            "title": "helville (Discord)",
+            "title": "helville とヘル友たち",
             "shortTitle": "helville",
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>",
             "bgColor": "bg-gray-100",
             "description": "英語史好きが集う，双方向のコミュニケーションの場．日常的に helwa，Discord，note などで集っています．「英語史ライヴ」やオフ会などのイベントも頻繁です．",
             "link": "#",
             "fixedContentItems": [
-                { "title": "9月28日，有志ヘルメイトによる月刊ウェブマガジン <i>Helvillian</i> 10月号が公開されました！", "url": "https://note.com/helwa/n/n7754627fffb2" }
+                { "title": "9月28日，有志ヘルメイトによる月刊ウェブマガジン <i>Helvillian</i> 10月号が公開されました！", "url": "https://note.com/helwa/n/n7754627fffb2" },
+                { "title": "8月28日，<i>Helvillian</i> 9月号が公開されました！", "url": "https://note.com/helwa/n/n2415c5e4db5e" },
+                { "title": "7月28日，<i>Helvillian</i> 8月号が公開されました！", "url": "https://note.com/helwa/n/nb4e7746663b5" }
             ],
             "feed_url": "",
             "x_post_template": { "is_active": false }
@@ -171,12 +184,6 @@
             "feed_url": "",
             "x_post_template": { "is_active": false }
         }
-    },
-    "x_api_credentials": {
-        "api_key": "yM5wPxlbcYiixR3EUFY20When",
-        "api_key_secret": "ZZ6i1MGXLfl2muPpzDJ5QxckIaxyKLFkCh7lCJvFkxpKyGocur",
-        "access_token": "105658228-w8WyEflsf7fk8brYWxJIm3ipUC2h47uJpE9HtUP8",
-        "access_token_secret": "moy4NeoGtVe4ku6QjrHEEUJxQS7GA9SoGojjuTAUpBDdS"
     },
     "winscp_settings": {
         "winscp_executable_path": "C:/bin/WinSCP/WinSCP.exe",

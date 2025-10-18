@@ -1,7 +1,6 @@
 feedparser
 requests
 beautifulsoup4
-selenium
-webdriver-manager
 tweepy
 python-dotenv
+playwright

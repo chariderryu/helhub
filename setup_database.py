@@ -15,11 +15,10 @@ def setup_database():
     cursor = conn.cursor()
 
     # --- content テーブル ---
-    # 取得した全コンテンツの元データを格納
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS content (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        unique_id TEXT UNIQUE NOT NULL, -- RSSフィードのID (重複防止用)
+        unique_id TEXT UNIQUE NOT NULL,
         media_id TEXT NOT NULL,
         title TEXT NOT NULL,
         link TEXT NOT NULL,
@@ -29,12 +28,11 @@ def setup_database():
     """)
 
     # --- posts テーブル ---
-    # Xへの投稿単位の情報を格納
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS posts (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         media_id TEXT,
-        content_unique_id TEXT, -- contentテーブルとの関連付け
+        content_unique_id TEXT, -- RSS由来でない手動投稿の場合はNULLになる
         status TEXT NOT NULL CHECK(status IN ('draft', 'approved', 'posted', 'error')),
         scheduled_at TEXT NOT NULL,
         posted_at TEXT,
@@ -45,7 +43,6 @@ def setup_database():
     """)
 
     # --- post_threads テーブル ---
-    # 実際の投稿内容（スレッド対応）を格納
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS post_threads (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

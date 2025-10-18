@@ -3,15 +3,54 @@ import json
 from datetime import datetime, timedelta
 from screenshot_util import take_screenshot
 import os
+import tempfile
+import subprocess
+
+def load_config():
+    """設定ファイルを読み込む"""
+    with open('config.json', 'r', encoding='utf-8') as f:
+        return json.load(f)
 
 def get_db_connection():
     """設定ファイルからDBパスを読み込み、接続を返す"""
-    with open('config.json', 'r', encoding='utf-8') as f:
-        config = json.load(f)
+    config = load_config()
     db_path = config.get('database_path', 'content.db')
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
+
+def _edit_text_in_editor(initial_content=""):
+    """
+    一時ファイルを作成し、外部エディタで編集させ、その結果を返す。
+    """
+    config = load_config()
+#    editor_path = config.get('editor_path', os.getenv('EDITOR', 'notepad.exe'))
+    editor_path = 'C:/bin/hidemaru/Hidemaru.exe'
+
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix=".txt", encoding='utf-8') as tf:
+        tf.write(initial_content)
+        temp_filepath = tf.name
+
+    print(f"外部エディタ ({editor_path}) を起動します。編集後、保存してエディタを終了してください。")
+    
+    try:
+        subprocess.run([editor_path, "/fu8", temp_filepath], check=True)
+    except FileNotFoundError:
+        print(f"!!! エラー: エディタ '{editor_path}' が見つかりません。")
+        print("!!! config.jsonの'editor_path'を確認するか、環境変数 EDITOR を設定してください。")
+        os.unlink(temp_filepath)
+        return None
+    except Exception as e:
+        print(f"!!! エディタの起動中にエラーが発生しました: {e}")
+        os.unlink(temp_filepath)
+        return None
+
+    with open(temp_filepath, 'r', encoding='utf-8') as f:
+        edited_content = f.read().strip()
+        
+    os.unlink(temp_filepath)
+    
+    return edited_content
 
 def display_drafts(conn):
     """下書き状態の投稿を一覧表示する"""
@@ -23,9 +62,9 @@ def display_drafts(conn):
     for draft in drafts:
         post_id = draft['id']
         threads = conn.execute("SELECT message FROM post_threads WHERE post_id = ? ORDER BY thread_order LIMIT 1", (post_id,)).fetchone()
-        first_line = threads['message'].split('\n')[0] if threads else " (メッセージなし)"
-        print(f"  ID: {post_id}, メディア: {draft['media_id']}, 予約: {draft['scheduled_at']}, 内容: {first_line[:40]}...")
-
+        first_line = threads['message'].split('\n')[0:] if threads else " (メッセージなし)"
+        # ★ 修正点: 表示文字数を40から70に増やす
+        print(f"  ID: {post_id:<4} | メディア: {draft['media_id']:<18} | 予約: {draft['scheduled_at']:<20} | 内容: {first_line[:70]}...")
 
 def view_post_details(conn, post_id):
     """指定されたIDの投稿詳細を表示する"""
@@ -39,29 +78,145 @@ def view_post_details(conn, post_id):
     
     threads = conn.execute("SELECT * FROM post_threads WHERE post_id = ? ORDER BY thread_order", (post_id,)).fetchall()
     for thread in threads:
-        print(f"\n  [スレッド {thread['thread_order']}]")
+        print(f"\n  [スレッド {thread['thread_order']}] (thread_id: {thread['id']})")
         print(f"  メッセージ:\n---\n{thread['message']}\n---")
         if thread['image_path']:
             print(f"  添付画像: {thread['image_path']}")
         else:
             print("  添付画像: なし")
 
-def edit_message(conn, post_id):
-    """投稿のメッセージを編集する"""
-    threads = conn.execute("SELECT id, thread_order, message FROM post_threads WHERE post_id = ? ORDER BY thread_order", (post_id,)).fetchall()
-    if not threads:
-        print("編集対象のスレッドが見つかりません。")
+def new_post(conn):
+    """新しい投稿を手動で作成する"""
+    print("\n--- 新規投稿作成 ---")
+    
+    config = load_config()
+    media_templates = config.get('media_templates', {})
+    media_ids = list(media_templates.keys())
+    
+    print("メディアを選択してください:")
+    for i, mid in enumerate(media_ids):
+        print(f"  {i+1}. {mid}")
+    try:
+        choice = int(input("> ").strip()) - 1
+        media_id = media_ids[choice]
+    except (ValueError, IndexError):
+        print("不正な選択です。キャンセルしました。")
         return
 
-    for thread in threads:
-        print(f"\n--- 現在のメッセージ (スレッド {thread['thread_order']}) ---")
-        print(thread['message'])
-        
-        new_message = input(f"新しいメッセージを入力してください（Enterのみで変更しない）:\n> ")
-        if new_message:
-            conn.execute("UPDATE post_threads SET message = ? WHERE id = ?", (new_message, thread['id']))
-            conn.commit()
-            print("メッセージを更新しました。")
+    template_str = media_templates.get(media_id, {}).get('x_post_template', {}).get('template', '')
+    initial_content = template_str.format(title="", link="")
+
+    print("最初のツイートのメッセージをエディタで入力します。")
+    message = _edit_text_in_editor(initial_content)
+
+    if not message:
+        print("メッセージが空のため、作成をキャンセルしました。")
+        return
+
+    scheduled_at = (datetime.now() + timedelta(hours=1)).isoformat(timespec='seconds')
+
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO posts (media_id, status, scheduled_at) VALUES (?, 'draft', ?)", (media_id, scheduled_at))
+    post_id = cursor.lastrowid
+    
+    cursor.execute("INSERT INTO post_threads (post_id, thread_order, message) VALUES (?, 1, ?)", (post_id, message))
+    
+    conn.commit()
+    print(f"\n新しい下書きを作成しました (投稿ID: {post_id})。")
+
+def delete_post(conn, post_id):
+    """指定されたIDの投稿（下書き）を削除する"""
+    post = conn.execute("SELECT id, status FROM posts WHERE id = ?", (post_id,)).fetchone()
+    if not post:
+        print("指定されたIDの投稿が見つかりません。")
+        return
+    
+    if post['status'] != 'draft':
+        print(f"エラー: ID {post_id} は下書き状態ではないため削除できません (現在の状態: {post['status']})。")
+        return
+
+    print(f"\n投稿ID: {post_id} を削除します。")
+    view_post_details(conn, post_id)
+    confirm = input("本当によろしいですか？ (y/n): ").strip().lower()
+    
+    if confirm == 'y':
+        conn.execute("DELETE FROM post_threads WHERE post_id = ?", (post_id,))
+        conn.execute("DELETE FROM posts WHERE id = ?", (post_id,))
+        conn.commit()
+        print(f"投稿ID: {post_id} を削除しました。")
+    else:
+        print("削除をキャンセルしました。")
+
+def add_thread(conn, post_id):
+    """新しいスレッドを投稿に追加する"""
+    max_order = conn.execute("SELECT MAX(thread_order) as max FROM post_threads WHERE post_id = ?", (post_id,)).fetchone()['max']
+    new_order = (max_order or 0) + 1
+    
+    print(f"スレッド {new_order} のメッセージをエディタで入力します。")
+    message = _edit_text_in_editor()
+    
+    if not message:
+        print("メッセージが空のため、追加をキャンセルしました。")
+        return
+
+    conn.execute("INSERT INTO post_threads (post_id, thread_order, message) VALUES (?, ?, ?)", (post_id, new_order, message))
+    conn.commit()
+    print(f"スレッド {new_order} を追加しました。")
+    view_post_details(conn, post_id)
+
+
+def edit_post_or_thread(conn, post_id, thread_order_to_edit=None):
+    """投稿または特定のスレッドを編集する"""
+    thread_to_edit = None
+    if thread_order_to_edit is None:
+        threads = conn.execute("SELECT id, message, thread_order FROM post_threads WHERE post_id = ?", (post_id,)).fetchall()
+        if not threads:
+            print("編集対象のスレッドが見つかりません。")
+            return
+        if len(threads) > 1:
+            print("この投稿は複数のスレッドからなります。編集するスレッドの順序を指定してください。")
+            print("コマンド例: edit-thread [ID] [順序]")
+            view_post_details(conn, post_id)
+            return
+        thread_to_edit = threads[0]
+    else:
+        thread_to_edit = conn.execute("SELECT id, message, thread_order FROM post_threads WHERE post_id = ? AND thread_order = ?", (post_id, thread_order_to_edit)).fetchone()
+
+    if not thread_to_edit:
+        print("指定されたスレッドが見つかりません。")
+        return
+
+    print(f"スレッド {thread_to_edit['thread_order']} のメッセージをエディタで編集します。")
+    new_message = _edit_text_in_editor(thread_to_edit['message'])
+
+    if new_message is not None:
+        conn.execute("UPDATE post_threads SET message = ? WHERE id = ?", (new_message, thread_to_edit['id']))
+        conn.commit()
+        print("メッセージを更新しました。")
+    else:
+        print("メッセージの編集をキャンセルしました。")
+
+def delete_thread(conn, post_id, thread_order_to_delete):
+    """特定のスレッドを削除する"""
+    thread_count = conn.execute("SELECT COUNT(*) as count FROM post_threads WHERE post_id = ?", (post_id,)).fetchone()['count']
+    if thread_count <= 1:
+        print("エラー: 最後のスレッドは削除できません。")
+        return
+
+    thread = conn.execute("SELECT id FROM post_threads WHERE post_id = ? AND thread_order = ?", (post_id, thread_order_to_delete)).fetchone()
+    if not thread:
+        print("指定されたスレッドが見つかりません。")
+        return
+
+    conn.execute("DELETE FROM post_threads WHERE id = ?", (thread['id'],))
+    remaining_threads = conn.execute("SELECT id FROM post_threads WHERE post_id = ? ORDER BY thread_order", (post_id,)).fetchall()
+    for i, remaining_thread in enumerate(remaining_threads):
+        conn.execute("UPDATE post_threads SET thread_order = ? WHERE id = ?", (i + 1, remaining_thread['id']))
+    
+    conn.commit()
+    print(f"スレッド {thread_order_to_delete} を削除し、順序を更新しました。")
+    view_post_details(conn, post_id)
+
 
 def set_schedule(conn, post_id):
     """投稿の予約日時を設定する"""
@@ -78,12 +233,9 @@ def set_schedule(conn, post_id):
             num = int(time_str[1:-1])
             unit = time_str[-1]
             delta = timedelta()
-            if unit == 'm':
-                delta = timedelta(minutes=num)
-            elif unit == 'h':
-                delta = timedelta(hours=num)
-            elif unit == 'd':
-                delta = timedelta(days=num)
+            if unit == 'm': delta = timedelta(minutes=num)
+            elif unit == 'h': delta = timedelta(hours=num)
+            elif unit == 'd': delta = timedelta(days=num)
             else:
                 print("不正な単位です。(m, h, d)")
                 return
@@ -93,10 +245,7 @@ def set_schedule(conn, post_id):
             return
     else:
         try:
-            # 時刻のみ指定された場合、今日の日付を補完
-            if len(time_str) <= 5 and ':' in time_str:
-                time_str = f"{now.strftime('%Y-%m-%d')} {time_str}"
-            
+            if len(time_str) <= 5 and ':' in time_str: time_str = f"{now.strftime('%Y-%m-%d')} {time_str}"
             dt_obj = datetime.fromisoformat(time_str)
             scheduled_at = dt_obj.isoformat(timespec='seconds')
         except ValueError:
@@ -109,26 +258,24 @@ def set_schedule(conn, post_id):
 
 def manage_image(conn, post_id):
     """投稿の画像を管理する"""
-    # ★ 修正点: どのテーブルのidかを明確に指定
     query = """
-        SELECT
-            pt.id,
-            c.link,
-            pt.image_path
+        SELECT pt.id, c.link, pt.image_path
         FROM post_threads pt
         INNER JOIN posts p ON p.id = pt.post_id
-        INNER JOIN content c ON c.unique_id = p.content_unique_id
+        LEFT JOIN content c ON c.unique_id = p.content_unique_id
         WHERE pt.post_id = ? AND pt.thread_order = 1
     """
     thread = conn.execute(query, (post_id,)).fetchone()
     if not thread:
-        print("対象のスレッドまたは関連するコンテンツが見つかりません。")
+        print("対象のスレッドが見つかりません。")
         return
+    
+    original_link = thread['link']
 
     print(f"\n--- 画像管理 (投稿ID: {post_id}) ---")
     print(f"現在の添付画像: {thread['image_path'] or 'なし'}")
     print("操作を選択してください:")
-    print("  1. スクリーンショットを自動撮影して添付")
+    if original_link: print("  1. スクリーンショットを自動撮影して添付")
     print("  2. ファイルパスを手動で指定して添付")
     print("  3. 添付画像を削除")
     
@@ -136,7 +283,10 @@ def manage_image(conn, post_id):
     new_image_path = None
     
     if choice == '1':
-        new_image_path = take_screenshot(thread['link'])
+        if not original_link:
+            print("エラー: この投稿はRSSフィード由来ではないため、自動撮影できません。")
+            return
+        new_image_path = take_screenshot(original_link)
     elif choice == '2':
         path = input("画像ファイルのパスを入力してください: ").strip().replace('"', '')
         if os.path.exists(path):
@@ -145,7 +295,7 @@ def manage_image(conn, post_id):
             print(f"ファイルが見つかりません: {path}")
             return
     elif choice == '3':
-        new_image_path = "" # 空文字で削除を示す
+        new_image_path = ""
     else:
         return
 
@@ -163,52 +313,63 @@ def approve_post(conn, post_id):
 def main():
     """対話形式で投稿を管理するメインループ"""
     conn = get_db_connection()
-    
-    # ★ 修正点: 最初に一度だけリストを表示
     display_drafts(conn)
 
     while True:
-        # ★ 修正点: 新しいコマンドプロンプト
-        print("\nコマンド: list | view [ID] | edit [ID] | schedule [ID] | image [ID] | approve [ID] | exit")
-        
+        print("\n--- コマンド一覧 ---")
+        print(" 基本: list | new | view [ID] | approve [ID] | delete [ID] | exit")
+        print(" 編集: edit [ID] (単一) | schedule [ID] | image [ID]")
+        print(" ｽﾚｯﾄﾞ: add-thread [ID] | edit-thread [ID] [順序] | del-thread [ID] [順序]")
+
         command_input = input("> ").strip().split()
-        if not command_input:
-            continue
+        if not command_input: continue
         
         cmd = command_input[0]
         
-        if cmd == 'exit':
-            break
-
-        # ★ 修正点: listコマンドを追加
+        if cmd == 'exit': break
         if cmd == 'list':
             display_drafts(conn)
             continue
-            
-        if len(command_input) < 2:
-            if cmd in ['view', 'edit', 'schedule', 'image', 'approve']:
-                print("IDを指定してください。")
-            else:
-                 print(f"不明なコマンドです: {cmd}")
+        if cmd == 'new':
+            new_post(conn)
+            display_drafts(conn)
             continue
             
-        post_id = command_input[1]
+        try:
+            if cmd in ['view', 'add-thread', 'schedule', 'image', 'approve', 'edit', 'delete']:
+                if len(command_input) < 2: raise IndexError("IDが必要です。")
+                post_id = command_input[1]
+                if cmd == 'view': view_post_details(conn, post_id)
+                elif cmd == 'add-thread': add_thread(conn, post_id)
+                elif cmd == 'schedule': set_schedule(conn, post_id)
+                elif cmd == 'image': manage_image(conn, post_id)
+                elif cmd == 'approve':
+                    approve_post(conn, post_id)
+                    print("\n承認後の下書き一覧:")
+                    display_drafts(conn)
+                elif cmd == 'edit':
+                    edit_post_or_thread(conn, post_id)
+                elif cmd == 'delete':
+                    delete_post(conn, post_id)
+                    print("\n削除後の下書き一覧:")
+                    display_drafts(conn)
+
+            elif cmd in ['edit-thread', 'del-thread']:
+                if len(command_input) < 3: raise IndexError("IDとスレッド順序が必要です。")
+                post_id = command_input[1]
+                thread_order = int(command_input[2])
+                if cmd == 'edit-thread': edit_post_or_thread(conn, post_id, thread_order)
+                elif cmd == 'del-thread': delete_thread(conn, post_id, thread_order)
+
+            else:
+                print(f"不明なコマンドです: {cmd}")
         
-        if cmd == 'view':
-            view_post_details(conn, post_id)
-        elif cmd == 'edit':
-            edit_message(conn, post_id)
-        elif cmd == 'schedule':
-            set_schedule(conn, post_id)
-        elif cmd == 'image':
-            manage_image(conn, post_id)
-        elif cmd == 'approve':
-            approve_post(conn, post_id)
-            # ★ 修正点: 承認後にリストを更新
-            print("\n承認後の下書き一覧:")
-            display_drafts(conn)
-        else:
-            print(f"不明なコマンドです: {cmd}")
+        except IndexError as e:
+            print(f"エラー: コマンドの引数が不足しています - {e}")
+        except ValueError:
+            print("エラー: IDやスレッド順序には数値を指定してください。")
+        except Exception as e:
+            print(f"予期せぬエラーが発生しました: {e}")
 
     conn.close()
     print("終了します。")

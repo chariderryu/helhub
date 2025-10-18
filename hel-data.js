@@ -9,6 +9,11 @@ const helData = {
     "newContent": [
         {
             "media": "hellog",
+            "title": "#6018. 『英語語源ハンドブック』への Amazon レビューに感謝",
+            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-18-1.html"
+        },
+        {
+            "media": "hellog",
             "title": "#6017. SNS投稿のためにハッシュタグ「いのほたなぜ」をお使いください",
             "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-17-1.html"
         },
@@ -26,11 +31,6 @@ const helData = {
             "media": "hellog",
             "title": "#6014. 表記スペースが足りないときには母音字を捨てる --- 英語史小ネタ from スーパー",
             "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-14-1.html"
-        },
-        {
-            "media": "hellog",
-            "title": "#6013. 2025年度の朝カルシリーズ講座の第6回「English --- 慣れ親しんだ単語をどこまでも深掘りする」をマインドマップ化してみました",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-13-1.html"
         }
     ],
     "cards": [
@@ -43,6 +43,10 @@ const helData = {
             "description": "16年以上毎日更新のブログ．hel活の基点．",
             "link": "http://user.keio.ac.jp/~rhotta/hellog/",
             "contentItems": [
+                {
+                    "title": "#6018. 『英語語源ハンドブック』への Amazon レビューに感謝",
+                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-18-1.html"
+                },
                 {
                     "title": "#6017. SNS投稿のためにハッシュタグ「いのほたなぜ」をお使いください",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-17-1.html"
@@ -58,10 +62,6 @@ const helData = {
                 {
                     "title": "#6014. 表記スペースが足りないときには母音字を捨てる --- 英語史小ネタ from スーパー",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-14-1.html"
-                },
-                {
-                    "title": "#6013. 2025年度の朝カルシリーズ講座の第6回「English --- 慣れ親しんだ単語をどこまでも深掘りする」をマインドマップ化してみました",
-                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-13-1.html"
                 },
                 {
                     "title": "記事一覧はこちら．",
@@ -80,6 +80,10 @@ const helData = {
             "link": "https://voicy.jp/channel/1950",
             "contentItems": [
                 {
+                    "title": "#1602. 10月25日の朝カル講座は I --- 1人称単数代名詞に注目",
+                    "url": "https://voicy.jp/channel/1950/7188849"
+                },
+                {
                     "title": "#1601. 英仏語のアルコール漬けの語源的綴字 --- 「英語史ライヴ2025」より camin さん，寺澤志帆さん，川上さんのラリー",
                     "url": "https://voicy.jp/channel/1950/7173298"
                 },
@@ -96,15 +100,6 @@ const helData = {
                     "url": "https://voicy.jp/channel/1950/7150591"
                 },
                 {
-                    "title": "#1597. khelf 疋田海夢さんによる英語史の名著 Growth and Structure を読む連載がスタート",
-                    "url": "https://voicy.jp/channel/1950/7152847"
-                },
-                {
-                    "title": "人気エピソードTOP10",
-                    "url": "#",
-                    "isFixed": true
-                },
-                {
                     "title": "Spotify でも配信中",
                     "url": "https://open.spotify.com/show/0xOyOIXBUrIZbnwSLeJsSb?si=64b97973770b4612",
                     "isFixed": true
@@ -118,6 +113,11 @@ const helData = {
                     "title": "LISTEN でも配信中",
                     "url": "https://listen.style/p/heldio",
                     "isFixed": true
+                },
+                {
+                    "title": "配信回一覧はこちら．",
+                    "url": "https://user.keio.ac.jp/~rhotta/hellog/hellog-radio/index.html",
+                    "isFixed": true
                 }
             ]
         },
@@ -130,6 +130,10 @@ const helData = {
             "description": "Voicyで配信した内容を heltube で再放送．",
             "link": "https://www.youtube.com/playlist?list=PL0XaI4OKflBLKqHbYjJ_kZqG2prTYg0aK",
             "contentItems": [
+                {
+                    "title": "#455. shop と store の語源",
+                    "url": "https://www.youtube.com/watch?v=Oj_gv03qspc"
+                },
                 {
                     "title": "#454. 朝カル講座の第3回「英語の歴史と世界英語 --- 英米の英語方言」",
                     "url": "https://www.youtube.com/watch?v=LUMOhIsAOgQ"
@@ -145,10 +149,6 @@ const helData = {
                 {
                     "title": "#451. 意味といっても様々な意味がある",
                     "url": "https://www.youtube.com/watch?v=sEaa4Nv4p8U"
-                },
-                {
-                    "title": "#450. 英語学・英語史と統語論",
-                    "url": "https://www.youtube.com/watch?v=97kHKg612Eo"
                 },
                 {
                     "title": "Spotify でも配信中",
@@ -197,12 +197,7 @@ const helData = {
                     "url": "https://voicy.jp/channel/1950/7159312"
                 },
                 {
-                    "title": "月1回のオンライン勉強会",
-                    "url": "#",
-                    "isFixed": true
-                },
-                {
-                    "title": "会員限定Q&Aセッション",
+                    "title": "",
                     "url": "#",
                     "isFixed": true
                 }
@@ -217,6 +212,10 @@ const helData = {
             "description": "井上逸兵先生と共に言語学の魅力を語るYouTubeチャンネル．",
             "link": "https://www.youtube.com/channel/UCth3mYbOZ9WsYgPQa0pxhvw",
             "contentItems": [
+                {
+                    "title": "いのほた本発売！--井上逸兵・堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』",
+                    "url": "https://www.youtube.com/watch?v=zr-QKaYVXM0"
+                },
                 {
                     "title": "「ことばと文化」を手がかりに人類視点で言語を描く--井出里咲子さん（筑波大学）【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第380回】",
                     "url": "https://www.youtube.com/watch?v=6WmcXHbbwmM"
@@ -234,11 +233,7 @@ const helData = {
                     "url": "https://www.youtube.com/watch?v=E6lkdxjLz2c"
                 },
                 {
-                    "title": "3秒雑談が人生に響くー日韓米のスモールトーク比較--井出里咲子さん（言語人類学）【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第376回】",
-                    "url": "https://www.youtube.com/watch?v=I7VL8t9TaKE"
-                },
-                {
-                    "title": "チャンネル登録はこちら",
+                    "title": "",
                     "url": "#",
                     "isFixed": true
                 }
@@ -272,8 +267,8 @@ const helData = {
         },
         {
             "id": "books",
-            "title": "英語史関連出版物",
-            "shortTitle": "出版物",
+            "title": "英語史関連の書籍・記事等",
+            "shortTitle": "書籍",
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20\"/></svg>",
             "bgColor": "bg-indigo-50",
             "description": "英語史関連の最新の書籍・記事等．",
@@ -291,12 +286,12 @@ const helData = {
                 },
                 {
                     "title": "家入 葉子・堀田 隆一　『文献学と英語史研究』　開拓社，2023年．",
-                    "https://amzn.to/3Ly7NTa": "#",
+                    "url": "https://amzn.to/3Ly7NTa",
                     "isFixed": true
                 },
                 {
                     "title": "高田 博行・田中 牧郎・堀田 隆一（編著）　『言語の標準化を考える --- 日中英独仏「対照言語史」の試み』　大修館，2022年．",
-                    "https://amzn.to/3Ly7NTa": "https://amzn.to/4hh2vu8",
+                    "url": "https://amzn.to/4hh2vu8",
                     "isFixed": true
                 },
                 {
@@ -334,7 +329,7 @@ const helData = {
         },
         {
             "id": "helville",
-            "title": "helville (Discord)",
+            "title": "helville とヘル友たち",
             "shortTitle": "helville",
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>",
             "bgColor": "bg-gray-100",
@@ -344,6 +339,16 @@ const helData = {
                 {
                     "title": "9月28日，有志ヘルメイトによる月刊ウェブマガジン <i>Helvillian</i> 10月号が公開されました！",
                     "url": "https://note.com/helwa/n/n7754627fffb2",
+                    "isFixed": true
+                },
+                {
+                    "title": "8月28日，<i>Helvillian</i> 9月号が公開されました！",
+                    "url": "https://note.com/helwa/n/n2415c5e4db5e",
+                    "isFixed": true
+                },
+                {
+                    "title": "7月28日，<i>Helvillian</i> 8月号が公開されました！",
+                    "url": "https://note.com/helwa/n/nb4e7746663b5",
                     "isFixed": true
                 }
             ]

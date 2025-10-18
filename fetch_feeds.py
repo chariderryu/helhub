@@ -6,6 +6,9 @@ from datetime import datetime, timezone, timedelta
 from time import mktime
 from screenshot_util import take_screenshot
 
+# 追加: 文字列日付のパース用
+from email.utils import parsedate_to_datetime  # RFC822 等
+
 def load_config():
     """設定ファイルを読み込む"""
     with open('config.json', 'r', encoding='utf-8') as f:
@@ -59,6 +62,63 @@ def _classify_entry_media_id_from_shared_feed(entry_title, config, media_ids_sha
     
     return None
 
+# ===== ここから日付処理の強化（追加） =====
+
+def _parse_date_str(s: str):
+    """RFC822 / ISO8601 を受け、UTC の datetime にして返す（失敗時は None）。"""
+    if not s:
+        return None
+    s = s.strip()
+
+    # 1) RFC822（例: Wed, 18 Oct 2023 12:34:56 GMT）
+    try:
+        dt = parsedate_to_datetime(s)
+        # tz が無い場合は UTC とみなす
+        return dt.astimezone(timezone.utc) if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    except Exception:
+        pass
+
+    # 2) 代表的な ISO8601
+    for fmt in ("%Y-%m-%dT%H:%M:%S%z",
+                "%Y-%m-%dT%H:%M:%SZ",
+                "%Y-%m-%dT%H:%M:%S",
+                "%Y-%m-%d"):
+        try:
+            dt = datetime.strptime(s, fmt)
+            return dt.astimezone(timezone.utc) if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+        except Exception:
+            continue
+
+    return None
+
+def _choose_entry_datetime_utc(entry):
+    """
+    エントリーの公開日時を決定して UTC datetime を返す。
+    優先順位:
+      1) published_parsed
+      2) updated_parsed
+      3) published（文字列）
+      4) updated（文字列）
+      5) dc_date（RDFの dc:date → feedparser では 'dc_date' に入ることが多い）
+      6) issued / created（保険）
+      7) なければ現在UTC
+    """
+    # struct_time 系（feedparserが既にパース）
+    if getattr(entry, 'published_parsed', None):
+        return datetime.fromtimestamp(mktime(entry.published_parsed), tz=timezone.utc)
+    if getattr(entry, 'updated_parsed', None):
+        return datetime.fromtimestamp(mktime(entry.updated_parsed), tz=timezone.utc)
+
+    # 文字列系（順に試す）
+    for key in ("published", "updated", "dc_date", "issued", "created"):
+        dt = _parse_date_str(entry.get(key))
+        if dt:
+            return dt
+
+    return datetime.now(timezone.utc)
+
+# ===== ここまで追加 =====
+
 def process_feeds():
     """設定されたすべてのフィードを処理する"""
     config = load_config()
@@ -82,11 +142,9 @@ def process_feeds():
             entry_id = entry.get('id') or entry.get('link')
             entry_title = entry.get('title', '')
             entry_link = entry.get('link')
-            
-            if hasattr(entry, 'published_parsed') and entry.published_parsed:
-                dt_utc = datetime.fromtimestamp(mktime(entry.published_parsed)).astimezone(timezone.utc)
-            else:
-                dt_utc = datetime.now(timezone.utc)
+
+            # 変更: dc:date を含む複数候補からUTCに正規化
+            dt_utc = _choose_entry_datetime_utc(entry)
             published_date = dt_utc.isoformat()
             
             cursor = conn.cursor()
@@ -160,4 +218,3 @@ def process_feeds():
 
 if __name__ == '__main__':
     process_feeds()
-

@@ -4,12 +4,21 @@ from datetime import datetime, timedelta
 
 def load_config():
     """設定ファイルを読み込む"""
-    with open('config.json', 'r', encoding='utf-8') as f:
-        return json.load(f)
+    try:
+        with open('config.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"!!! エラー: 'config.json' が見つからないか、JSONの書式が正しくありません。")
+        print(f"詳細: {e}")
+        return None
 
 def generate_data_js():
     """config.jsonとDBからデータを取得し、hel-data.jsをゼロから生成する"""
     config = load_config()
+    if not config:
+        print("config.jsonを読み込めなかったため、処理を中断します。")
+        return
+
     db_path = config.get('database_path', 'content.db')
     
     # 1. config.jsonから静的な骨格を構築
@@ -24,7 +33,7 @@ def generate_data_js():
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    # 3. 「新着コンテンツ」セクションをDBから生成 (過去3日間、最大5件)
+    # 3. 「新着コンテンツ」セクションをDBから生成
     three_days_ago = (datetime.now() - timedelta(days=3)).isoformat()
     cursor.execute("""
         SELECT media_id, title, link FROM content
@@ -33,7 +42,6 @@ def generate_data_js():
         LIMIT 5
     """, (three_days_ago,))
     
-    # sqlite3.Rowオブジェクトを通常の辞書に変換
     for row in cursor.fetchall():
         hel_data['newContent'].append({
             "media": row['media_id'],
@@ -43,7 +51,6 @@ def generate_data_js():
 
     # 4. config.jsonの各メディア情報からカードを一枚ずつ構築
     for media_id, media_info in config.get('media_templates', {}).items():
-        # config.jsonからカードの静的情報を取得
         card = {
             "id": media_id,
             "title": media_info.get("title"),
@@ -72,7 +79,6 @@ def generate_data_js():
             fixed_item["isFixed"] = True
             fixed_items.append(fixed_item)
             
-        # 動的コンテンツと固定コンテンツを結合
         card["contentItems"] = dynamic_items + fixed_items
         
         hel_data["cards"].append(card)
@@ -80,6 +86,7 @@ def generate_data_js():
     conn.close()
     
     # 5. 完成したデータをJavaScriptファイルとして書き出し
+    # ★ 修正点: "export" を削除
     js_content = f"const helData = {json.dumps(hel_data, indent=4, ensure_ascii=False)};"
     
     output_filename = 'hel-data.js'

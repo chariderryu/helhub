@@ -2,11 +2,6 @@ import sqlite3
 import json
 import tweepy
 from datetime import datetime
-import os
-from dotenv import load_dotenv
-
-# .envファイルから環境変数を読み込む
-load_dotenv()
 
 def load_config():
     """設定ファイルを読み込む"""
@@ -27,32 +22,28 @@ def update_post_status(conn, post_id, status, error_message=None):
 
 def post_scheduled_tweets():
     """予約された投稿を実行する"""
-    # ★ 修正点: APIキーを環境変数から取得
-    api_key = os.getenv('X_API_KEY')
-    api_key_secret = os.getenv('X_API_KEY_SECRET')
-    access_token = os.getenv('X_ACCESS_TOKEN')
-    access_token_secret = os.getenv('X_ACCESS_TOKEN_SECRET')
+    config = load_config()
+    x_config = config.get('x_api_credentials', {})
     
-    # ★ 修正点: 環境変数が設定されているかチェック
-    if not all([api_key, api_key_secret, access_token, access_token_secret]) or 'YOUR_API_KEY' in api_key:
-        print("エラー: .envファイルにXのAPI認証情報が正しく設定されていません。")
+    # APIキーが設定されているかチェック
+    if 'YOUR_API_KEY' in x_config.get('api_key', ''):
+        print("エラー: config.jsonにXのAPI認証情報が設定されていません。")
         return
 
     try:
-        # ★ 修正点: 環境変数から取得したキーを使用
         # Tweepy v2 (OAuth 1.0a)
         auth = tweepy.OAuth1UserHandler(
-            api_key, api_key_secret,
-            access_token, access_token_secret
+            x_config['api_key'], x_config['api_key_secret'],
+            x_config['access_token'], x_config['access_token_secret']
         )
         api_v1 = tweepy.API(auth)
         
         # Tweepy v2 (OAuth 2.0) - Client for tweet posting
         client = tweepy.Client(
-            consumer_key=api_key,
-            consumer_secret=api_key_secret,
-            access_token=access_token,
-            access_token_secret=access_token_secret
+            consumer_key=x_config['api_key'],
+            consumer_secret=x_config['api_key_secret'],
+            access_token=x_config['access_token'],
+            access_token_secret=x_config['access_token_secret']
         )
         print("X APIへの認証に成功しました。")
 
@@ -93,7 +84,7 @@ def post_scheduled_tweets():
                 media_ids = []
                 
                 # 画像がある場合はアップロード
-                if image_path and os.path.exists(image_path):
+                if image_path:
                     try:
                         print(f"  > 画像をアップロード中: {image_path}")
                         media = api_v1.media_upload(filename=image_path)
