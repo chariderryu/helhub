@@ -39,7 +39,7 @@ def generate_data_js():
         SELECT media_id, title, link FROM content
         WHERE published_date >= ?
         ORDER BY published_date DESC
-        LIMIT 5
+        LIMIT 10
     """, (three_days_ago,))
     
     for row in cursor.fetchall():

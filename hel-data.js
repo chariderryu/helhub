@@ -8,9 +8,19 @@ const helData = {
     ],
     "newContent": [
         {
+            "media": "heldio-rebroadcast",
+            "title": "#456. -l なのか -ll なのか問題 ー till/until etc.",
+            "url": "https://www.youtube.com/watch?v=l0A-tImgdaY"
+        },
+        {
             "media": "hellog",
             "title": "#6018. 『英語語源ハンドブック』への Amazon レビューに感謝",
             "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-18-1.html"
+        },
+        {
+            "media": "youtube",
+            "title": "いのほた本発売！--井上逸兵・堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』",
+            "url": "https://www.youtube.com/watch?v=zr-QKaYVXM0"
         },
         {
             "media": "hellog",
@@ -18,19 +28,19 @@ const helData = {
             "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-17-1.html"
         },
         {
-            "media": "hellog",
-            "title": "#6016. 「いのほたなぜ」の特設HPを公開しました",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-16-1.html"
+            "media": "heldio-rebroadcast",
+            "title": "#455. shop と store の語源",
+            "url": "https://www.youtube.com/watch?v=Oj_gv03qspc"
         },
         {
-            "media": "hellog",
-            "title": "#6015. 本日「いのほたなぜ」が出ます",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-15-1.html"
+            "media": "heldio",
+            "title": "#1602. 10月25日の朝カル講座は I --- 1人称単数代名詞に注目",
+            "url": "https://voicy.jp/channel/1950/7188849"
         },
         {
-            "media": "hellog",
-            "title": "#6014. 表記スペースが足りないときには母音字を捨てる --- 英語史小ネタ from スーパー",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-14-1.html"
+            "media": "youtube",
+            "title": "「ことばと文化」を手がかりに人類視点で言語を描く--井出里咲子さん（筑波大学）【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第380回】",
+            "url": "https://www.youtube.com/watch?v=6WmcXHbbwmM"
         }
     ],
     "cards": [
@@ -131,6 +141,10 @@ const helData = {
             "link": "https://www.youtube.com/playlist?list=PL0XaI4OKflBLKqHbYjJ_kZqG2prTYg0aK",
             "contentItems": [
                 {
+                    "title": "#456. -l なのか -ll なのか問題 ー till/until etc.",
+                    "url": "https://www.youtube.com/watch?v=l0A-tImgdaY"
+                },
+                {
                     "title": "#455. shop と store の語源",
                     "url": "https://www.youtube.com/watch?v=Oj_gv03qspc"
                 },
@@ -145,10 +159,6 @@ const helData = {
                 {
                     "title": "#452. 協調の原理 ー 会話を成り立たせている暗黙のルール",
                     "url": "https://www.youtube.com/watch?v=ia5MHZssVto"
-                },
-                {
-                    "title": "#451. 意味といっても様々な意味がある",
-                    "url": "https://www.youtube.com/watch?v=sEaa4Nv4p8U"
                 },
                 {
                     "title": "Spotify でも配信中",
