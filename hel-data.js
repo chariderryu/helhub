@@ -1,10 +1,10 @@
 const helData = {
     "announcements": [
         "来たる10月25日（土） 15:30～17:00 に朝日カルチャーセンター新宿教室にて講座「I --- 1人称単数代名詞をめぐる物語」が開講されます．（2025年10月18日）",
-        "10月15日に「いのほたなぜ」こと，井上 逸兵・堀田 隆一（著）『言語学でスッキリ解決！英語の「なぜ？」』（ナツメ社）が出ました！　特設HPは<a href=\"https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/\">こちら</a>です．（2025年10月16日）",
-        "9月30日に「ゆる言語学ラジオ」の<a href=\"https://youtu.be/pWSf-2bez84?si=xAEz2MHk9QTu_NFi\">「うんちくしりとりパンクラチオン」</a>に出演させていただきました．（2025年9月30日）",
-        "9月23日に「ゆる言語学ラジオ」の人気シリーズ<a href=\"https://youtu.be/1tSTqYyB4pk?si=Rd-9LGc6j2MrCHyd\">「ターゲット1900」回</a>に出演させていただきました．（2025年9月23日）",
-        "6月18日に「HEE」こと，唐澤 一友・小塚 良孝・堀田 隆一（著），福田 一貴・小河 舜（校閲協力）『英語語源ハンドブック』（研究社）が出ました．すでに再重版がかかっています！特設HPは<a href=\"https://user.keio.ac.jp/~rhotta/hellog/lp/hee.html\">こちら</a>です．（2025年9月21日）"
+        "10月15日に「いのほたなぜ」こと，井上 逸兵・堀田 隆一（著）『言語学でスッキリ解決！英語の「なぜ？」』（ナツメ社）が出ました！　特設HPは<font color='red'><a href='https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/'>こちら</a></font>です．（2025年10月16日）",
+        "9月30日に「ゆる言語学ラジオ」の<font color='red'><a href='https://youtu.be/pWSf-2bez84?si=xAEz2MHk9QTu_NFi'>「うんちくしりとりパンクラチオン」</a></font>に出演させていただきました．（2025年9月30日）",
+        "9月23日に「ゆる言語学ラジオ」の人気シリーズ<font color='red'><a href='https://youtu.be/1tSTqYyB4pk?si=Rd-9LGc6j2MrCHyd'>「ターゲット1900」回</a></font>に出演させていただきました．（2025年9月23日）",
+        "6月18日に「HEE」こと，唐澤 一友・小塚 良孝・堀田 隆一（著），福田 一貴・小河 舜（校閲協力）『英語語源ハンドブック』（研究社）が出ました．すでに再重版がかかっています！特設HPは<font color='red'><a href='https://user.keio.ac.jp/~rhotta/hellog/lp/hee.html'>こちら</a></font>です．（2025年9月21日）"
     ],
     "newContent": [
         {

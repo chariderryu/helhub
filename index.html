@@ -115,7 +115,7 @@
         // お知らせの生成
         helData.announcements.forEach(item => {
             const listItem = document.createElement('li');
-            listItem.textContent = item;
+            listItem.innerHTML = item;
             announcementsList.appendChild(listItem);
         });
         

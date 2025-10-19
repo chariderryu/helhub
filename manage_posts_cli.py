@@ -106,22 +106,74 @@ def _edit_text_in_editor(initial_content=""):
     
     return edited_content
 
-def display_drafts(conn):
-    """下書き状態の投稿を一覧表示する"""
-    input_tz, preview_tz = get_tz_prefs()  # ★
-    print("\n--- 投稿下書き一覧 (ステータス: draft) ---")
-    drafts = conn.execute("SELECT id, media_id, scheduled_at FROM posts WHERE status = 'draft' ORDER BY id").fetchall()
-    if not drafts:
-        print("下書きはありません。")
+from datetime import datetime, timedelta, timezone  # 既に取り込み済みのはず
+# from zoneinfo import ZoneInfo  # 既に取り込み済みのはず
+
+def list_posts(conn, status_filter='draft', recent_days=None, media_id=None, preview_tz_override=None):
+    """
+    投稿を一覧表示する（拡張版）
+      - status_filter: 'draft' (default), 'approved', 'posted', 'all'
+      - recent_days:   例) 3 を指定すると「直近3日以内（UTC）」で絞り込み
+      - media_id:      例) 'hellog' などメディアIDで絞り込み
+      - preview_tz_override: 表示タイムゾーンを一時的に上書き（例: 'Asia/Tokyo'）
+    """
+    # 既定TZの取得（config.json の scheduling.preview_tz）
+    _, preview_tz_default = get_tz_prefs()
+    preview_tz = preview_tz_override or preview_tz_default
+
+    # WHERE 構築
+    where_clauses = []
+    params = []
+
+    if status_filter != 'all':
+        where_clauses.append("status = ?")
+        params.append(status_filter)
+
+    if media_id:
+        where_clauses.append("media_id = ?")
+        params.append(media_id)
+
+    if recent_days is not None:
+        # 直近N日：scheduled_at があるものを対象（NULLは除外）
+        cutoff_iso = isoformat_utc(datetime.now(timezone.utc) - timedelta(days=recent_days))
+        where_clauses.append("scheduled_at IS NOT NULL AND scheduled_at >= ?")
+        params.append(cutoff_iso)
+
+    where_sql = ("WHERE " + " AND ".join(where_clauses)) if where_clauses else ""
+
+    query = f"""
+        SELECT id, media_id, status, scheduled_at
+          FROM posts
+          {where_sql}
+         ORDER BY COALESCE(scheduled_at, '9999-12-31T23:59:59Z') ASC, id ASC
+    """
+    rows = conn.execute(query, params).fetchall()
+
+    # 見出し
+    head = f"status={status_filter}"
+    if media_id: head += f", media={media_id}"
+    if recent_days is not None: head += f", recent={recent_days}d"
+    head += f", tz={preview_tz}"
+    print(f"\n--- 投稿一覧 ({head}) ---")
+
+    if not rows:
+        print("該当する投稿がありません。")
         return
-    for draft in drafts:
-        post_id = draft['id']
-        threads = conn.execute("SELECT message FROM post_threads WHERE post_id = ? ORDER BY thread_order LIMIT 1", (post_id,)).fetchone()
-        first_line = threads['message'].split('\n')[0:] if threads else " (メッセージなし)"
-        sched_utc = draft['scheduled_at'] or ""
-        # ★ 追記: プレビュータイムゾーンでの見え方
+
+    for row in rows:
+        post_id = row["id"]
+        sched_utc = row["scheduled_at"] or ""
         sched_local = pretty_in_tz(sched_utc, preview_tz) if sched_utc else "-"
-        print(f"  ID: {post_id:<4} | メディア: {draft['media_id']:<18} | 予約(UTC): {sched_utc:<20} | → {preview_tz}: {sched_local} | 内容: {first_line[:70]}...")
+        # 最初のスレッドの先頭行を取得（スニペット用）
+        thread = conn.execute(
+            "SELECT message FROM post_threads WHERE post_id = ? ORDER BY thread_order LIMIT 1",
+            (post_id,)
+        ).fetchone()
+        snippet = (thread["message"].splitlines()[0][:60] + "...") if thread else "(no message)"
+        print(
+            f"  ID:{post_id:<4} | {row['status']:<9} | {row['media_id']:<15} "
+            f"| UTC:{sched_utc:<20} | {preview_tz}:{sched_local} | {snippet}"
+        )
 
 def view_post_details(conn, post_id):
     """指定されたIDの投稿詳細を表示する"""
@@ -332,53 +384,91 @@ def set_schedule(conn, post_id):
     print(f"  • 日本時間: {pretty_in_tz(scheduled_at, 'Asia/Tokyo')}")
     print(f"  • {preview_tz}: {pretty_in_tz(scheduled_at, preview_tz)}")
 
-def manage_image(conn, post_id):
-    """投稿の画像を管理する"""
-    query = """
-        SELECT pt.id, c.link, pt.image_path
-        FROM post_threads pt
-        INNER JOIN posts p ON p.id = pt.post_id
-        LEFT JOIN content c ON c.unique_id = p.content_unique_id
-        WHERE pt.post_id = ? AND pt.thread_order = 1
+def manage_image(conn, post_id, thread_order=None):
     """
-    thread = conn.execute(query, (post_id,)).fetchone()
-    if not thread:
-        print("対象のスレッドが見つかりません。")
+    任意スレッドの画像を管理する（1本目以外もOK）。
+    thread_order が None の場合は一覧表示→選択させる。
+    """
+    # 投稿の全スレッドを取得（順序付き）
+    threads = conn.execute(
+        "SELECT id, thread_order, message, image_path FROM post_threads WHERE post_id = ? ORDER BY thread_order",
+        (post_id,)
+    ).fetchall()
+    if not threads:
+        print("対象の投稿にスレッドがありません。")
         return
-    
-    original_link = thread['link']
 
-    print(f"\n--- 画像管理 (投稿ID: {post_id}) ---")
-    print(f"現在の添付画像: {thread['image_path'] or 'なし'}")
+    # スレッド選択 UI（番号未指定のとき）
+    target = None
+    if thread_order is None:
+        print("\n--- 画像管理: スレッド選択 ---")
+        for t in threads:
+            head = (t["message"] or "").splitlines()[0][:40]
+            mark = "📷" if t["image_path"] else "—"
+            print(f"  {t['thread_order']:>2}: [{mark}] {head}")
+        try:
+            thread_order = int(input("画像を操作するスレッド番号を入力: ").strip())
+        except Exception:
+            print("キャンセルしました。")
+            return
+
+    # 指定スレッドを特定
+    for t in threads:
+        if t["thread_order"] == thread_order:
+            target = t
+            break
+    if not target:
+        print(f"指定のスレッド順序 {thread_order} が見つかりません。")
+        return
+
+    # この投稿の元リンク（自動スクショ用）。無い場合もある（手動投稿など）
+    row = conn.execute(
+        """
+        SELECT c.link
+          FROM posts p
+     LEFT JOIN content c ON c.unique_id = p.content_unique_id
+         WHERE p.id = ?
+        """,
+        (post_id,)
+    ).fetchone()
+    origin_link = row["link"] if row else None
+
+    print(f"\n--- 画像管理 (投稿ID: {post_id}, スレッド: {thread_order}) ---")
+    print(f"現在の添付画像: {target['image_path'] or 'なし'}")
     print("操作を選択してください:")
-    if original_link: print("  1. スクリーンショットを自動撮影して添付")
+    menu_idx = []
+    if origin_link:
+        print("  1. スクリーンショットを自動撮影して添付（元リンク）")
+        menu_idx.append("1")
     print("  2. ファイルパスを手動で指定して添付")
     print("  3. 添付画像を削除")
-    
+    menu_idx.extend(["2", "3"])
+
     choice = input("> ").strip()
-    new_image_path = None
-    
-    if choice == '1':
-        if not original_link:
-            print("エラー: この投稿はRSSフィード由来ではないため、自動撮影できません。")
-            return
-        new_image_path = take_screenshot(original_link)
-    elif choice == '2':
-        path = input("画像ファイルのパスを入力してください: ").strip().replace('"', '')
-        if os.path.exists(path):
-            new_image_path = path
-        else:
-            print(f"ファイルが見つかりません: {path}")
-            return
-    elif choice == '3':
-        new_image_path = ""
-    else:
+    if choice not in menu_idx:
+        print("キャンセルしました。")
         return
 
-    conn.execute("UPDATE post_threads SET image_path = ? WHERE id = ?", (new_image_path or None, thread['id']))
+    new_image_path = None
+    if choice == "1":
+        # 自動スクショ（元リンクがある場合のみ）
+        from screenshot_util import take_screenshot
+        new_image_path = take_screenshot(origin_link)
+    elif choice == "2":
+        path = input("画像ファイルのパスを入力してください: ").strip().strip('"')
+        if not os.path.exists(path):
+            print(f"ファイルが見つかりません: {path}")
+            return
+        new_image_path = path
+    elif choice == "3":
+        new_image_path = ""
+
+    conn.execute(
+        "UPDATE post_threads SET image_path = ? WHERE id = ?",
+        (new_image_path or None, target["id"])
+    )
     conn.commit()
     print("添付画像を更新しました。")
-
 
 def approve_post(conn, post_id):
     """投稿を承認する"""
@@ -389,7 +479,7 @@ def approve_post(conn, post_id):
 def main():
     """対話形式で投稿を管理するメインループ"""
     conn = get_db_connection()
-    display_drafts(conn)
+    list_posts(conn)
 
     while True:
         print("\n--- コマンド一覧 ---")
@@ -403,32 +493,99 @@ def main():
         cmd = command_input[0]
         
         if cmd == 'exit': break
+        # ... while True: の中のコマンド分岐で
         if cmd == 'list':
-            display_drafts(conn)
+            # 既定は draft（従来互換）
+            status_filter = 'draft'
+            recent_days = None
+            media_id = None
+            tz_override = None
+        
+            # 例:
+            #   list
+            #   list approved
+            #   list posted
+            #   list all
+            #   list recent
+            #   list media hellog
+            #   list media helwa recent --tz Asia/Tokyo
+            tokens = command_input[1:]  # 'list' の後ろ
+            i = 0
+            allowed_status = {'draft', 'approved', 'posted', 'all'}
+            while i < len(tokens):
+                tok = tokens[i].lower()
+        
+                if tok in allowed_status:
+                    status_filter = tok
+                    i += 1
+                    continue
+        
+                if tok == 'recent':
+                    recent_days = 3  # ★ 直近3日固定（必要なら 'recent 7' のように拡張可）
+                    # recent 指定時は「すべてのステータス」を見たいケースが多いので、
+                    # ユーザーが明示しない限り all に寄せる（明示優先）
+                    if status_filter == 'draft':
+                        status_filter = 'all'
+                    i += 1
+                    continue
+        
+                if tok == 'media':
+                    if i + 1 >= len(tokens):
+                        print("エラー: 'list media' の後に media_id を指定してください（例: hellog）。")
+                        break
+                    media_id = tokens[i + 1]
+                    i += 2
+                    continue
+        
+                if tok == '--tz':
+                    if i + 1 >= len(tokens):
+                        print("エラー: '--tz' の後にタイムゾーンを指定してください（例: Asia/Tokyo）。")
+                        break
+                    tz_override = tokens[i + 1]
+                    i += 2
+                    continue
+        
+                # それ以外は軽くアラート
+                print(f"警告: 未知のオプションを無視しました: {tokens[i]}")
+                i += 1
+        
+            list_posts(conn,
+                       status_filter=status_filter,
+                       recent_days=recent_days,
+                       media_id=media_id,
+                       preview_tz_override=tz_override)
             continue
+        
         if cmd == 'new':
             new_post(conn)
-            display_drafts(conn)
+            list_posts(conn)
             continue
             
         try:
             if cmd in ['view', 'add-thread', 'schedule', 'image', 'approve', 'edit', 'delete']:
-                if len(command_input) < 2: raise IndexError("IDが必要です。")
+                if len(command_input) < 2:
+                    raise IndexError("IDが必要です。")
                 post_id = command_input[1]
-                if cmd == 'view': view_post_details(conn, post_id)
-                elif cmd == 'add-thread': add_thread(conn, post_id)
-                elif cmd == 'schedule': set_schedule(conn, post_id)
-                elif cmd == 'image': manage_image(conn, post_id)
+                if cmd == 'view':
+                    view_post_details(conn, post_id)
+                elif cmd == 'add-thread':
+                    add_thread(conn, post_id)
+                elif cmd == 'schedule':
+                    set_schedule(conn, post_id)
+                elif cmd == 'image':
+                    # ★ ここを拡張：順序を任意指定可
+                    thread_order = int(command_input[2]) if len(command_input) >= 3 else None
+                    manage_image(conn, post_id, thread_order)  # ★ 引数追加
                 elif cmd == 'approve':
                     approve_post(conn, post_id)
                     print("\n承認後の下書き一覧:")
-                    display_drafts(conn)
-                elif cmd == 'edit':
-                    edit_post_or_thread(conn, post_id)
-                elif cmd == 'delete':
-                    delete_post(conn, post_id)
-                    print("\n削除後の下書き一覧:")
-                    display_drafts(conn)
+                    list_posts(conn)
+            elif cmd == 'edit':
+                edit_post_or_thread(conn, post_id)
+            elif cmd == 'delete':
+                delete_post(conn, post_id)
+                print("\n削除後の下書き一覧:")
+                list_posts(conn)
 
             elif cmd in ['edit-thread', 'del-thread']:
                 if len(command_input) < 3: raise IndexError("IDとスレッド順序が必要です。")
