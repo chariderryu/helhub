@@ -228,5 +228,9 @@
   "helmaga_generator": {
     "days_to_summarize": 7,
     "output_filename": "newsletter_summary.md"
+  },
+  "scheduling": {
+    "input_tz": "Asia/Tokyo",
+    "preview_tz": "Pacific/Auckland"
   }
 }

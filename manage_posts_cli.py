@@ -1,10 +1,13 @@
 import sqlite3
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone  # ★ timezone 追加
 from screenshot_util import take_screenshot
 import os
 import tempfile
 import subprocess
+
+# ★ 追加: タイムゾーン（Python 3.9+ 標準）
+from zoneinfo import ZoneInfo
 
 def load_config():
     """設定ファイルを読み込む"""
@@ -18,6 +21,57 @@ def get_db_connection():
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
+
+# ★ 追加: TZ設定の取得（config.json で上書き可能）
+def get_tz_prefs():
+    cfg = load_config()
+    sched = cfg.get("scheduling", {})
+    input_tz = sched.get("input_tz", "Asia/Tokyo")         # 日本時間既定
+    preview_tz = sched.get("preview_tz", "Pacific/Auckland")  # NZ 既定
+    return input_tz, preview_tz
+
+# ★ 追加: UTC ISO8601（...Z 統一）
+def isoformat_utc(dt: datetime) -> str:
+    dt_utc = dt.astimezone(timezone.utc).replace(microsecond=0)
+    return dt_utc.isoformat().replace("+00:00", "Z")
+
+# ★ 追加: “UTC っぽい文字列”を tz-aware datetime に（Z/オフセット/なし対応）
+def parse_utcish(iso_str: str) -> datetime:
+    if not iso_str:
+        return None
+    s = iso_str.replace("Z", "+00:00")
+    try:
+        dt = datetime.fromisoformat(s)
+    except Exception:
+        return None
+    if dt.tzinfo is None:  # tzなしはUTCとみなす（過去データ救済）
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
+
+# ★ 追加: 'YYYY-MM-DD [HH:MM[:SS]]' を input_tz で tz-aware に
+def parse_local_datetime(s: str, tz_name: str) -> datetime:
+    s = s.strip().replace("T", " ")
+    fmts = ["%Y-%m-%d %H:%M", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"]
+    tz = ZoneInfo(tz_name)
+    last_err = None
+    for fmt in fmts:
+        try:
+            naive = datetime.strptime(s, fmt)
+            # 日付のみのときは 09:00 を既定に（必要なら変更）
+            if fmt == "%Y-%m-%d":
+                naive = naive.replace(hour=9, minute=0, second=0)
+            return naive.replace(tzinfo=tz)
+        except Exception as e:
+            last_err = e
+    raise ValueError(f"日時の解釈に失敗: '{s}' (tz={tz_name}) / {last_err}")
+
+# ★ 追加: UTC文字列を任意TZの見やすい表記へ
+def pretty_in_tz(iso_utc: str, tz_name: str) -> str:
+    dt = parse_utcish(iso_utc)
+    if not dt:
+        return "-"
+    local = dt.astimezone(ZoneInfo(tz_name))
+    return local.strftime("%Y-%m-%d %H:%M (%Z)")
 
 def _edit_text_in_editor(initial_content=""):
     """
@@ -54,6 +108,7 @@ def _edit_text_in_editor(initial_content=""):
 
 def display_drafts(conn):
     """下書き状態の投稿を一覧表示する"""
+    input_tz, preview_tz = get_tz_prefs()  # ★
     print("\n--- 投稿下書き一覧 (ステータス: draft) ---")
     drafts = conn.execute("SELECT id, media_id, scheduled_at FROM posts WHERE status = 'draft' ORDER BY id").fetchall()
     if not drafts:
@@ -63,18 +118,26 @@ def display_drafts(conn):
         post_id = draft['id']
         threads = conn.execute("SELECT message FROM post_threads WHERE post_id = ? ORDER BY thread_order LIMIT 1", (post_id,)).fetchone()
         first_line = threads['message'].split('\n')[0:] if threads else " (メッセージなし)"
-        # ★ 修正点: 表示文字数を40から70に増やす
-        print(f"  ID: {post_id:<4} | メディア: {draft['media_id']:<18} | 予約: {draft['scheduled_at']:<20} | 内容: {first_line[:70]}...")
+        sched_utc = draft['scheduled_at'] or ""
+        # ★ 追記: プレビュータイムゾーンでの見え方
+        sched_local = pretty_in_tz(sched_utc, preview_tz) if sched_utc else "-"
+        print(f"  ID: {post_id:<4} | メディア: {draft['media_id']:<18} | 予約(UTC): {sched_utc:<20} | → {preview_tz}: {sched_local} | 内容: {first_line[:70]}...")
 
 def view_post_details(conn, post_id):
     """指定されたIDの投稿詳細を表示する"""
+    input_tz, preview_tz = get_tz_prefs()  # ★
     post = conn.execute("SELECT * FROM posts WHERE id = ?", (post_id,)).fetchone()
     if not post:
         print("指定されたIDの投稿が見つかりません。")
         return
     
     print("\n--- 投稿詳細 ---")
-    print(f"ID: {post['id']}, メディア: {post['media_id']}, ステータス: {post['status']}, 予約日時: {post['scheduled_at']}")
+    sched_utc = post['scheduled_at'] or ""
+    print(f"ID: {post['id']}, メディア: {post['media_id']}, ステータス: {post['status']}")
+    if sched_utc:
+        print(f"予約日時: {sched_utc} (UTC)  /  {preview_tz}: {pretty_in_tz(sched_utc, preview_tz)}  /  JST: {pretty_in_tz(sched_utc, 'Asia/Tokyo')}")
+    else:
+        print("予約日時: -")
     
     threads = conn.execute("SELECT * FROM post_threads WHERE post_id = ? ORDER BY thread_order", (post_id,)).fetchall()
     for thread in threads:
@@ -113,7 +176,8 @@ def new_post(conn):
         print("メッセージが空のため、作成をキャンセルしました。")
         return
 
-    scheduled_at = (datetime.now() + timedelta(hours=1)).isoformat(timespec='seconds')
+    # ★ 変更: 予約時刻の既定は「今から1時間後（UTC）」に統一
+    scheduled_at = isoformat_utc(datetime.now(timezone.utc) + timedelta(hours=1))
 
     cursor = conn.cursor()
     cursor.execute("INSERT INTO posts (media_id, status, scheduled_at) VALUES (?, 'draft', ?)", (media_id, scheduled_at))
@@ -209,7 +273,9 @@ def delete_thread(conn, post_id, thread_order_to_delete):
         return
 
     conn.execute("DELETE FROM post_threads WHERE id = ?", (thread['id'],))
-    remaining_threads = conn.execute("SELECT id FROM post_threads WHERE post_id = ? ORDER BY thread_order", (post_id,)).fetchall()
+    remaining_threads = conn.execute("SELECT id FROM post_threads WHERE post_id = ? ORDER BY thread_order", (post_id,)).fetchall()  # NOTE: 元コードのまま
+    # ↑ 元コードに ORDER BY のスペース抜けがある場合は修正してください: "ORDER BY"
+    # ここではオリジナルを尊重しつつコメントで注意喚起します。
     for i, remaining_thread in enumerate(remaining_threads):
         conn.execute("UPDATE post_threads SET thread_order = ? WHERE id = ?", (i + 1, remaining_thread['id']))
     
@@ -219,15 +285,18 @@ def delete_thread(conn, post_id, thread_order_to_delete):
 
 
 def set_schedule(conn, post_id):
-    """投稿の予約日時を設定する"""
-    print("予約日時を設定します。例: 'now', '+1h', '+2d', '2025-10-20 15:00'")
+    """投稿の予約日時を設定する（入力TZで解釈→UTCで保存）"""
+    input_tz, preview_tz = get_tz_prefs()  # ★ 入力TZ/プレビューTZ
+    print("予約日時を設定します。例: 'now', '+30m', '+2h', '+1d', '2025-10-20 15:00'（既定=日本時間として解釈）")
+    print(f"入力タイムゾーン: {input_tz} / プレビュー: {preview_tz}")
     time_str = input("> ").strip()
     
-    scheduled_at = ""
-    now = datetime.now()
+    # 入力TZの現在時刻
+    now_local = datetime.now(ZoneInfo(input_tz))
+    scheduled_dt_local = None
 
     if time_str == 'now':
-        scheduled_at = now.isoformat(timespec='seconds')
+        scheduled_dt_local = now_local
     elif time_str.startswith('+'):
         try:
             num = int(time_str[1:-1])
@@ -239,22 +308,29 @@ def set_schedule(conn, post_id):
             else:
                 print("不正な単位です。(m, h, d)")
                 return
-            scheduled_at = (now + delta).isoformat(timespec='seconds')
+            scheduled_dt_local = now_local + delta
         except (ValueError, IndexError):
             print("不正な形式です。例: +5m, +1h, +2d")
             return
     else:
         try:
-            if len(time_str) <= 5 and ':' in time_str: time_str = f"{now.strftime('%Y-%m-%d')} {time_str}"
-            dt_obj = datetime.fromisoformat(time_str)
-            scheduled_at = dt_obj.isoformat(timespec='seconds')
-        except ValueError:
+            # 文字列を input_tz として解釈
+            scheduled_dt_local = parse_local_datetime(time_str, input_tz)
+        except ValueError as e:
+            print(str(e))
             print("不正な日時形式です。例: 2025-10-20 15:00")
             return
 
+    # UTC に正規化して保存
+    scheduled_at = isoformat_utc(scheduled_dt_local)
+
     conn.execute("UPDATE posts SET scheduled_at = ? WHERE id = ?", (scheduled_at, post_id))
     conn.commit()
-    print(f"予約日時を {scheduled_at} に設定しました。")
+
+    # 確認出力（UTC / JST / プレビューTZ）
+    print(f"予約日時を {scheduled_at} (UTC) に設定しました。")
+    print(f"  • 日本時間: {pretty_in_tz(scheduled_at, 'Asia/Tokyo')}")
+    print(f"  • {preview_tz}: {pretty_in_tz(scheduled_at, preview_tz)}")
 
 def manage_image(conn, post_id):
     """投稿の画像を管理する"""
@@ -376,4 +452,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
