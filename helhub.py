@@ -38,7 +38,7 @@ def run_generate_newsletter_summary(args):
 def run_custom_hellog_command(args):
     """ユーザー定義のカスタムコマンドを実行するサンプル"""
     # config.jsonからパスを取得するか、ここに直接記述します
-    custom_command_path = "path/to/your/custom/script.sh"
+    custom_command_path = "path/to/script"
     
     if not os.path.exists(custom_command_path):
         print(f"エラー: カスタムコマンド '{custom_command_path}' が見つかりません。")
@@ -105,7 +105,7 @@ def main():
     # hellog カスタムコマンド (サンプル)
     parser_hellog = subparsers.add_parser("hellog", help="hellog関連のカスタムコマンドを実行します。")
     hellog_subparsers = parser_hellog.add_subparsers(dest="hellog_command", required=True)
-    parser_hellog_new = hellog_subparsers.add_parser("new", help="新しいブログ記事の雛形を作成します。")
+    parser_hellog_new = hellog_subparsers.add_parser("open", help="hellog をオープンします。")
     parser_hellog_new.add_argument("--title", type=str, help="記事のタイトル")
     parser_hellog.set_defaults(func=run_custom_hellog_command)
 
@@ -114,4 +114,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
