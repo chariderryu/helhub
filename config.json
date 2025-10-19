@@ -232,47 +232,5 @@
   "scheduling": {
     "input_tz": "Asia/Tokyo",
     "preview_tz": "Pacific/Auckland"
-  },
-  "custom_commands": {
-    "hellog:fetch": {
-      "description": "hellog の RDF を取得してDB反映",
-      "steps": [
-        {
-          "cmd": ["python", "fetch_feeds.py"],
-          "cwd": "{repo_root}",
-          "timeout_sec": 900
-        }
-      ]
-    },
-    "hellog:publish": {
-      "description": "データ生成 → WinSCP でアップロード",
-      "steps": [
-        { "cmd": ["python", "generate_data_js.py"], "cwd": "{repo_root}" },
-        {
-          "cmd": [
-            "C:/bin/WinSCP/WinSCP.exe",
-            "/script={repo_root}/deploy/helhub_deploy.txt"
-          ],
-          "windows_only": true
-        }
-      ]
-    },
-    "hellog:all": {
-      "description": "fetch → publish を順に実行",
-      "steps": [
-        { "ref": "hellog:fetch" },
-        { "ref": "hellog:publish" }
-      ]
-    },
-    "rss:fetch-limited": {
-      "description": "直近 {arg:limit} 件だけ取得",
-      "steps": [
-        {
-          "cmd": ["python", "fetch_feeds.py", "--limit", "{arg:limit}"],
-          "cwd": "{repo_root}"
-        }
-      ],
-      "defaults": { "limit": "50" }
-    }
   }
 }
