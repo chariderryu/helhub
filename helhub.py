@@ -38,7 +38,7 @@ def run_generate_newsletter_summary(args):
 def run_custom_hellog_command(args):
     """ユーザー定義のカスタムコマンドを実行するサンプル"""
     # config.jsonからパスを取得するか、ここに直接記述します
-    custom_command_path = "path/to/script"
+    custom_command_path = "C:/bin/hidemaru/Hidemaru.exe"
     
     if not os.path.exists(custom_command_path):
         print(f"エラー: カスタムコマンド '{custom_command_path}' が見つかりません。")

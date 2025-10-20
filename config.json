@@ -44,7 +44,7 @@
       "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/hellog-radio/heldio_rss.xml",
       "x_post_template": {
         "is_active": true,
-        "template": "【🎙英語の語源が身につくラジオ heldio】\n\n{title}\n\n{url}\n\n\n\n#heldio #英語史 #hel活 #英語史をお茶の間に\n@khelf_keio @helvillian",
+        "template": "【🎙英語の語源が身につくラジオ heldio】\n\n{title}\n\n{link}\n\n\n\n#heldio #英語史 #hel活 #英語史をお茶の間に\n@khelf_keio @helvillian",
         "filtering_rules": {
           "exclude_regex": "【英語史の輪"
         },
@@ -87,7 +87,7 @@
       "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/hellog-radio/heldio_rss.xml",
       "x_post_template": {
         "is_active": true,
-        "template": "【💎プレミアム限定配信　英語史の輪 helwa】\n\n{title}\n\n{url}\n\n\n\n#helwa #英語史 #hel活 #英語史をお茶の間に\n@helvillian @khelf_keio",
+        "template": "【💎プレミアム限定配信　英語史の輪 helwa】\n\n{title}\n\n{link}\n\n\n\n#helwa #英語史 #hel活 #英語史をお茶の間に\n@helvillian @khelf_keio",
         "filtering_rules": {
           "include_regex": "【英語史の輪"
         },
@@ -109,7 +109,7 @@
       "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCth3mYbOZ9WsYgPQa0pxhvw",
       "x_post_template": {
         "is_active": true,
-        "template": "【🎥 いのほた言語学チャンネル】\n\n{title}\n\n{url}\n\n\n\n#inohota #いのほた #英語史 #hel活 #英語史をお茶の間に\n@ippeiinoue @khelf_keio @helvillian",
+        "template": "【🎥 いのほた言語学チャンネル】\n\n{title}\n\n{link}\n\n\n\n#inohota #いのほた #英語史 #hel活 #英語史をお茶の間に\n@ippeiinoue @khelf_keio @helvillian",
         "image_settings": {
           "attach_image": false
         }
@@ -232,5 +232,40 @@
   "scheduling": {
     "input_tz": "Asia/Tokyo",
     "preview_tz": "Pacific/Auckland"
+  },
+  "custom_commands": {
+    "hellog:fetch": {
+      "description": "hellog の RDF を取得してDB反映",
+      "steps": [
+        { "cmd": ["python", "fetch_feeds.py"], "cwd": "{repo_root}", "timeout_sec": 900 }
+      ]
+    },
+    "hellog:open": {
+      "description": "hellog.txt をオープン",
+      "steps": [
+        { "cmd": ["hidemaru", "C:/00work/OneDrive - keio.jp/zEtc/keioacjp/hellog/hellog.txt"], "cwd": "{repo_root}" }
+      ]
+    },
+    "hellog:publish": {
+      "description": "data生成 → WinSCPで配信",
+      "steps": [
+        { "cmd": ["python", "generate_data_js.py"], "cwd": "{repo_root}" },
+        { "cmd": ["C:/bin/WinSCP/WinSCP.exe", "/script={repo_root}/deploy/helhub_deploy.txt"], "windows_only": true }
+      ]
+    },
+    "hellog:all": {
+      "description": "fetch → publish",
+      "steps": [
+        { "ref": "hellog:fetch" },
+        { "ref": "hellog:publish" }
+      ]
+    },
+    "rss:fetch-limited": {
+      "description": "直近 {arg:limit} 件のみ取得",
+      "defaults": { "limit": "50" },
+      "steps": [
+        { "cmd": ["python", "fetch_feeds.py", "--limit", "{arg:limit}"], "cwd": "{repo_root}" }
+      ]
+    }
   }
 }

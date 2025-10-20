@@ -8,9 +8,44 @@ const helData = {
     ],
     "newContent": [
         {
+            "media": "hellog",
+            "title": "#6020. 「いのほたなぜ」が第5位 --- Amazon 売れ筋ランキング英語部門",
+            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-20-1.html"
+        },
+        {
+            "media": "heldio-rebroadcast",
+            "title": "#457. 中英語の言語資料と方言",
+            "url": "https://www.youtube.com/watch?v=bno4yPA4a7k"
+        },
+        {
+            "media": "youtube",
+            "title": "It is important for you to〜とIt is kind of you to〜って似た構文と思われがちですが、ルーツがまったくちがいます【いのほた言語学チャンネル第381回】",
+            "url": "https://www.youtube.com/watch?v=Ai0s-24tUsQ"
+        },
+        {
+            "media": "heldio",
+            "title": "#1604. 川上さんの「英語のなぜ5分版」やってます通信 --- 第22弾",
+            "url": "https://voicy.jp/channel/1950/7185770"
+        },
+        {
+            "media": "hellog",
+            "title": "#6019. 「いのほた本」出版に合わせて YouTube ショート動画も公開しました",
+            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-19-1.html"
+        },
+        {
+            "media": "youtube",
+            "title": "いのほた言語学チャンネルが書籍化！--井上逸兵x堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』＃いのほたなぜ",
+            "url": "https://www.youtube.com/shorts/e3Pxy6swcds"
+        },
+        {
             "media": "heldio-rebroadcast",
             "title": "#456. -l なのか -ll なのか問題 ー till/until etc.",
             "url": "https://www.youtube.com/watch?v=l0A-tImgdaY"
+        },
+        {
+            "media": "heldio",
+            "title": "#1603. 「英語学」って何？ --- 「いのほたなぜ」のプロローグより",
+            "url": "https://voicy.jp/channel/1950/7189457"
         },
         {
             "media": "hellog",
@@ -21,26 +56,6 @@ const helData = {
             "media": "youtube",
             "title": "いのほた本発売！--井上逸兵・堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』",
             "url": "https://www.youtube.com/watch?v=zr-QKaYVXM0"
-        },
-        {
-            "media": "hellog",
-            "title": "#6017. SNS投稿のためにハッシュタグ「いのほたなぜ」をお使いください",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-17-1.html"
-        },
-        {
-            "media": "heldio-rebroadcast",
-            "title": "#455. shop と store の語源",
-            "url": "https://www.youtube.com/watch?v=Oj_gv03qspc"
-        },
-        {
-            "media": "heldio",
-            "title": "#1602. 10月25日の朝カル講座は I --- 1人称単数代名詞に注目",
-            "url": "https://voicy.jp/channel/1950/7188849"
-        },
-        {
-            "media": "youtube",
-            "title": "「ことばと文化」を手がかりに人類視点で言語を描く--井出里咲子さん（筑波大学）【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第380回】",
-            "url": "https://www.youtube.com/watch?v=6WmcXHbbwmM"
         }
     ],
     "cards": [
@@ -54,6 +69,14 @@ const helData = {
             "link": "http://user.keio.ac.jp/~rhotta/hellog/",
             "contentItems": [
                 {
+                    "title": "#6020. 「いのほたなぜ」が第5位 --- Amazon 売れ筋ランキング英語部門",
+                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-20-1.html"
+                },
+                {
+                    "title": "#6019. 「いのほた本」出版に合わせて YouTube ショート動画も公開しました",
+                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-19-1.html"
+                },
+                {
                     "title": "#6018. 『英語語源ハンドブック』への Amazon レビューに感謝",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-18-1.html"
                 },
@@ -64,14 +87,6 @@ const helData = {
                 {
                     "title": "#6016. 「いのほたなぜ」の特設HPを公開しました",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-16-1.html"
-                },
-                {
-                    "title": "#6015. 本日「いのほたなぜ」が出ます",
-                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-15-1.html"
-                },
-                {
-                    "title": "#6014. 表記スペースが足りないときには母音字を捨てる --- 英語史小ネタ from スーパー",
-                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-14-1.html"
                 },
                 {
                     "title": "記事一覧はこちら．",
@@ -90,6 +105,14 @@ const helData = {
             "link": "https://voicy.jp/channel/1950",
             "contentItems": [
                 {
+                    "title": "#1604. 川上さんの「英語のなぜ5分版」やってます通信 --- 第22弾",
+                    "url": "https://voicy.jp/channel/1950/7185770"
+                },
+                {
+                    "title": "#1603. 「英語学」って何？ --- 「いのほたなぜ」のプロローグより",
+                    "url": "https://voicy.jp/channel/1950/7189457"
+                },
+                {
                     "title": "#1602. 10月25日の朝カル講座は I --- 1人称単数代名詞に注目",
                     "url": "https://voicy.jp/channel/1950/7188849"
                 },
@@ -100,14 +123,6 @@ const helData = {
                 {
                     "title": "#1600. 「いのほたなぜ」の特設HPをオープンしました",
                     "url": "https://voicy.jp/channel/1950/7172967"
-                },
-                {
-                    "title": "#1599. 「いのほたなぜ」本日発売",
-                    "url": "https://voicy.jp/channel/1950/7172965"
-                },
-                {
-                    "title": "#1598. khelf 寺澤志帆さんと allay を語る --- 「『英語語源辞典』でたどる英語綴字史」より",
-                    "url": "https://voicy.jp/channel/1950/7150591"
                 },
                 {
                     "title": "Spotify でも配信中",
@@ -141,6 +156,10 @@ const helData = {
             "link": "https://www.youtube.com/playlist?list=PL0XaI4OKflBLKqHbYjJ_kZqG2prTYg0aK",
             "contentItems": [
                 {
+                    "title": "#457. 中英語の言語資料と方言",
+                    "url": "https://www.youtube.com/watch?v=bno4yPA4a7k"
+                },
+                {
                     "title": "#456. -l なのか -ll なのか問題 ー till/until etc.",
                     "url": "https://www.youtube.com/watch?v=l0A-tImgdaY"
                 },
@@ -155,10 +174,6 @@ const helData = {
                 {
                     "title": "#453. 意味の曖昧さ4種",
                     "url": "https://www.youtube.com/watch?v=EQUdyv-mLcc"
-                },
-                {
-                    "title": "#452. 協調の原理 ー 会話を成り立たせている暗黙のルール",
-                    "url": "https://www.youtube.com/watch?v=ia5MHZssVto"
                 },
                 {
                     "title": "Spotify でも配信中",
@@ -187,6 +202,10 @@ const helData = {
             "link": "https://voicy.jp/channel/1950/premium",
             "contentItems": [
                 {
+                    "title": "[helwa] 【英語史の輪 #356】hel活ポータルを準備中",
+                    "url": "https://voicy.jp/channel/1950/7192830"
+                },
+                {
                     "title": "[helwa] 【英語史の輪 #355】学術論文とは何か？ --- クライストチャーチの植物園から語る",
                     "url": "https://voicy.jp/channel/1950/7187840"
                 },
@@ -201,10 +220,6 @@ const helData = {
                 {
                     "title": "[helwa] 【英語史の輪 #352】私はこれができません --- 「英語史ライヴ2025」より",
                     "url": "https://voicy.jp/channel/1950/7149489"
-                },
-                {
-                    "title": "[helwa] 【英語史の輪 #351】Christchurch の美しい植物園より",
-                    "url": "https://voicy.jp/channel/1950/7159312"
                 },
                 {
                     "title": "",
@@ -223,6 +238,14 @@ const helData = {
             "link": "https://www.youtube.com/channel/UCth3mYbOZ9WsYgPQa0pxhvw",
             "contentItems": [
                 {
+                    "title": "It is important for you to〜とIt is kind of you to〜って似た構文と思われがちですが、ルーツがまったくちがいます【いのほた言語学チャンネル第381回】",
+                    "url": "https://www.youtube.com/watch?v=Ai0s-24tUsQ"
+                },
+                {
+                    "title": "いのほた言語学チャンネルが書籍化！--井上逸兵x堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』＃いのほたなぜ",
+                    "url": "https://www.youtube.com/shorts/e3Pxy6swcds"
+                },
+                {
                     "title": "いのほた本発売！--井上逸兵・堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』",
                     "url": "https://www.youtube.com/watch?v=zr-QKaYVXM0"
                 },
@@ -233,14 +256,6 @@ const helData = {
                 {
                     "title": "ゆる言語学ラジオ・水野太貴さんの『会話の0.2秒を言語学する』をいのほた視点で超解説！【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第379回】",
                     "url": "https://www.youtube.com/watch?v=ZH7xSyYtjNk"
-                },
-                {
-                    "title": "感性とセンス際立つ言語人類学者--井出里咲子さん第3弾！【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第378回】",
-                    "url": "https://www.youtube.com/watch?v=Jop3_LNZ9OA"
-                },
-                {
-                    "title": "角度を変えると、歴史は別物になるー遡及的英語史：理解は“今”から始まる【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第377回】",
-                    "url": "https://www.youtube.com/watch?v=E6lkdxjLz2c"
                 },
                 {
                     "title": "",

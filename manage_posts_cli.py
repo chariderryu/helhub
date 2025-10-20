@@ -169,7 +169,7 @@ def list_posts(conn, status_filter='draft', recent_days=None, media_id=None, pre
             "SELECT message FROM post_threads WHERE post_id = ? ORDER BY thread_order LIMIT 1",
             (post_id,)
         ).fetchone()
-        snippet = (thread["message"].splitlines()[0][:60] + "...") if thread else "(no message)"
+        snippet = (thread["message"].replace("\n\n", "\\n")[:100] + "...") if thread else "(no message)"
         print(
             f"  ID:{post_id:<4} | {row['status']:<9} | {row['media_id']:<15} "
             f"| UTC:{sched_utc:<20} | {preview_tz}:{sched_local} | {snippet}"
@@ -562,10 +562,11 @@ def main():
             continue
             
         try:
-            if cmd in ['view', 'add-thread', 'schedule', 'image', 'approve', 'edit', 'delete']:
+            if cmd in ['view', 'add-thread', 'schedule', 'image', 'approve']:
                 if len(command_input) < 2:
                     raise IndexError("IDが必要です。")
-                post_id = command_input[1]
+                post_id = int(command_input[1])
+
                 if cmd == 'view':
                     view_post_details(conn, post_id)
                 elif cmd == 'add-thread':
@@ -573,26 +574,37 @@ def main():
                 elif cmd == 'schedule':
                     set_schedule(conn, post_id)
                 elif cmd == 'image':
-                    # ★ ここを拡張：順序を任意指定可
+                    # 順序を任意指定可（例: image 123 2）
                     thread_order = int(command_input[2]) if len(command_input) >= 3 else None
-                    manage_image(conn, post_id, thread_order)  # ★ 引数追加
+                    manage_image(conn, post_id, thread_order)
                 elif cmd == 'approve':
                     approve_post(conn, post_id)
-                    print("\n承認後の下書き一覧:")
+                    print("\n承認後の一覧:")
                     list_posts(conn)
+
             elif cmd == 'edit':
+                if len(command_input) < 2:
+                    raise IndexError("IDが必要です。")
+                post_id = int(command_input[1])
                 edit_post_or_thread(conn, post_id)
+
             elif cmd == 'delete':
+                if len(command_input) < 2:
+                    raise IndexError("IDが必要です。")
+                post_id = int(command_input[1])
                 delete_post(conn, post_id)
-                print("\n削除後の下書き一覧:")
+                print("\n削除後の一覧:")
                 list_posts(conn)
 
             elif cmd in ['edit-thread', 'del-thread']:
-                if len(command_input) < 3: raise IndexError("IDとスレッド順序が必要です。")
-                post_id = command_input[1]
+                if len(command_input) < 3:
+                    raise IndexError("IDとスレッド順序が必要です。")
+                post_id = int(command_input[1])
                 thread_order = int(command_input[2])
-                if cmd == 'edit-thread': edit_post_or_thread(conn, post_id, thread_order)
-                elif cmd == 'del-thread': delete_thread(conn, post_id, thread_order)
+                if cmd == 'edit-thread':
+                    edit_post_or_thread(conn, post_id, thread_order)
+                else:
+                    delete_thread(conn, post_id, thread_order)
 
             else:
                 print(f"不明なコマンドです: {cmd}")
