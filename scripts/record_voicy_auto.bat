@@ -1,1 +1,0 @@
-python record_voicy.py --tsv "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\hellog-radio\list_heldio.tsv" --range 465-470 --out-dir "C:\00work\zEtc\heldio_helwa" --browser chrome --no-as-app --pre-wait-sec 1.5 --api dshow --ffmpeg "C:\bin\ffmpeg.exe" --device "CABLE Output (VB-Audio Virtual Cable) --keep-browser-on-error 
