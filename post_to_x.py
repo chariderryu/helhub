@@ -1,7 +1,7 @@
 import sqlite3
 import json
 import tweepy
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 from dotenv import load_dotenv
 
@@ -38,6 +38,10 @@ def post_scheduled_tweets():
         print("エラー: .envファイルにXのAPI認証情報が正しく設定されていません。")
         return
 
+def now_utc_iso():
+    # 常に UTC の ISO8601（…Z）で秒精度、DBと同じ形
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
     try:
         # ★ 修正点: 環境変数から取得したキーを使用
         # Tweepy v2 (OAuth 1.0a)
@@ -61,13 +65,16 @@ def post_scheduled_tweets():
         return
 
     conn = get_db_connection()
-    now = datetime.now().isoformat(timespec='seconds')
+    now_utc_iso()
 
     # 投稿すべき投稿を取得
     posts_to_send = conn.execute("""
-        SELECT id FROM posts
-        WHERE status = 'approved' AND scheduled_at <= ?
-        ORDER BY scheduled_at
+        SELECT id
+          FROM posts
+         WHERE status = 'approved'
+           AND scheduled_at IS NOT NULL
+           AND scheduled_at <= ?
+      ORDER BY scheduled_at
     """, (now,)).fetchall()
 
     if not posts_to_send:

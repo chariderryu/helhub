@@ -8679,3 +8679,695 @@
 . 2025-10-21 13:30:41.818 Closing connection.
 . 2025-10-21 13:30:41.818 Sending special code: 12
 . 2025-10-21 13:30:41.818 Sent EOF message
+. 2025-10-21 14:01:50.204 --------------------------------------------------------------------------
+. 2025-10-21 14:01:50.216 WinSCP バージョン 5.7.1 (ビルド 5235) (OS 10.0.22631 - Windows 10 Enterprise)
+. 2025-10-21 14:01:50.218 Configuration: nul
+. 2025-10-21 14:01:50.219 Log level: Normal
+. 2025-10-21 14:01:50.219 Local account: DESKTOP-E4OC7NL\chari
+. 2025-10-21 14:01:50.220 Working directory: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+. 2025-10-21 14:01:50.220 Process ID: 13664
+. 2025-10-21 14:01:50.220 Command-line: C:/bin/WinSCP/WinSCP.exe /ini=nul /script=C:\Users\chari\AppData\Local\Temp\tmpotrjc8hg.txt /log=winscp.log
+. 2025-10-21 14:01:50.220 Time zone: Current: GMT+13, Standard: GMT+12 (ニュージーランド標準時), DST: GMT+13 (ニュージーランド夏時間), DST Start: 2025/09/28, DST End: 2025/04/06
+. 2025-10-21 14:01:50.220 Login time: 2025年10月21日 14:01:50
+. 2025-10-21 14:01:50.220 --------------------------------------------------------------------------
+. 2025-10-21 14:01:50.220 Script: Retrospectively logging previous script records:
+> 2025-10-21 14:01:50.247 Script: option batch abort
+< 2025-10-21 14:01:50.247 Script: batch           abort     
+< 2025-10-21 14:01:50.248 Script: reconnecttime   120       
+> 2025-10-21 14:01:50.248 Script: option confirm off
+< 2025-10-21 14:01:50.248 Script: confirm         off       
+> 2025-10-21 14:01:50.248 Script: lcd "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub"
+< 2025-10-21 14:01:50.248 Script: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+> 2025-10-21 14:01:50.248 Script: open sftp://aa107247:***@upload.user.keio.ac.jp/ -hostkey="*"
+. 2025-10-21 14:01:50.248 --------------------------------------------------------------------------
+. 2025-10-21 14:01:50.248 Session name: aa107247@upload.user.keio.ac.jp (Ad-Hoc site)
+. 2025-10-21 14:01:50.249 Host name: upload.user.keio.ac.jp (Port: 22)
+. 2025-10-21 14:01:50.249 User name: aa107247 (Password: Yes, Key file: No)
+. 2025-10-21 14:01:50.249 Tunnel: No
+. 2025-10-21 14:01:50.249 Transfer Protocol: SFTP
+. 2025-10-21 14:01:50.249 Ping type: -, Ping interval: 30 sec; Timeout: 15 sec
+. 2025-10-21 14:01:50.249 Disable Nagle: No
+. 2025-10-21 14:01:50.249 Proxy: none
+. 2025-10-21 14:01:50.249 Send buffer: 262144
+. 2025-10-21 14:01:50.249 SSH protocol version: 2; Compression: No
+. 2025-10-21 14:01:50.249 Bypass authentication: No
+. 2025-10-21 14:01:50.249 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2025-10-21 14:01:50.249 Ciphers: aes,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2025-10-21 14:01:50.249 KEX: dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,rsa,WARN
+. 2025-10-21 14:01:50.249 SSH Bugs: A,A,A,A,A,A,A,A,A,A,A
+. 2025-10-21 14:01:50.249 Simple channel: Yes
+. 2025-10-21 14:01:50.249 Return code variable: Autodetect; Lookup user groups: A
+. 2025-10-21 14:01:50.249 Shell: default
+. 2025-10-21 14:01:50.249 EOL: 0, UTF: 2
+. 2025-10-21 14:01:50.250 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes
+. 2025-10-21 14:01:50.250 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2025-10-21 14:01:50.250 SFTP Bugs: A,A
+. 2025-10-21 14:01:50.250 SFTP Server: default
+. 2025-10-21 14:01:50.250 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2025-10-21 14:01:50.250 Cache directory changes: Yes, Permanent: Yes
+. 2025-10-21 14:01:50.250 DST mode: 1
+. 2025-10-21 14:01:50.250 --------------------------------------------------------------------------
+. 2025-10-21 14:01:50.250 Looking up host "upload.user.keio.ac.jp"
+. 2025-10-21 14:01:50.684 Connecting to 131.113.108.72 port 22
+. 2025-10-21 14:01:51.095 Server version: SSH-2.0-OpenSSH_8.0
+. 2025-10-21 14:01:51.095 Using SSH protocol version 2
+. 2025-10-21 14:01:51.095 We claim version: SSH-2.0-WinSCP_release_5.7.1
+. 2025-10-21 14:01:51.304 Using Diffie-Hellman with standard group "group14"
+. 2025-10-21 14:01:51.304 Doing Diffie-Hellman key exchange with hash SHA-1
+. 2025-10-21 14:01:54.566 Verifying host key rsa2 0x23,0xb58ea93055033ddb a89e2ae18f1c4a91 60df7dc0beb75749 75e3fbf039ca28d1 d7530cc37d7d9eac e26ba63985f3dc5a 54d233d903238d0b 8d4e79ee47bc3a38 1cbbb42e12f54f7d a89d0e2cadc58331 19458be6971b6152 232b54bb68dcf042 5c6b4f50e97b4b3a 06500da2b2dd2c5d 47b7f237e5eb6180 476bfed3d6d3a88e 93e07b5809243688 02ef7afb5c64b9ce c5ba06dde1cf95fa ac22b6741a941719 a1a07e7a74da6c9b c13b7de8b7a0e24f 0f5f90591dcb7fe9 e8f6c672af79a9a4 c87270f9d2039908 6fe20b19a47b1f6b 49d7d3748aeb868f a939a222e15bc885 072ade9f77870c6e 884a74ee77708d9c 741464476ad560d9 823862406446623f  with fingerprint ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+* 2025-10-21 14:01:54.567 警告！セキュリティが無効になり、あらゆるキーを受け入れるようになっています！
+. 2025-10-21 14:01:54.567 Host key fingerprint is:
+. 2025-10-21 14:01:54.567 ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+. 2025-10-21 14:01:54.567 Initialised AES-256 SDCTR client->server encryption
+. 2025-10-21 14:01:54.567 Initialised HMAC-SHA-256 client->server MAC algorithm
+. 2025-10-21 14:01:54.568 Initialised AES-256 SDCTR server->client encryption
+. 2025-10-21 14:01:54.568 Initialised HMAC-SHA-256 server->client MAC algorithm
+! 2025-10-21 14:01:55.019 Using username "aa107247".
+. 2025-10-21 14:01:55.231 Prompt (password, "SSH password", <no instructions>, "パスワード(&P): ")
+. 2025-10-21 14:01:55.231 Using stored password.
+. 2025-10-21 14:01:55.231 Sent password
+. 2025-10-21 14:02:03.608 Access granted
+. 2025-10-21 14:02:03.608 Opening session as main channel
+. 2025-10-21 14:02:04.083 Opened main channel
+. 2025-10-21 14:02:04.495 Started a shell/command
+. 2025-10-21 14:02:04.495 --------------------------------------------------------------------------
+. 2025-10-21 14:02:04.495 Using SFTP protocol.
+. 2025-10-21 14:02:04.495 Doing startup conversation with host.
+> 2025-10-21 14:02:04.496 Type: SSH_FXP_INIT, Size: 5, Number: -1
+< 2025-10-21 14:02:04.680 Type: SSH_FXP_VERSION, Size: 179, Number: -1
+. 2025-10-21 14:02:04.680 SFTP version 3 negotiated.
+. 2025-10-21 14:02:04.680 Unknown server extension posix-rename@openssh.com="1"
+. 2025-10-21 14:02:04.680 Supports statvfs@openssh.com extension version "2"
+. 2025-10-21 14:02:04.680 Unknown server extension fstatvfs@openssh.com="2"
+. 2025-10-21 14:02:04.681 Supports hardlink@openssh.com extension version "1"
+. 2025-10-21 14:02:04.681 Unknown server extension fsync@openssh.com="1"
+. 2025-10-21 14:02:04.681 Unknown server extension lsetstat@openssh.com="1"
+. 2025-10-21 14:02:04.681 We believe the server has signed timestamps bug
+. 2025-10-21 14:02:04.681 We will use UTF-8 strings until server sends an invalid UTF-8 string as with SFTP version 3 and older UTF-8 string are not mandatory
+. 2025-10-21 14:02:04.681 Limiting packet size to OpenSSH sftp-server limit of 262148 bytes
+. 2025-10-21 14:02:04.681 Getting current directory name.
+. 2025-10-21 14:02:04.681 Getting real path for '.'
+> 2025-10-21 14:02:04.681 Type: SSH_FXP_REALPATH, Size: 10, Number: 16
+< 2025-10-21 14:02:04.865 Type: SSH_FXP_NAME, Size: 61, Number: 16
+. 2025-10-21 14:02:04.865 Real path is '/home/md202/aa107247'
+. 2025-10-21 14:02:04.865 Startup conversation with host finished.
+< 2025-10-21 14:02:04.865 Script: アクティブ セッション: [1] aa107247@upload.user.keio.ac.jp
+> 2025-10-21 14:02:04.866 Script: put "index.html" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:02:04.869 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:02:04.869   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 14:02:04.869   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 14:02:04.869   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 14:02:04.869 File: 'index.html' [2025-10-20T23:24:47.391Z] [13163]
+. 2025-10-21 14:02:04.870 Copying "index.html" to remote directory started.
+. 2025-10-21 14:02:04.870 Binary transfer mode selected.
+. 2025-10-21 14:02:04.870 Opening remote file.
+> 2025-10-21 14:02:04.870 Type: SSH_FXP_OPEN, Size: 75, Number: 259
+< 2025-10-21 14:02:05.058 Type: SSH_FXP_HANDLE, Size: 13, Number: 259
+> 2025-10-21 14:02:05.059 Type: SSH_FXP_WRITE, Size: 4121, Number: 774
+. 2025-10-21 14:02:05.065 3 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 14:02:05.066 Type: SSH_FXP_CLOSE, Size: 13, Number: 1796
+> 2025-10-21 14:02:05.066 Type: SSH_FXP_SETSTAT, Size: 71, Number: 521
+< 2025-10-21 14:02:05.245 Type: SSH_FXP_STATUS, Size: 24, Number: 774
+< 2025-10-21 14:02:05.248 Type: SSH_FXP_STATUS, Size: 24, Number: 1030
+< 2025-10-21 14:02:05.248 Type: SSH_FXP_STATUS, Size: 24, Number: 1286
+< 2025-10-21 14:02:05.429 Type: SSH_FXP_STATUS, Size: 24, Number: 1542
+< 2025-10-21 14:02:05.431 Type: SSH_FXP_STATUS, Size: 24, Number: 1796
+< 2025-10-21 14:02:05.431 Status code: 0
+. 2025-10-21 14:02:05.431 Preserving timestamp [2025-10-20T23:24:47.000Z]
+< 2025-10-21 14:02:05.432 Type: SSH_FXP_STATUS, Size: 24, Number: 521
+< 2025-10-21 14:02:05.432 Status code: 0
+. 2025-10-21 14:02:05.432 Transfer done: 'index.html' [13163]
+> 2025-10-21 14:02:05.432 Script: put "hel-data.js" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:02:05.433 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:02:05.433   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 14:02:05.433   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 14:02:05.434   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 14:02:05.434 File: 'hel-data.js' [2025-10-21T01:01:47.590Z] [23667]
+. 2025-10-21 14:02:05.434 Copying "hel-data.js" to remote directory started.
+. 2025-10-21 14:02:05.435 Binary transfer mode selected.
+. 2025-10-21 14:02:05.435 Opening remote file.
+> 2025-10-21 14:02:05.435 Type: SSH_FXP_OPEN, Size: 76, Number: 2051
+< 2025-10-21 14:02:05.621 Type: SSH_FXP_HANDLE, Size: 13, Number: 2051
+> 2025-10-21 14:02:05.621 Type: SSH_FXP_WRITE, Size: 4121, Number: 2566
+. 2025-10-21 14:02:05.636 5 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 14:02:05.636 Type: SSH_FXP_CLOSE, Size: 13, Number: 4100
+> 2025-10-21 14:02:05.636 Type: SSH_FXP_SETSTAT, Size: 72, Number: 2313
+< 2025-10-21 14:02:05.811 Type: SSH_FXP_STATUS, Size: 24, Number: 2566
+< 2025-10-21 14:02:05.811 Type: SSH_FXP_STATUS, Size: 24, Number: 2822
+< 2025-10-21 14:02:05.815 Type: SSH_FXP_STATUS, Size: 24, Number: 3078
+< 2025-10-21 14:02:05.815 Type: SSH_FXP_STATUS, Size: 24, Number: 3334
+< 2025-10-21 14:02:05.815 Type: SSH_FXP_STATUS, Size: 24, Number: 3590
+< 2025-10-21 14:02:05.819 Type: SSH_FXP_STATUS, Size: 24, Number: 3846
+< 2025-10-21 14:02:05.996 Type: SSH_FXP_STATUS, Size: 24, Number: 4100
+< 2025-10-21 14:02:05.996 Status code: 0
+. 2025-10-21 14:02:05.996 Preserving timestamp [2025-10-21T01:01:47.000Z]
+< 2025-10-21 14:02:05.996 Type: SSH_FXP_STATUS, Size: 24, Number: 2313
+< 2025-10-21 14:02:05.996 Status code: 0
+. 2025-10-21 14:02:05.996 Transfer done: 'hel-data.js' [23667]
+> 2025-10-21 14:02:05.997 Script: put "README.md" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:02:05.999 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:02:05.999   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 14:02:05.999   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 14:02:05.999   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 14:02:06.000 File: 'README.md' [2025-10-17T10:01:18.398Z] [5243]
+. 2025-10-21 14:02:06.002 Copying "README.md" to remote directory started.
+. 2025-10-21 14:02:06.003 Binary transfer mode selected.
+. 2025-10-21 14:02:06.003 Opening remote file.
+> 2025-10-21 14:02:06.003 Type: SSH_FXP_OPEN, Size: 74, Number: 4355
+< 2025-10-21 14:02:06.189 Type: SSH_FXP_HANDLE, Size: 13, Number: 4355
+> 2025-10-21 14:02:06.189 Type: SSH_FXP_WRITE, Size: 4121, Number: 4870
+. 2025-10-21 14:02:06.198 1 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 14:02:06.198 Type: SSH_FXP_CLOSE, Size: 13, Number: 5380
+> 2025-10-21 14:02:06.198 Type: SSH_FXP_SETSTAT, Size: 70, Number: 4617
+< 2025-10-21 14:02:06.382 Type: SSH_FXP_STATUS, Size: 24, Number: 4870
+< 2025-10-21 14:02:06.566 Type: SSH_FXP_STATUS, Size: 24, Number: 5126
+< 2025-10-21 14:02:06.567 Type: SSH_FXP_STATUS, Size: 24, Number: 5380
+< 2025-10-21 14:02:06.567 Status code: 0
+. 2025-10-21 14:02:06.567 Preserving timestamp [2025-10-17T10:01:18.000Z]
+< 2025-10-21 14:02:06.567 Type: SSH_FXP_STATUS, Size: 24, Number: 4617
+< 2025-10-21 14:02:06.567 Status code: 0
+. 2025-10-21 14:02:06.567 Transfer done: 'README.md' [5243]
+> 2025-10-21 14:02:06.568 Script: exit
+. 2025-10-21 14:02:06.568 Script: Exit code: 0
+. 2025-10-21 14:02:06.568 Closing connection.
+. 2025-10-21 14:02:06.568 Sending special code: 12
+. 2025-10-21 14:02:06.568 Sent EOF message
+. 2025-10-21 14:31:04.120 --------------------------------------------------------------------------
+. 2025-10-21 14:31:04.121 WinSCP バージョン 5.7.1 (ビルド 5235) (OS 10.0.22631 - Windows 10 Enterprise)
+. 2025-10-21 14:31:04.123 Configuration: nul
+. 2025-10-21 14:31:04.124 Log level: Normal
+. 2025-10-21 14:31:04.124 Local account: DESKTOP-E4OC7NL\chari
+. 2025-10-21 14:31:04.128 Working directory: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+. 2025-10-21 14:31:04.129 Process ID: 15992
+. 2025-10-21 14:31:04.130 Command-line: C:/bin/WinSCP/WinSCP.exe /ini=nul /script=C:\Users\chari\AppData\Local\Temp\tmp7ek4yw95.txt /log=winscp.log
+. 2025-10-21 14:31:04.131 Time zone: Current: GMT+13, Standard: GMT+12 (ニュージーランド標準時), DST: GMT+13 (ニュージーランド夏時間), DST Start: 2025/09/28, DST End: 2025/04/06
+. 2025-10-21 14:31:04.134 Login time: 2025年10月21日 14:31:04
+. 2025-10-21 14:31:04.134 --------------------------------------------------------------------------
+. 2025-10-21 14:31:04.134 Script: Retrospectively logging previous script records:
+> 2025-10-21 14:31:04.135 Script: option batch abort
+< 2025-10-21 14:31:04.135 Script: batch           abort     
+< 2025-10-21 14:31:04.136 Script: reconnecttime   120       
+> 2025-10-21 14:31:04.136 Script: option confirm off
+< 2025-10-21 14:31:04.136 Script: confirm         off       
+> 2025-10-21 14:31:04.137 Script: lcd "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub"
+< 2025-10-21 14:31:04.137 Script: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+> 2025-10-21 14:31:04.137 Script: open sftp://aa107247:***@upload.user.keio.ac.jp/ -hostkey="*"
+. 2025-10-21 14:31:04.137 --------------------------------------------------------------------------
+. 2025-10-21 14:31:04.139 Session name: aa107247@upload.user.keio.ac.jp (Ad-Hoc site)
+. 2025-10-21 14:31:04.139 Host name: upload.user.keio.ac.jp (Port: 22)
+. 2025-10-21 14:31:04.140 User name: aa107247 (Password: Yes, Key file: No)
+. 2025-10-21 14:31:04.140 Tunnel: No
+. 2025-10-21 14:31:04.141 Transfer Protocol: SFTP
+. 2025-10-21 14:31:04.141 Ping type: -, Ping interval: 30 sec; Timeout: 15 sec
+. 2025-10-21 14:31:04.142 Disable Nagle: No
+. 2025-10-21 14:31:04.142 Proxy: none
+. 2025-10-21 14:31:04.143 Send buffer: 262144
+. 2025-10-21 14:31:04.144 SSH protocol version: 2; Compression: No
+. 2025-10-21 14:31:04.144 Bypass authentication: No
+. 2025-10-21 14:31:04.147 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2025-10-21 14:31:04.147 Ciphers: aes,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2025-10-21 14:31:04.148 KEX: dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,rsa,WARN
+. 2025-10-21 14:31:04.148 SSH Bugs: A,A,A,A,A,A,A,A,A,A,A
+. 2025-10-21 14:31:04.148 Simple channel: Yes
+. 2025-10-21 14:31:04.149 Return code variable: Autodetect; Lookup user groups: A
+. 2025-10-21 14:31:04.149 Shell: default
+. 2025-10-21 14:31:04.150 EOL: 0, UTF: 2
+. 2025-10-21 14:31:04.150 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes
+. 2025-10-21 14:31:04.150 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2025-10-21 14:31:04.150 SFTP Bugs: A,A
+. 2025-10-21 14:31:04.150 SFTP Server: default
+. 2025-10-21 14:31:04.150 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2025-10-21 14:31:04.150 Cache directory changes: Yes, Permanent: Yes
+. 2025-10-21 14:31:04.150 DST mode: 1
+. 2025-10-21 14:31:04.150 --------------------------------------------------------------------------
+. 2025-10-21 14:31:04.152 Looking up host "upload.user.keio.ac.jp"
+. 2025-10-21 14:31:04.246 Connecting to 131.113.108.72 port 22
+. 2025-10-21 14:31:04.669 Server version: SSH-2.0-OpenSSH_8.0
+. 2025-10-21 14:31:04.671 Using SSH protocol version 2
+. 2025-10-21 14:31:04.671 We claim version: SSH-2.0-WinSCP_release_5.7.1
+. 2025-10-21 14:31:04.879 Using Diffie-Hellman with standard group "group14"
+. 2025-10-21 14:31:04.879 Doing Diffie-Hellman key exchange with hash SHA-1
+. 2025-10-21 14:31:06.377 Verifying host key rsa2 0x23,0xb58ea93055033ddb a89e2ae18f1c4a91 60df7dc0beb75749 75e3fbf039ca28d1 d7530cc37d7d9eac e26ba63985f3dc5a 54d233d903238d0b 8d4e79ee47bc3a38 1cbbb42e12f54f7d a89d0e2cadc58331 19458be6971b6152 232b54bb68dcf042 5c6b4f50e97b4b3a 06500da2b2dd2c5d 47b7f237e5eb6180 476bfed3d6d3a88e 93e07b5809243688 02ef7afb5c64b9ce c5ba06dde1cf95fa ac22b6741a941719 a1a07e7a74da6c9b c13b7de8b7a0e24f 0f5f90591dcb7fe9 e8f6c672af79a9a4 c87270f9d2039908 6fe20b19a47b1f6b 49d7d3748aeb868f a939a222e15bc885 072ade9f77870c6e 884a74ee77708d9c 741464476ad560d9 823862406446623f  with fingerprint ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+* 2025-10-21 14:31:06.378 警告！セキュリティが無効になり、あらゆるキーを受け入れるようになっています！
+. 2025-10-21 14:31:06.378 Host key fingerprint is:
+. 2025-10-21 14:31:06.378 ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+. 2025-10-21 14:31:06.379 Initialised AES-256 SDCTR client->server encryption
+. 2025-10-21 14:31:06.379 Initialised HMAC-SHA-256 client->server MAC algorithm
+. 2025-10-21 14:31:06.379 Initialised AES-256 SDCTR server->client encryption
+. 2025-10-21 14:31:06.379 Initialised HMAC-SHA-256 server->client MAC algorithm
+! 2025-10-21 14:31:06.784 Using username "aa107247".
+. 2025-10-21 14:31:06.999 Prompt (password, "SSH password", <no instructions>, "パスワード(&P): ")
+. 2025-10-21 14:31:06.999 Using stored password.
+. 2025-10-21 14:31:06.999 Sent password
+. 2025-10-21 14:31:17.327 Access granted
+. 2025-10-21 14:31:17.327 Opening session as main channel
+. 2025-10-21 14:31:20.937 Opened main channel
+. 2025-10-21 14:31:21.308 Started a shell/command
+. 2025-10-21 14:31:21.309 --------------------------------------------------------------------------
+. 2025-10-21 14:31:21.309 Using SFTP protocol.
+. 2025-10-21 14:31:21.310 Doing startup conversation with host.
+> 2025-10-21 14:31:21.310 Type: SSH_FXP_INIT, Size: 5, Number: -1
+< 2025-10-21 14:31:21.494 Type: SSH_FXP_VERSION, Size: 179, Number: -1
+. 2025-10-21 14:31:21.494 SFTP version 3 negotiated.
+. 2025-10-21 14:31:21.496 Unknown server extension posix-rename@openssh.com="1"
+. 2025-10-21 14:31:21.496 Supports statvfs@openssh.com extension version "2"
+. 2025-10-21 14:31:21.496 Unknown server extension fstatvfs@openssh.com="2"
+. 2025-10-21 14:31:21.496 Supports hardlink@openssh.com extension version "1"
+. 2025-10-21 14:31:21.496 Unknown server extension fsync@openssh.com="1"
+. 2025-10-21 14:31:21.496 Unknown server extension lsetstat@openssh.com="1"
+. 2025-10-21 14:31:21.496 We believe the server has signed timestamps bug
+. 2025-10-21 14:31:21.496 We will use UTF-8 strings until server sends an invalid UTF-8 string as with SFTP version 3 and older UTF-8 string are not mandatory
+. 2025-10-21 14:31:21.496 Limiting packet size to OpenSSH sftp-server limit of 262148 bytes
+. 2025-10-21 14:31:21.496 Getting current directory name.
+. 2025-10-21 14:31:21.496 Getting real path for '.'
+> 2025-10-21 14:31:21.496 Type: SSH_FXP_REALPATH, Size: 10, Number: 16
+< 2025-10-21 14:31:21.679 Type: SSH_FXP_NAME, Size: 61, Number: 16
+. 2025-10-21 14:31:21.683 Real path is '/home/md202/aa107247'
+. 2025-10-21 14:31:21.683 Startup conversation with host finished.
+< 2025-10-21 14:31:21.683 Script: アクティブ セッション: [1] aa107247@upload.user.keio.ac.jp
+> 2025-10-21 14:31:21.685 Script: put "index.html" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:31:21.686 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:31:21.686   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 14:31:21.686   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 14:31:21.686   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 14:31:21.686 File: 'index.html' [2025-10-20T23:24:47.391Z] [13163]
+. 2025-10-21 14:31:21.686 Copying "index.html" to remote directory started.
+. 2025-10-21 14:31:21.688 Binary transfer mode selected.
+. 2025-10-21 14:31:21.688 Opening remote file.
+> 2025-10-21 14:31:21.688 Type: SSH_FXP_OPEN, Size: 75, Number: 259
+< 2025-10-21 14:31:21.881 Type: SSH_FXP_HANDLE, Size: 13, Number: 259
+> 2025-10-21 14:31:21.887 Type: SSH_FXP_WRITE, Size: 4121, Number: 774
+. 2025-10-21 14:31:21.902 3 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 14:31:21.902 Type: SSH_FXP_CLOSE, Size: 13, Number: 1796
+> 2025-10-21 14:31:21.902 Type: SSH_FXP_SETSTAT, Size: 71, Number: 521
+< 2025-10-21 14:31:22.075 Type: SSH_FXP_STATUS, Size: 24, Number: 774
+< 2025-10-21 14:31:22.077 Type: SSH_FXP_STATUS, Size: 24, Number: 1030
+< 2025-10-21 14:31:22.079 Type: SSH_FXP_STATUS, Size: 24, Number: 1286
+< 2025-10-21 14:31:22.256 Type: SSH_FXP_STATUS, Size: 24, Number: 1542
+< 2025-10-21 14:31:22.259 Type: SSH_FXP_STATUS, Size: 24, Number: 1796
+< 2025-10-21 14:31:22.259 Status code: 0
+. 2025-10-21 14:31:22.259 Preserving timestamp [2025-10-20T23:24:47.000Z]
+< 2025-10-21 14:31:22.259 Type: SSH_FXP_STATUS, Size: 24, Number: 521
+< 2025-10-21 14:31:22.259 Status code: 0
+. 2025-10-21 14:31:22.259 Transfer done: 'index.html' [13163]
+> 2025-10-21 14:31:22.260 Script: put "hel-data.js" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:31:22.262 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:31:22.262   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 14:31:22.262   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 14:31:22.262   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 14:31:22.263 File: 'hel-data.js' [2025-10-21T01:31:02.907Z] [23667]
+. 2025-10-21 14:31:22.264 Copying "hel-data.js" to remote directory started.
+. 2025-10-21 14:31:22.264 Binary transfer mode selected.
+. 2025-10-21 14:31:22.264 Opening remote file.
+> 2025-10-21 14:31:22.264 Type: SSH_FXP_OPEN, Size: 76, Number: 2051
+< 2025-10-21 14:31:22.451 Type: SSH_FXP_HANDLE, Size: 13, Number: 2051
+> 2025-10-21 14:31:22.451 Type: SSH_FXP_WRITE, Size: 4121, Number: 2566
+. 2025-10-21 14:31:22.462 5 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 14:31:22.463 Type: SSH_FXP_CLOSE, Size: 13, Number: 4100
+> 2025-10-21 14:31:22.463 Type: SSH_FXP_SETSTAT, Size: 72, Number: 2313
+< 2025-10-21 14:31:22.645 Type: SSH_FXP_STATUS, Size: 24, Number: 2566
+< 2025-10-21 14:31:22.645 Type: SSH_FXP_STATUS, Size: 24, Number: 2822
+< 2025-10-21 14:31:22.646 Type: SSH_FXP_STATUS, Size: 24, Number: 3078
+< 2025-10-21 14:31:22.646 Type: SSH_FXP_STATUS, Size: 24, Number: 3334
+< 2025-10-21 14:31:22.646 Type: SSH_FXP_STATUS, Size: 24, Number: 3590
+< 2025-10-21 14:31:22.646 Type: SSH_FXP_STATUS, Size: 24, Number: 3846
+< 2025-10-21 14:31:22.825 Type: SSH_FXP_STATUS, Size: 24, Number: 4100
+< 2025-10-21 14:31:22.825 Status code: 0
+. 2025-10-21 14:31:22.826 Preserving timestamp [2025-10-21T01:31:02.000Z]
+< 2025-10-21 14:31:22.826 Type: SSH_FXP_STATUS, Size: 24, Number: 2313
+< 2025-10-21 14:31:22.826 Status code: 0
+. 2025-10-21 14:31:22.827 Transfer done: 'hel-data.js' [23667]
+> 2025-10-21 14:31:22.827 Script: put "README.md" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:31:22.829 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 14:31:22.829   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 14:31:22.829   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 14:31:22.829   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 14:31:22.831 File: 'README.md' [2025-10-17T10:01:18.398Z] [5243]
+. 2025-10-21 14:31:22.832 Copying "README.md" to remote directory started.
+. 2025-10-21 14:31:22.832 Binary transfer mode selected.
+. 2025-10-21 14:31:22.832 Opening remote file.
+> 2025-10-21 14:31:22.832 Type: SSH_FXP_OPEN, Size: 74, Number: 4355
+< 2025-10-21 14:31:23.018 Type: SSH_FXP_HANDLE, Size: 13, Number: 4355
+> 2025-10-21 14:31:23.018 Type: SSH_FXP_WRITE, Size: 4121, Number: 4870
+. 2025-10-21 14:31:23.020 1 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 14:31:23.020 Type: SSH_FXP_CLOSE, Size: 13, Number: 5380
+> 2025-10-21 14:31:23.021 Type: SSH_FXP_SETSTAT, Size: 70, Number: 4617
+< 2025-10-21 14:31:23.202 Type: SSH_FXP_STATUS, Size: 24, Number: 4870
+< 2025-10-21 14:31:23.388 Type: SSH_FXP_STATUS, Size: 24, Number: 5126
+< 2025-10-21 14:31:23.388 Type: SSH_FXP_STATUS, Size: 24, Number: 5380
+< 2025-10-21 14:31:23.388 Status code: 0
+. 2025-10-21 14:31:23.388 Preserving timestamp [2025-10-17T10:01:18.000Z]
+< 2025-10-21 14:31:23.396 Type: SSH_FXP_STATUS, Size: 24, Number: 4617
+< 2025-10-21 14:31:23.396 Status code: 0
+. 2025-10-21 14:31:23.396 Transfer done: 'README.md' [5243]
+> 2025-10-21 14:31:23.396 Script: exit
+. 2025-10-21 14:31:23.396 Script: Exit code: 0
+. 2025-10-21 14:31:23.396 Closing connection.
+. 2025-10-21 14:31:23.396 Sending special code: 12
+. 2025-10-21 14:31:23.398 Sent EOF message
+. 2025-10-21 15:01:26.730 --------------------------------------------------------------------------
+. 2025-10-21 15:01:26.731 WinSCP バージョン 5.7.1 (ビルド 5235) (OS 10.0.22631 - Windows 10 Enterprise)
+. 2025-10-21 15:01:26.732 Configuration: nul
+. 2025-10-21 15:01:26.732 Log level: Normal
+. 2025-10-21 15:01:26.733 Local account: DESKTOP-E4OC7NL\chari
+. 2025-10-21 15:01:26.733 Working directory: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+. 2025-10-21 15:01:26.733 Process ID: 25080
+. 2025-10-21 15:01:26.734 Command-line: C:/bin/WinSCP/WinSCP.exe /ini=nul /script=C:\Users\chari\AppData\Local\Temp\tmp_q1vadzh.txt /log=winscp.log
+. 2025-10-21 15:01:26.734 Time zone: Current: GMT+13, Standard: GMT+12 (ニュージーランド標準時), DST: GMT+13 (ニュージーランド夏時間), DST Start: 2025/09/28, DST End: 2025/04/06
+. 2025-10-21 15:01:26.735 Login time: 2025年10月21日 15:01:26
+. 2025-10-21 15:01:26.735 --------------------------------------------------------------------------
+. 2025-10-21 15:01:26.735 Script: Retrospectively logging previous script records:
+> 2025-10-21 15:01:26.736 Script: option batch abort
+< 2025-10-21 15:01:26.736 Script: batch           abort     
+< 2025-10-21 15:01:26.736 Script: reconnecttime   120       
+> 2025-10-21 15:01:26.737 Script: option confirm off
+< 2025-10-21 15:01:26.737 Script: confirm         off       
+> 2025-10-21 15:01:26.739 Script: lcd "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub"
+< 2025-10-21 15:01:26.739 Script: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+> 2025-10-21 15:01:26.739 Script: open sftp://aa107247:***@upload.user.keio.ac.jp/ -hostkey="*"
+. 2025-10-21 15:01:26.739 --------------------------------------------------------------------------
+. 2025-10-21 15:01:26.739 Session name: aa107247@upload.user.keio.ac.jp (Ad-Hoc site)
+. 2025-10-21 15:01:26.739 Host name: upload.user.keio.ac.jp (Port: 22)
+. 2025-10-21 15:01:26.739 User name: aa107247 (Password: Yes, Key file: No)
+. 2025-10-21 15:01:26.739 Tunnel: No
+. 2025-10-21 15:01:26.739 Transfer Protocol: SFTP
+. 2025-10-21 15:01:26.739 Ping type: -, Ping interval: 30 sec; Timeout: 15 sec
+. 2025-10-21 15:01:26.740 Disable Nagle: No
+. 2025-10-21 15:01:26.740 Proxy: none
+. 2025-10-21 15:01:26.740 Send buffer: 262144
+. 2025-10-21 15:01:26.740 SSH protocol version: 2; Compression: No
+. 2025-10-21 15:01:26.740 Bypass authentication: No
+. 2025-10-21 15:01:26.740 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2025-10-21 15:01:26.740 Ciphers: aes,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2025-10-21 15:01:26.740 KEX: dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,rsa,WARN
+. 2025-10-21 15:01:26.740 SSH Bugs: A,A,A,A,A,A,A,A,A,A,A
+. 2025-10-21 15:01:26.740 Simple channel: Yes
+. 2025-10-21 15:01:26.740 Return code variable: Autodetect; Lookup user groups: A
+. 2025-10-21 15:01:26.740 Shell: default
+. 2025-10-21 15:01:26.740 EOL: 0, UTF: 2
+. 2025-10-21 15:01:26.740 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes
+. 2025-10-21 15:01:26.740 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2025-10-21 15:01:26.740 SFTP Bugs: A,A
+. 2025-10-21 15:01:26.740 SFTP Server: default
+. 2025-10-21 15:01:26.740 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2025-10-21 15:01:26.740 Cache directory changes: Yes, Permanent: Yes
+. 2025-10-21 15:01:26.740 DST mode: 1
+. 2025-10-21 15:01:26.740 --------------------------------------------------------------------------
+. 2025-10-21 15:01:26.741 Looking up host "upload.user.keio.ac.jp"
+. 2025-10-21 15:01:26.760 Connecting to 131.113.108.72 port 22
+. 2025-10-21 15:01:27.182 Server version: SSH-2.0-OpenSSH_8.0
+. 2025-10-21 15:01:27.182 Using SSH protocol version 2
+. 2025-10-21 15:01:27.182 We claim version: SSH-2.0-WinSCP_release_5.7.1
+. 2025-10-21 15:01:27.395 Using Diffie-Hellman with standard group "group14"
+. 2025-10-21 15:01:27.395 Doing Diffie-Hellman key exchange with hash SHA-1
+. 2025-10-21 15:01:28.051 Verifying host key rsa2 0x23,0xb58ea93055033ddb a89e2ae18f1c4a91 60df7dc0beb75749 75e3fbf039ca28d1 d7530cc37d7d9eac e26ba63985f3dc5a 54d233d903238d0b 8d4e79ee47bc3a38 1cbbb42e12f54f7d a89d0e2cadc58331 19458be6971b6152 232b54bb68dcf042 5c6b4f50e97b4b3a 06500da2b2dd2c5d 47b7f237e5eb6180 476bfed3d6d3a88e 93e07b5809243688 02ef7afb5c64b9ce c5ba06dde1cf95fa ac22b6741a941719 a1a07e7a74da6c9b c13b7de8b7a0e24f 0f5f90591dcb7fe9 e8f6c672af79a9a4 c87270f9d2039908 6fe20b19a47b1f6b 49d7d3748aeb868f a939a222e15bc885 072ade9f77870c6e 884a74ee77708d9c 741464476ad560d9 823862406446623f  with fingerprint ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+* 2025-10-21 15:01:28.051 警告！セキュリティが無効になり、あらゆるキーを受け入れるようになっています！
+. 2025-10-21 15:01:28.051 Host key fingerprint is:
+. 2025-10-21 15:01:28.051 ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+. 2025-10-21 15:01:28.052 Initialised AES-256 SDCTR client->server encryption
+. 2025-10-21 15:01:28.052 Initialised HMAC-SHA-256 client->server MAC algorithm
+. 2025-10-21 15:01:28.052 Initialised AES-256 SDCTR server->client encryption
+. 2025-10-21 15:01:28.052 Initialised HMAC-SHA-256 server->client MAC algorithm
+! 2025-10-21 15:01:28.460 Using username "aa107247".
+. 2025-10-21 15:01:28.671 Prompt (password, "SSH password", <no instructions>, "パスワード(&P): ")
+. 2025-10-21 15:01:28.672 Using stored password.
+. 2025-10-21 15:01:28.672 Sent password
+. 2025-10-21 15:01:39.896 Access granted
+. 2025-10-21 15:01:39.896 Opening session as main channel
+. 2025-10-21 15:01:43.467 Opened main channel
+. 2025-10-21 15:01:43.884 Started a shell/command
+. 2025-10-21 15:01:43.884 --------------------------------------------------------------------------
+. 2025-10-21 15:01:43.884 Using SFTP protocol.
+. 2025-10-21 15:01:43.884 Doing startup conversation with host.
+> 2025-10-21 15:01:43.884 Type: SSH_FXP_INIT, Size: 5, Number: -1
+< 2025-10-21 15:01:44.087 Type: SSH_FXP_VERSION, Size: 179, Number: -1
+. 2025-10-21 15:01:44.088 SFTP version 3 negotiated.
+. 2025-10-21 15:01:44.088 Unknown server extension posix-rename@openssh.com="1"
+. 2025-10-21 15:01:44.088 Supports statvfs@openssh.com extension version "2"
+. 2025-10-21 15:01:44.088 Unknown server extension fstatvfs@openssh.com="2"
+. 2025-10-21 15:01:44.088 Supports hardlink@openssh.com extension version "1"
+. 2025-10-21 15:01:44.088 Unknown server extension fsync@openssh.com="1"
+. 2025-10-21 15:01:44.088 Unknown server extension lsetstat@openssh.com="1"
+. 2025-10-21 15:01:44.089 We believe the server has signed timestamps bug
+. 2025-10-21 15:01:44.089 We will use UTF-8 strings until server sends an invalid UTF-8 string as with SFTP version 3 and older UTF-8 string are not mandatory
+. 2025-10-21 15:01:44.089 Limiting packet size to OpenSSH sftp-server limit of 262148 bytes
+. 2025-10-21 15:01:44.089 Getting current directory name.
+. 2025-10-21 15:01:44.089 Getting real path for '.'
+> 2025-10-21 15:01:44.089 Type: SSH_FXP_REALPATH, Size: 10, Number: 16
+< 2025-10-21 15:01:44.272 Type: SSH_FXP_NAME, Size: 61, Number: 16
+. 2025-10-21 15:01:44.273 Real path is '/home/md202/aa107247'
+. 2025-10-21 15:01:44.273 Startup conversation with host finished.
+< 2025-10-21 15:01:44.273 Script: アクティブ セッション: [1] aa107247@upload.user.keio.ac.jp
+> 2025-10-21 15:01:44.273 Script: put "index.html" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:01:44.274 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:01:44.274   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 15:01:44.274   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 15:01:44.274   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 15:01:44.275 File: 'index.html' [2025-10-20T23:24:47.391Z] [13163]
+. 2025-10-21 15:01:44.275 Copying "index.html" to remote directory started.
+. 2025-10-21 15:01:44.276 Binary transfer mode selected.
+. 2025-10-21 15:01:44.276 Opening remote file.
+> 2025-10-21 15:01:44.276 Type: SSH_FXP_OPEN, Size: 75, Number: 259
+< 2025-10-21 15:01:44.463 Type: SSH_FXP_HANDLE, Size: 13, Number: 259
+> 2025-10-21 15:01:44.463 Type: SSH_FXP_WRITE, Size: 4121, Number: 774
+. 2025-10-21 15:01:44.466 3 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 15:01:44.466 Type: SSH_FXP_CLOSE, Size: 13, Number: 1796
+> 2025-10-21 15:01:44.466 Type: SSH_FXP_SETSTAT, Size: 71, Number: 521
+< 2025-10-21 15:01:44.648 Type: SSH_FXP_STATUS, Size: 24, Number: 774
+< 2025-10-21 15:01:44.648 Type: SSH_FXP_STATUS, Size: 24, Number: 1030
+< 2025-10-21 15:01:44.649 Type: SSH_FXP_STATUS, Size: 24, Number: 1286
+< 2025-10-21 15:01:44.831 Type: SSH_FXP_STATUS, Size: 24, Number: 1542
+< 2025-10-21 15:01:44.831 Type: SSH_FXP_STATUS, Size: 24, Number: 1796
+< 2025-10-21 15:01:44.831 Status code: 0
+. 2025-10-21 15:01:44.831 Preserving timestamp [2025-10-20T23:24:47.000Z]
+< 2025-10-21 15:01:44.832 Type: SSH_FXP_STATUS, Size: 24, Number: 521
+< 2025-10-21 15:01:44.832 Status code: 0
+. 2025-10-21 15:01:44.833 Transfer done: 'index.html' [13163]
+> 2025-10-21 15:01:44.833 Script: put "hel-data.js" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:01:44.834 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:01:44.834   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 15:01:44.834   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 15:01:44.834   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 15:01:44.835 File: 'hel-data.js' [2025-10-21T02:01:26.260Z] [23667]
+. 2025-10-21 15:01:44.835 Copying "hel-data.js" to remote directory started.
+. 2025-10-21 15:01:44.835 Binary transfer mode selected.
+. 2025-10-21 15:01:44.835 Opening remote file.
+> 2025-10-21 15:01:44.835 Type: SSH_FXP_OPEN, Size: 76, Number: 2051
+< 2025-10-21 15:01:45.022 Type: SSH_FXP_HANDLE, Size: 13, Number: 2051
+> 2025-10-21 15:01:45.022 Type: SSH_FXP_WRITE, Size: 4121, Number: 2566
+. 2025-10-21 15:01:45.027 5 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 15:01:45.027 Type: SSH_FXP_CLOSE, Size: 13, Number: 4100
+> 2025-10-21 15:01:45.027 Type: SSH_FXP_SETSTAT, Size: 72, Number: 2313
+< 2025-10-21 15:01:45.206 Type: SSH_FXP_STATUS, Size: 24, Number: 2566
+< 2025-10-21 15:01:45.207 Type: SSH_FXP_STATUS, Size: 24, Number: 2822
+< 2025-10-21 15:01:45.208 Type: SSH_FXP_STATUS, Size: 24, Number: 3078
+< 2025-10-21 15:01:45.208 Type: SSH_FXP_STATUS, Size: 24, Number: 3334
+< 2025-10-21 15:01:45.209 Type: SSH_FXP_STATUS, Size: 24, Number: 3590
+< 2025-10-21 15:01:45.210 Type: SSH_FXP_STATUS, Size: 24, Number: 3846
+< 2025-10-21 15:01:45.390 Type: SSH_FXP_STATUS, Size: 24, Number: 4100
+< 2025-10-21 15:01:45.391 Status code: 0
+. 2025-10-21 15:01:45.391 Preserving timestamp [2025-10-21T02:01:26.000Z]
+< 2025-10-21 15:01:45.392 Type: SSH_FXP_STATUS, Size: 24, Number: 2313
+< 2025-10-21 15:01:45.392 Status code: 0
+. 2025-10-21 15:01:45.392 Transfer done: 'hel-data.js' [23667]
+> 2025-10-21 15:01:45.392 Script: put "README.md" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:01:45.393 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:01:45.393   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 15:01:45.393   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 15:01:45.393   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 15:01:45.394 File: 'README.md' [2025-10-17T10:01:18.398Z] [5243]
+. 2025-10-21 15:01:45.394 Copying "README.md" to remote directory started.
+. 2025-10-21 15:01:45.394 Binary transfer mode selected.
+. 2025-10-21 15:01:45.394 Opening remote file.
+> 2025-10-21 15:01:45.394 Type: SSH_FXP_OPEN, Size: 74, Number: 4355
+< 2025-10-21 15:01:45.581 Type: SSH_FXP_HANDLE, Size: 13, Number: 4355
+> 2025-10-21 15:01:45.581 Type: SSH_FXP_WRITE, Size: 4121, Number: 4870
+. 2025-10-21 15:01:45.583 1 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 15:01:45.583 Type: SSH_FXP_CLOSE, Size: 13, Number: 5380
+> 2025-10-21 15:01:45.583 Type: SSH_FXP_SETSTAT, Size: 70, Number: 4617
+< 2025-10-21 15:01:45.774 Type: SSH_FXP_STATUS, Size: 24, Number: 4870
+< 2025-10-21 15:01:45.950 Type: SSH_FXP_STATUS, Size: 24, Number: 5126
+< 2025-10-21 15:01:45.951 Type: SSH_FXP_STATUS, Size: 24, Number: 5380
+< 2025-10-21 15:01:45.951 Status code: 0
+. 2025-10-21 15:01:45.951 Preserving timestamp [2025-10-17T10:01:18.000Z]
+< 2025-10-21 15:01:45.951 Type: SSH_FXP_STATUS, Size: 24, Number: 4617
+< 2025-10-21 15:01:45.951 Status code: 0
+. 2025-10-21 15:01:45.952 Transfer done: 'README.md' [5243]
+> 2025-10-21 15:01:45.952 Script: exit
+. 2025-10-21 15:01:45.952 Script: Exit code: 0
+. 2025-10-21 15:01:45.952 Closing connection.
+. 2025-10-21 15:01:45.952 Sending special code: 12
+. 2025-10-21 15:01:45.954 Sent EOF message
+. 2025-10-21 15:18:37.092 --------------------------------------------------------------------------
+. 2025-10-21 15:18:37.093 WinSCP バージョン 5.7.1 (ビルド 5235) (OS 10.0.22631 - Windows 10 Enterprise)
+. 2025-10-21 15:18:37.094 Configuration: nul
+. 2025-10-21 15:18:37.094 Log level: Normal
+. 2025-10-21 15:18:37.094 Local account: DESKTOP-E4OC7NL\chari
+. 2025-10-21 15:18:37.094 Working directory: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+. 2025-10-21 15:18:37.095 Process ID: 25800
+. 2025-10-21 15:18:37.095 Command-line: C:/bin/WinSCP/WinSCP.exe /ini=nul /script=C:\Users\chari\AppData\Local\Temp\tmpl9kmmebs.txt /log=winscp.log
+. 2025-10-21 15:18:37.096 Time zone: Current: GMT+13, Standard: GMT+12 (ニュージーランド標準時), DST: GMT+13 (ニュージーランド夏時間), DST Start: 2025/09/28, DST End: 2025/04/06
+. 2025-10-21 15:18:37.096 Login time: 2025年10月21日 15:18:37
+. 2025-10-21 15:18:37.096 --------------------------------------------------------------------------
+. 2025-10-21 15:18:37.097 Script: Retrospectively logging previous script records:
+> 2025-10-21 15:18:37.097 Script: option batch abort
+< 2025-10-21 15:18:37.097 Script: batch           abort     
+< 2025-10-21 15:18:37.097 Script: reconnecttime   120       
+> 2025-10-21 15:18:37.098 Script: option confirm off
+< 2025-10-21 15:18:37.098 Script: confirm         off       
+> 2025-10-21 15:18:37.098 Script: lcd "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub"
+< 2025-10-21 15:18:37.098 Script: C:\00work\OneDrive - keio.jp\zEtc\keioacjp\helhub
+> 2025-10-21 15:18:37.099 Script: open sftp://aa107247:***@upload.user.keio.ac.jp/ -hostkey="*"
+. 2025-10-21 15:18:37.099 --------------------------------------------------------------------------
+. 2025-10-21 15:18:37.099 Session name: aa107247@upload.user.keio.ac.jp (Ad-Hoc site)
+. 2025-10-21 15:18:37.100 Host name: upload.user.keio.ac.jp (Port: 22)
+. 2025-10-21 15:18:37.100 User name: aa107247 (Password: Yes, Key file: No)
+. 2025-10-21 15:18:37.100 Tunnel: No
+. 2025-10-21 15:18:37.100 Transfer Protocol: SFTP
+. 2025-10-21 15:18:37.101 Ping type: -, Ping interval: 30 sec; Timeout: 15 sec
+. 2025-10-21 15:18:37.101 Disable Nagle: No
+. 2025-10-21 15:18:37.101 Proxy: none
+. 2025-10-21 15:18:37.101 Send buffer: 262144
+. 2025-10-21 15:18:37.102 SSH protocol version: 2; Compression: No
+. 2025-10-21 15:18:37.102 Bypass authentication: No
+. 2025-10-21 15:18:37.102 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2025-10-21 15:18:37.103 Ciphers: aes,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2025-10-21 15:18:37.103 KEX: dh-gex-sha1,dh-group14-sha1,dh-group1-sha1,rsa,WARN
+. 2025-10-21 15:18:37.104 SSH Bugs: A,A,A,A,A,A,A,A,A,A,A
+. 2025-10-21 15:18:37.104 Simple channel: Yes
+. 2025-10-21 15:18:37.104 Return code variable: Autodetect; Lookup user groups: A
+. 2025-10-21 15:18:37.104 Shell: default
+. 2025-10-21 15:18:37.105 EOL: 0, UTF: 2
+. 2025-10-21 15:18:37.105 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes
+. 2025-10-21 15:18:37.106 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2025-10-21 15:18:37.106 SFTP Bugs: A,A
+. 2025-10-21 15:18:37.107 SFTP Server: default
+. 2025-10-21 15:18:37.107 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2025-10-21 15:18:37.107 Cache directory changes: Yes, Permanent: Yes
+. 2025-10-21 15:18:37.108 DST mode: 1
+. 2025-10-21 15:18:37.108 --------------------------------------------------------------------------
+. 2025-10-21 15:18:37.109 Looking up host "upload.user.keio.ac.jp"
+. 2025-10-21 15:18:37.339 Connecting to 131.113.108.72 port 22
+. 2025-10-21 15:18:37.759 Server version: SSH-2.0-OpenSSH_8.0
+. 2025-10-21 15:18:37.759 Using SSH protocol version 2
+. 2025-10-21 15:18:37.760 We claim version: SSH-2.0-WinSCP_release_5.7.1
+. 2025-10-21 15:18:37.966 Using Diffie-Hellman with standard group "group14"
+. 2025-10-21 15:18:37.966 Doing Diffie-Hellman key exchange with hash SHA-1
+. 2025-10-21 15:18:38.576 Verifying host key rsa2 0x23,0xb58ea93055033ddb a89e2ae18f1c4a91 60df7dc0beb75749 75e3fbf039ca28d1 d7530cc37d7d9eac e26ba63985f3dc5a 54d233d903238d0b 8d4e79ee47bc3a38 1cbbb42e12f54f7d a89d0e2cadc58331 19458be6971b6152 232b54bb68dcf042 5c6b4f50e97b4b3a 06500da2b2dd2c5d 47b7f237e5eb6180 476bfed3d6d3a88e 93e07b5809243688 02ef7afb5c64b9ce c5ba06dde1cf95fa ac22b6741a941719 a1a07e7a74da6c9b c13b7de8b7a0e24f 0f5f90591dcb7fe9 e8f6c672af79a9a4 c87270f9d2039908 6fe20b19a47b1f6b 49d7d3748aeb868f a939a222e15bc885 072ade9f77870c6e 884a74ee77708d9c 741464476ad560d9 823862406446623f  with fingerprint ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+* 2025-10-21 15:18:38.578 警告！セキュリティが無効になり、あらゆるキーを受け入れるようになっています！
+. 2025-10-21 15:18:38.578 Host key fingerprint is:
+. 2025-10-21 15:18:38.578 ssh-rsa 2048 df:01:c5:05:34:8e:55:62:a0:d5:00:dc:6e:1a:56:fd
+. 2025-10-21 15:18:38.578 Initialised AES-256 SDCTR client->server encryption
+. 2025-10-21 15:18:38.578 Initialised HMAC-SHA-256 client->server MAC algorithm
+. 2025-10-21 15:18:38.578 Initialised AES-256 SDCTR server->client encryption
+. 2025-10-21 15:18:38.578 Initialised HMAC-SHA-256 server->client MAC algorithm
+! 2025-10-21 15:18:38.984 Using username "aa107247".
+. 2025-10-21 15:18:39.172 Prompt (password, "SSH password", <no instructions>, "パスワード(&P): ")
+. 2025-10-21 15:18:39.172 Using stored password.
+. 2025-10-21 15:18:39.173 Sent password
+. 2025-10-21 15:18:50.321 Access granted
+. 2025-10-21 15:18:50.321 Opening session as main channel
+. 2025-10-21 15:18:53.849 Opened main channel
+. 2025-10-21 15:18:54.275 Started a shell/command
+. 2025-10-21 15:18:54.275 --------------------------------------------------------------------------
+. 2025-10-21 15:18:54.275 Using SFTP protocol.
+. 2025-10-21 15:18:54.276 Doing startup conversation with host.
+> 2025-10-21 15:18:54.276 Type: SSH_FXP_INIT, Size: 5, Number: -1
+< 2025-10-21 15:18:54.478 Type: SSH_FXP_VERSION, Size: 179, Number: -1
+. 2025-10-21 15:18:54.478 SFTP version 3 negotiated.
+. 2025-10-21 15:18:54.478 Unknown server extension posix-rename@openssh.com="1"
+. 2025-10-21 15:18:54.479 Supports statvfs@openssh.com extension version "2"
+. 2025-10-21 15:18:54.479 Unknown server extension fstatvfs@openssh.com="2"
+. 2025-10-21 15:18:54.479 Supports hardlink@openssh.com extension version "1"
+. 2025-10-21 15:18:54.479 Unknown server extension fsync@openssh.com="1"
+. 2025-10-21 15:18:54.479 Unknown server extension lsetstat@openssh.com="1"
+. 2025-10-21 15:18:54.479 We believe the server has signed timestamps bug
+. 2025-10-21 15:18:54.479 We will use UTF-8 strings until server sends an invalid UTF-8 string as with SFTP version 3 and older UTF-8 string are not mandatory
+. 2025-10-21 15:18:54.479 Limiting packet size to OpenSSH sftp-server limit of 262148 bytes
+. 2025-10-21 15:18:54.479 Getting current directory name.
+. 2025-10-21 15:18:54.479 Getting real path for '.'
+> 2025-10-21 15:18:54.479 Type: SSH_FXP_REALPATH, Size: 10, Number: 16
+< 2025-10-21 15:18:54.676 Type: SSH_FXP_NAME, Size: 61, Number: 16
+. 2025-10-21 15:18:54.677 Real path is '/home/md202/aa107247'
+. 2025-10-21 15:18:54.677 Startup conversation with host finished.
+< 2025-10-21 15:18:54.677 Script: アクティブ セッション: [1] aa107247@upload.user.keio.ac.jp
+> 2025-10-21 15:18:54.677 Script: put "index.html" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:18:54.679 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:18:54.679   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 15:18:54.679   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 15:18:54.680   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 15:18:54.680 File: 'index.html' [2025-10-20T23:24:47.391Z] [13163]
+. 2025-10-21 15:18:54.681 Copying "index.html" to remote directory started.
+. 2025-10-21 15:18:54.681 Binary transfer mode selected.
+. 2025-10-21 15:18:54.681 Opening remote file.
+> 2025-10-21 15:18:54.681 Type: SSH_FXP_OPEN, Size: 75, Number: 259
+< 2025-10-21 15:18:54.873 Type: SSH_FXP_HANDLE, Size: 13, Number: 259
+> 2025-10-21 15:18:54.873 Type: SSH_FXP_WRITE, Size: 4121, Number: 774
+. 2025-10-21 15:18:54.878 3 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 15:18:54.878 Type: SSH_FXP_CLOSE, Size: 13, Number: 1796
+> 2025-10-21 15:18:54.878 Type: SSH_FXP_SETSTAT, Size: 71, Number: 521
+< 2025-10-21 15:18:55.058 Type: SSH_FXP_STATUS, Size: 24, Number: 774
+< 2025-10-21 15:18:55.059 Type: SSH_FXP_STATUS, Size: 24, Number: 1030
+< 2025-10-21 15:18:55.060 Type: SSH_FXP_STATUS, Size: 24, Number: 1286
+< 2025-10-21 15:18:55.241 Type: SSH_FXP_STATUS, Size: 24, Number: 1542
+< 2025-10-21 15:18:55.242 Type: SSH_FXP_STATUS, Size: 24, Number: 1796
+< 2025-10-21 15:18:55.242 Status code: 0
+. 2025-10-21 15:18:55.242 Preserving timestamp [2025-10-20T23:24:47.000Z]
+< 2025-10-21 15:18:55.243 Type: SSH_FXP_STATUS, Size: 24, Number: 521
+< 2025-10-21 15:18:55.244 Status code: 0
+. 2025-10-21 15:18:55.244 Transfer done: 'index.html' [13163]
+> 2025-10-21 15:18:55.244 Script: put "hel-data.js" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:18:55.245 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:18:55.245   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 15:18:55.245   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 15:18:55.245   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 15:18:55.246 File: 'hel-data.js' [2025-10-21T02:18:36.561Z] [23667]
+. 2025-10-21 15:18:55.246 Copying "hel-data.js" to remote directory started.
+. 2025-10-21 15:18:55.246 Binary transfer mode selected.
+. 2025-10-21 15:18:55.246 Opening remote file.
+> 2025-10-21 15:18:55.246 Type: SSH_FXP_OPEN, Size: 76, Number: 2051
+< 2025-10-21 15:18:55.432 Type: SSH_FXP_HANDLE, Size: 13, Number: 2051
+> 2025-10-21 15:18:55.433 Type: SSH_FXP_WRITE, Size: 4121, Number: 2566
+. 2025-10-21 15:18:55.440 5 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 15:18:55.440 Type: SSH_FXP_CLOSE, Size: 13, Number: 4100
+> 2025-10-21 15:18:55.440 Type: SSH_FXP_SETSTAT, Size: 72, Number: 2313
+< 2025-10-21 15:18:55.618 Type: SSH_FXP_STATUS, Size: 24, Number: 2566
+< 2025-10-21 15:18:55.619 Type: SSH_FXP_STATUS, Size: 24, Number: 2822
+< 2025-10-21 15:18:55.620 Type: SSH_FXP_STATUS, Size: 24, Number: 3078
+< 2025-10-21 15:18:55.621 Type: SSH_FXP_STATUS, Size: 24, Number: 3334
+< 2025-10-21 15:18:55.622 Type: SSH_FXP_STATUS, Size: 24, Number: 3590
+< 2025-10-21 15:18:55.623 Type: SSH_FXP_STATUS, Size: 24, Number: 3846
+< 2025-10-21 15:18:55.802 Type: SSH_FXP_STATUS, Size: 24, Number: 4100
+< 2025-10-21 15:18:55.802 Status code: 0
+. 2025-10-21 15:18:55.802 Preserving timestamp [2025-10-21T02:18:36.000Z]
+< 2025-10-21 15:18:55.803 Type: SSH_FXP_STATUS, Size: 24, Number: 2313
+< 2025-10-21 15:18:55.803 Status code: 0
+. 2025-10-21 15:18:55.803 Transfer done: 'hel-data.js' [23667]
+> 2025-10-21 15:18:55.803 Script: put "README.md" "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:18:55.804 Copying 1 files/directories to remote directory "/home/md202/aa107247/public_html/helhub/"
+. 2025-10-21 15:18:55.804   PrTime: Yes; PrRO: No; Rght: rw-r--r--; PrR: No (No); FnCs: N; RIC: 0100; Resume: S (102400); CalcS: No; Mask: 
+. 2025-10-21 15:18:55.804   TM: B; ClAr: No; RemEOF: No; RemBOM: No; CPS: 0; NewerOnly: No; InclM: ; ResumeL: 0
+. 2025-10-21 15:18:55.804   AscM: *.*html; *.htm; *.txt; *.php; *.php3; *.cgi; *.c; *.cpp; *.h; *.pas; *.bas; *.tex; *.pl; *.js; .htaccess; *.xtml; *.css; *.cfg; *.ini; *.sh; *.xml
+. 2025-10-21 15:18:55.805 File: 'README.md' [2025-10-17T10:01:18.398Z] [5243]
+. 2025-10-21 15:18:55.805 Copying "README.md" to remote directory started.
+. 2025-10-21 15:18:55.805 Binary transfer mode selected.
+. 2025-10-21 15:18:55.806 Opening remote file.
+> 2025-10-21 15:18:55.806 Type: SSH_FXP_OPEN, Size: 74, Number: 4355
+< 2025-10-21 15:18:55.992 Type: SSH_FXP_HANDLE, Size: 13, Number: 4355
+> 2025-10-21 15:18:55.992 Type: SSH_FXP_WRITE, Size: 4121, Number: 4870
+. 2025-10-21 15:18:55.993 1 skipped SSH_FXP_WRITE, SSH_FXP_READ, SSH_FXP_DATA and SSH_FXP_STATUS packets.
+> 2025-10-21 15:18:55.993 Type: SSH_FXP_CLOSE, Size: 13, Number: 5380
+> 2025-10-21 15:18:55.993 Type: SSH_FXP_SETSTAT, Size: 70, Number: 4617
+< 2025-10-21 15:18:56.178 Type: SSH_FXP_STATUS, Size: 24, Number: 4870
+< 2025-10-21 15:18:56.361 Type: SSH_FXP_STATUS, Size: 24, Number: 5126
+< 2025-10-21 15:18:56.362 Type: SSH_FXP_STATUS, Size: 24, Number: 5380
+< 2025-10-21 15:18:56.362 Status code: 0
+. 2025-10-21 15:18:56.362 Preserving timestamp [2025-10-17T10:01:18.000Z]
+< 2025-10-21 15:18:56.363 Type: SSH_FXP_STATUS, Size: 24, Number: 4617
+< 2025-10-21 15:18:56.363 Status code: 0
+. 2025-10-21 15:18:56.363 Transfer done: 'README.md' [5243]
+> 2025-10-21 15:18:56.364 Script: exit
+. 2025-10-21 15:18:56.364 Script: Exit code: 0
+. 2025-10-21 15:18:56.364 Closing connection.
+. 2025-10-21 15:18:56.364 Sending special code: 12
+. 2025-10-21 15:18:56.364 Sent EOF message

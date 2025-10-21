@@ -119,6 +119,9 @@ def _choose_entry_datetime_utc(entry):
 
 # ===== ここまで追加 =====
 
+def isoformat_utc(dt):
+    return dt.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
+
 def process_feeds():
     """設定されたすべてのフィードを処理する"""
     config = load_config()
@@ -185,7 +188,10 @@ def process_feeds():
                 continue
 
             message = x_template.get('template', '{title}\n{link}').format(title=entry_title, link=entry_link)
-            scheduled_at = (datetime.now() + timedelta(hours=1)).isoformat(timespec='seconds')
+            # NG: naiveのnowをそのまま文字列化
+            # scheduled_at = (datetime.now() + timedelta(hours=1)).isoformat(timespec='seconds')
+            # OK: かならずUTC化してZで保存
+            scheduled_at = isoformat_utc(datetime.now(timezone.utc) + timedelta(hours=1))
             
             image_path = None
             img_settings = x_template.get('image_settings', {})
