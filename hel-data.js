@@ -31,21 +31,6 @@ const helData = {
             "media": "heldio-rebroadcast",
             "title": "#457. 中英語の言語資料と方言",
             "url": "https://www.youtube.com/watch?v=bno4yPA4a7k"
-        },
-        {
-            "media": "youtube",
-            "title": "It is important for you to〜とIt is kind of you to〜って似た構文と思われがちですが、ルーツがまったくちがいます【いのほた言語学チャンネル第381回】",
-            "url": "https://www.youtube.com/watch?v=Ai0s-24tUsQ"
-        },
-        {
-            "media": "heldio",
-            "title": "#1604. 川上さんの「英語のなぜ5分版」やってます通信 --- 第22弾",
-            "url": "https://voicy.jp/channel/1950/7185770"
-        },
-        {
-            "media": "hellog",
-            "title": "#6019. 「いのほた本」出版に合わせて YouTube ショート動画も公開しました",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-19-1.html"
         }
     ],
     "cards": [
