@@ -68,7 +68,7 @@ def upload_via_winscp():
     script_content.append(f'lcd "{script_dir}"')
     script_content.append(f'open {protocol}://{user}:{password}@{host}/ -hostkey="*"')
 
-    files_to_upload = ['index.html', 'hel-data.js']
+    files_to_upload = ['index.html', 'hel-data.js', 'README.md']
     for file in files_to_upload:
         if os.path.exists(file):
             script_content.append(f'put "{file}" "{remote_dir}"')

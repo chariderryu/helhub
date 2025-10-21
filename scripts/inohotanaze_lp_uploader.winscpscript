@@ -1,0 +1,3 @@
+open keioacjp
+put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\inohota_naze\index.html" /home/md202/aa107247/public_html/hellog/inohota_naze/
+exit

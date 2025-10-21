@@ -214,5 +214,16 @@
         visitorCounter.textContent = count.toLocaleString();
     });
     </script>
+    <!-- index.html の最後あたり（</body>直前）に追加 -->
+    <script>
+      function setScrollPadding() {
+        const header = document.querySelector('header');      // 固定ヘッダー要素
+        const h = header ? header.offsetHeight : 0;
+        document.documentElement.style.scrollPaddingTop = h + 'px';
+      }
+      window.addEventListener('load', setScrollPadding);
+      window.addEventListener('resize', setScrollPadding);
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,5 @@
+open keioacjp
+put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\hellog-radio\heldio_rss.xml" /home/md202/aa107247/public_html/hellog/hellog-radio/
+put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\hellog-radio\index.html" /home/md202/aa107247/public_html/hellog/hellog-radio/
+put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\hellog-radio\list_heldio.tsv" /home/md202/aa107247/public_html/hellog/hellog-radio/
+exit

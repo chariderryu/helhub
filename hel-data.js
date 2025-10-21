@@ -9,6 +9,21 @@ const helData = {
     "newContent": [
         {
             "media": "hellog",
+            "title": "#6021. 10月25日（土），朝カル講座の秋期クール第1回「I --- 1人称単数代名詞をめぐる物語」が開講されます",
+            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-21-1.html"
+        },
+        {
+            "media": "heldio-rebroadcast",
+            "title": "#458. Let's --- の4種類の否定形 ー どれを使えばいいの？",
+            "url": "https://www.youtube.com/watch?v=LdML_zLNK-w"
+        },
+        {
+            "media": "heldio",
+            "title": "#1605. まさにゃん＆川上の素朴な疑問に答えよう --- 「英語史ライヴ2025」にて have to と must の違いを徹底討論",
+            "url": "https://voicy.jp/channel/1950/7075263"
+        },
+        {
+            "media": "hellog",
             "title": "#6020. 「いのほたなぜ」が第5位 --- Amazon 売れ筋ランキング英語部門",
             "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-20-1.html"
         },
@@ -31,31 +46,6 @@ const helData = {
             "media": "hellog",
             "title": "#6019. 「いのほた本」出版に合わせて YouTube ショート動画も公開しました",
             "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-19-1.html"
-        },
-        {
-            "media": "youtube",
-            "title": "いのほた言語学チャンネルが書籍化！--井上逸兵x堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』＃いのほたなぜ",
-            "url": "https://www.youtube.com/shorts/e3Pxy6swcds"
-        },
-        {
-            "media": "heldio-rebroadcast",
-            "title": "#456. -l なのか -ll なのか問題 ー till/until etc.",
-            "url": "https://www.youtube.com/watch?v=l0A-tImgdaY"
-        },
-        {
-            "media": "heldio",
-            "title": "#1603. 「英語学」って何？ --- 「いのほたなぜ」のプロローグより",
-            "url": "https://voicy.jp/channel/1950/7189457"
-        },
-        {
-            "media": "hellog",
-            "title": "#6018. 『英語語源ハンドブック』への Amazon レビューに感謝",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-18-1.html"
-        },
-        {
-            "media": "youtube",
-            "title": "いのほた本発売！--井上逸兵・堀田隆一『言語学でスッキリ解決！英語の「なぜ？」』",
-            "url": "https://www.youtube.com/watch?v=zr-QKaYVXM0"
         }
     ],
     "cards": [
@@ -68,6 +58,10 @@ const helData = {
             "description": "16年以上毎日更新のブログ．hel活の基点．",
             "link": "http://user.keio.ac.jp/~rhotta/hellog/",
             "contentItems": [
+                {
+                    "title": "#6021. 10月25日（土），朝カル講座の秋期クール第1回「I --- 1人称単数代名詞をめぐる物語」が開講されます",
+                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-21-1.html"
+                },
                 {
                     "title": "#6020. 「いのほたなぜ」が第5位 --- Amazon 売れ筋ランキング英語部門",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-20-1.html"
@@ -83,10 +77,6 @@ const helData = {
                 {
                     "title": "#6017. SNS投稿のためにハッシュタグ「いのほたなぜ」をお使いください",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-17-1.html"
-                },
-                {
-                    "title": "#6016. 「いのほたなぜ」の特設HPを公開しました",
-                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-16-1.html"
                 },
                 {
                     "title": "記事一覧はこちら．",
@@ -105,6 +95,10 @@ const helData = {
             "link": "https://voicy.jp/channel/1950",
             "contentItems": [
                 {
+                    "title": "#1605. まさにゃん＆川上の素朴な疑問に答えよう --- 「英語史ライヴ2025」にて have to と must の違いを徹底討論",
+                    "url": "https://voicy.jp/channel/1950/7075263"
+                },
+                {
                     "title": "#1604. 川上さんの「英語のなぜ5分版」やってます通信 --- 第22弾",
                     "url": "https://voicy.jp/channel/1950/7185770"
                 },
@@ -119,10 +113,6 @@ const helData = {
                 {
                     "title": "#1601. 英仏語のアルコール漬けの語源的綴字 --- 「英語史ライヴ2025」より camin さん，寺澤志帆さん，川上さんのラリー",
                     "url": "https://voicy.jp/channel/1950/7173298"
-                },
-                {
-                    "title": "#1600. 「いのほたなぜ」の特設HPをオープンしました",
-                    "url": "https://voicy.jp/channel/1950/7172967"
                 },
                 {
                     "title": "Spotify でも配信中",
@@ -156,6 +146,10 @@ const helData = {
             "link": "https://www.youtube.com/playlist?list=PL0XaI4OKflBLKqHbYjJ_kZqG2prTYg0aK",
             "contentItems": [
                 {
+                    "title": "#458. Let's --- の4種類の否定形 ー どれを使えばいいの？",
+                    "url": "https://www.youtube.com/watch?v=LdML_zLNK-w"
+                },
+                {
                     "title": "#457. 中英語の言語資料と方言",
                     "url": "https://www.youtube.com/watch?v=bno4yPA4a7k"
                 },
@@ -170,10 +164,6 @@ const helData = {
                 {
                     "title": "#454. 朝カル講座の第3回「英語の歴史と世界英語 --- 英米の英語方言」",
                     "url": "https://www.youtube.com/watch?v=LUMOhIsAOgQ"
-                },
-                {
-                    "title": "#453. 意味の曖昧さ4種",
-                    "url": "https://www.youtube.com/watch?v=EQUdyv-mLcc"
                 },
                 {
                     "title": "Spotify でも配信中",
