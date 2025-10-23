@@ -1,6 +1,6 @@
 open keioacjp
-put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\2025-10-21-1.html" /home/md202/aa107247/public_html/hellog/
-put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\2025-10-21.html" /home/md202/aa107247/public_html/hellog/
+put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\2025-10-23-1.html" /home/md202/aa107247/public_html/hellog/
+put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\2025-10-23.html" /home/md202/aa107247/public_html/hellog/
 put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\index.html" /home/md202/aa107247/public_html/hellog/
 put "C:\00work\OneDrive - keio.jp\zEtc\keioacjp\hellog\cl.rdf" /home/md202/aa107247/public_html/hellog/
 exit

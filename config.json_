@@ -1,7 +1,6 @@
 {
   "database_path": "content.db",
   "announcements": [
-    "10月23日，<font color='red'><a href='https://user.keio.ac.jp/~rhotta/hellog/lp/hee.html'>『英語語源ハンドブック』</a></font>の3刷りの見本ができあがってきました",
     "来たる10月25日（土） 15:30～17:00 に朝日カルチャーセンター新宿教室にて講座<font color='red'><a href='https://www.asahiculture.com/asahiculture/asp-webapp/web/WWebKozaShosaiNyuryoku.do?kozaId=8452618'>「I --- 1人称単数代名詞をめぐる物語」</a></font>が開講されます．（2025年10月18日）",
     "10月15日に「いのほたなぜ」こと，井上 逸兵・堀田 隆一（著）『言語学でスッキリ解決！英語の「なぜ？」』（ナツメ社）が出ました！　特設HPは<font color='red'><a href='https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/'>こちら</a></font>です．（2025年10月16日）",
     "9月30日に「ゆる言語学ラジオ」の<font color='red'><a href='https://youtu.be/pWSf-2bez84?si=xAEz2MHk9QTu_NFi'>「うんちくしりとりパンクラチオン」</a></font>に出演させていただきました．（2025年9月30日）",
@@ -22,7 +21,7 @@
       "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/cl.rdf",
       "x_post_template": {
         "is_active": true,
-        "template": "【📝hellog～英語史ブログ】\n\n「{title}」\n\n{link}\n\n\n\n#hellog #英語史 #英語史をお茶の間に #hel活\n@khelf_keio @helvillian",
+        "template": "【📝hellog～英語史ブログ】\n\n{title}\n\n{link}\n\n\n\n#hellog #英語史 #英語史をお茶の間に #hel活\n@khelf_keio @helvillian",
         "image_settings": {
           "attach_image": true,
           "mode": "auto"
@@ -45,7 +44,7 @@
       "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/hellog-radio/heldio_rss.xml",
       "x_post_template": {
         "is_active": true,
-        "template": "【🎙英語の語源が身につくラジオ heldio】\n\n「{title}」\n\n{link}\n\n\n\n#heldio #英語史 #hel活 #英語史をお茶の間に\n@khelf_keio @helvillian",
+        "template": "【🎙英語の語源が身につくラジオ heldio】\n\n{title}\n\n{link}\n\n\n\n#heldio #英語史 #hel活 #英語史をお茶の間に\n@khelf_keio @helvillian",
         "filtering_rules": {
           "exclude_regex": "【英語史の輪"
         },
@@ -69,7 +68,7 @@
       "feed_url": "https://www.youtube.com/feeds/videos.xml?playlist_id=PL0XaI4OKflBLKqHbYjJ_kZqG2prTYg0aK",
       "x_post_template": {
         "is_active": true,
-        "template": "【▶YouTube で heldio 再放送】\n\n「{title}」\n\n{link}\n\n\n\n#heldio再放送 #英語史 #hel活 #英語史をお茶の間に\n@khelf_keio @helvillian",
+        "template": "【▶YouTube で heldio 再放送】\n\n{title}\n\n{link}\n\n\n\n#heldio再放送 #英語史 #hel活 #英語史をお茶の間に\n@khelf_keio @helvillian",
         "image_settings": {
           "attach_image": false
         }
@@ -82,10 +81,13 @@
       "bgColor": "bg-rose-50",
       "description": "英語史をより熱く語る．hel活が最も盛んなコミュニティ（有料）．",
       "link": "https://voicy.jp/channel/1950/premium",
+      "fixedContentItems": [
+        { "title": "", "url": "#" }
+      ],
       "feed_url": "http://user.keio.ac.jp/~rhotta/hellog/hellog-radio/heldio_rss.xml",
       "x_post_template": {
         "is_active": true,
-        "template": "【💎プレミアム限定配信　英語史の輪 helwa】\n\n「{title}」\n\n{link}\n\n\n\n#helwa #英語史 #hel活 #英語史をお茶の間に\n@helvillian @khelf_keio",
+        "template": "【💎プレミアム限定配信　英語史の輪 helwa】\n\n{title}\n\n{link}\n\n\n\n#helwa #英語史 #hel活 #英語史をお茶の間に\n@helvillian @khelf_keio",
         "filtering_rules": {
           "include_regex": "【英語史の輪"
         },
@@ -101,10 +103,13 @@
       "bgColor": "bg-red-50",
       "description": "井上逸兵先生と共に言語学の魅力を語るYouTubeチャンネル．",
       "link": "https://www.youtube.com/channel/UCth3mYbOZ9WsYgPQa0pxhvw",
+      "fixedContentItems": [
+        { "title": "", "url": "#" }
+      ],
       "feed_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCth3mYbOZ9WsYgPQa0pxhvw",
       "x_post_template": {
         "is_active": true,
-        "template": "【🎥 いのほた言語学チャンネル】\n\n「{title}」\n\n{link}\n\n\n\n#inohota #いのほた #英語史 #hel活 #英語史をお茶の間に\n@ippeiinoue @khelf_keio @helvillian",
+        "template": "【🎥 いのほた言語学チャンネル】\n\n{title}\n\n{link}\n\n\n\n#inohota #いのほた #英語史 #hel活 #英語史をお茶の間に\n@ippeiinoue @khelf_keio @helvillian",
         "image_settings": {
           "attach_image": false
         }
@@ -116,11 +121,11 @@
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"7\" y=\"2\" width=\"10\" height=\"20\" rx=\"2\" ry=\"2\"/><line x1=\"12\" y1=\"18\" x2=\"12.01\" y2=\"18\"/></svg>",
       "bgColor": "bg-teal-50",
       "description": "X (Twitter) や Facebook での気軽な情報発信はこちらから．",
-      "link": "https://twitter.com/chariderryu",
+      "link": "#",
       "fixedContentItems": [
         { "title": "X（旧 Twitter）でのhel活", "url": "https://twitter.com/chariderryu" },
         { "title": "Instagram でのhel活", "url": "https://www.instagram.com/chariderryu" },
-        { "title": "知識共有サービス「Mond」を通じて，言語学系の質問に回答", "url": "https://mond.how/rhotta" }
+        { "title": "知識共有サービス「Mond」を通じて，言語学系の質問に回答．", "url": "https://mond.how/rhotta" }
       ],
       "feed_url": "",
       "x_post_template": {
@@ -137,7 +142,7 @@
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20\"/></svg>",
       "bgColor": "bg-indigo-50",
       "description": "英語史関連の最新の書籍・記事等．",
-      "link": "https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/",
+      "link": "#",
       "fixedContentItems": [
         { "title": "井上 逸兵・堀田 隆一　『言語学でスッキリ解決！英語の「なぜ？」』　ナツメ社，2025年．", "url": "https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/" },
         { "title": "唐澤 一友・小塚 良孝・堀田 隆一（著），福田 一貴・小河 舜（校閲協力）　『英語語源ハンドブック』　研究社，2025年．", "url": "https://user.keio.ac.jp/~rhotta/hellog/lp/hee.html" },
@@ -181,7 +186,7 @@
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>",
       "bgColor": "bg-gray-100",
       "description": "英語史好きが集う，双方向のコミュニケーションの場．日常的に helwa，Discord，note などで集っています．「英語史ライヴ」やオフ会などのイベントも頻繁です．",
-      "link": "https://voicy.jp/channel/1950/premium",
+      "link": "#",
       "fixedContentItems": [
         { "title": "9月28日，有志ヘルメイトによる月刊ウェブマガジン <i>Helvillian</i> 10月号が公開されました！", "url": "https://note.com/helwa/n/n7754627fffb2" },
         { "title": "8月28日，<i>Helvillian</i> 9月号が公開されました！", "url": "https://note.com/helwa/n/n2415c5e4db5e" },
@@ -201,13 +206,10 @@
       "shortTitle": "その他",
       "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"1\"/><circle cx=\"19\" cy=\"12\" r=\"1\"/><circle cx=\"5\" cy=\"12\" r=\"1\"/></svg>",
       "bgColor": "bg-green-50",
-      "description": "その他の活動やイベント情報など．",
+      "description": "その他の活動や単発のイベント情報など．",
       "link": "#",
       "fixedContentItems": [
-        { "title": "2025年10月25日（土） 15:30～17:00 に朝日カルチャーセンター新宿教室にて講座「I --- 1人称単数代名詞をめぐる物語」が開講されます．", "url": "https://www.asahiculture.com/asahiculture/asp-webapp/web/WWebKozaShosaiNyuryoku.do?kozaId=8452618" },
-        { "title": "2025年5月31日と8月21日の2日間，全4回にわたりYouTube 「文藝春秋PLUS 公式チャンネル」にて，英語史トーク動画の前後編が公開されました．初回は16万回以上視聴されています", "url": "https://bunshun.jp/bungeishunju/search?fulltext=英語史%E3%80%80堀田隆一" },
-        { "title": "2025年3月6日より5月6日まで，heldio の前身である「hellog ラジオ版」 (hellog-radio) として2020--2021年に配信していた62回の配信を YouTubeにて再放送していました．", "url": "https://www.youtube.com/playlist?list=PL0XaI4OKflBKEMpuqE-sTjoYlt9FHbbV2" },
-        { "title": "2025年2月28日，慶應義塾大学の 公式 YouTube チャンネル「慶應義塾 Keio University」内の研究者紹介動画として「英語史は「英語の歴史」というよりも「英語と歴史」」慶應義塾大学文学部・堀田隆一教授」</a>(4月22秒）が公開されました．", "url": "https://youtu.be/F37bgLjlQQE?si=-pMifvDA0aCta4Kg" }
+        { "title": "リンク集", "url": "#" }
       ],
       "feed_url": "",
       "x_post_template": {

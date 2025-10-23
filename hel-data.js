@@ -1,6 +1,7 @@
 const helData = {
     "announcements": [
-        "来たる10月25日（土） 15:30～17:00 に朝日カルチャーセンター新宿教室にて講座「I --- 1人称単数代名詞をめぐる物語」が開講されます．（2025年10月18日）",
+        "10月23日，<font color='red'><a href='https://user.keio.ac.jp/~rhotta/hellog/lp/hee.html'>『英語語源ハンドブック』</a></font>の3刷りの見本ができあがってきました",
+        "来たる10月25日（土） 15:30～17:00 に朝日カルチャーセンター新宿教室にて講座<font color='red'><a href='https://www.asahiculture.com/asahiculture/asp-webapp/web/WWebKozaShosaiNyuryoku.do?kozaId=8452618'>「I --- 1人称単数代名詞をめぐる物語」</a></font>が開講されます．（2025年10月18日）",
         "10月15日に「いのほたなぜ」こと，井上 逸兵・堀田 隆一（著）『言語学でスッキリ解決！英語の「なぜ？」』（ナツメ社）が出ました！　特設HPは<font color='red'><a href='https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/'>こちら</a></font>です．（2025年10月16日）",
         "9月30日に「ゆる言語学ラジオ」の<font color='red'><a href='https://youtu.be/pWSf-2bez84?si=xAEz2MHk9QTu_NFi'>「うんちくしりとりパンクラチオン」</a></font>に出演させていただきました．（2025年9月30日）",
         "9月23日に「ゆる言語学ラジオ」の人気シリーズ<font color='red'><a href='https://youtu.be/1tSTqYyB4pk?si=Rd-9LGc6j2MrCHyd'>「ターゲット1900」回</a></font>に出演させていただきました．（2025年9月23日）",
@@ -9,28 +10,33 @@ const helData = {
     "newContent": [
         {
             "media": "hellog",
-            "title": "#6021. 10月25日（土），朝カル講座の秋期クール第1回「I --- 1人称単数代名詞をめぐる物語」が開講されます",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-21-1.html"
+            "title": "#6023. 「いのほたなぜ」で khelf と『英語史新聞』に言及しています",
+            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-23-1.html"
         },
         {
             "media": "heldio-rebroadcast",
-            "title": "#458. Let's --- の4種類の否定形 ー どれを使えばいいの？",
-            "url": "https://www.youtube.com/watch?v=LdML_zLNK-w"
+            "title": "#460. worth a try と worth the wait",
+            "url": "https://www.youtube.com/watch?v=kOVScxsEfd8"
         },
         {
             "media": "heldio",
-            "title": "#1605. まさにゃん＆川上の素朴な疑問に答えよう --- 「英語史ライヴ2025」にて have to と must の違いを徹底討論",
-            "url": "https://voicy.jp/channel/1950/7075263"
+            "title": "#1607. 英語帝国主義から世界英語へ",
+            "url": "https://voicy.jp/channel/1950/7201353"
         },
         {
             "media": "hellog",
-            "title": "#6020. 「いのほたなぜ」が第5位 --- Amazon 売れ筋ランキング英語部門",
-            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-20-1.html"
+            "title": "#6022. date の食レポ from NZ",
+            "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-22-1.html"
         },
         {
             "media": "heldio-rebroadcast",
-            "title": "#457. 中英語の言語資料と方言",
-            "url": "https://www.youtube.com/watch?v=bno4yPA4a7k"
+            "title": "#459. オランダ語と英語",
+            "url": "https://www.youtube.com/watch?v=yfEvtXWVThg"
+        },
+        {
+            "media": "heldio",
+            "title": "#1606. don't have to と must not の違いは結局…？ --- 「英語史ライヴ2025」の懇親会2次会にて",
+            "url": "https://voicy.jp/channel/1950/7184775"
         }
     ],
     "cards": [
@@ -44,6 +50,14 @@ const helData = {
             "link": "http://user.keio.ac.jp/~rhotta/hellog/",
             "contentItems": [
                 {
+                    "title": "#6023. 「いのほたなぜ」で khelf と『英語史新聞』に言及しています",
+                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-23-1.html"
+                },
+                {
+                    "title": "#6022. date の食レポ from NZ",
+                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-22-1.html"
+                },
+                {
                     "title": "#6021. 10月25日（土），朝カル講座の秋期クール第1回「I --- 1人称単数代名詞をめぐる物語」が開講されます",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-21-1.html"
                 },
@@ -54,14 +68,6 @@ const helData = {
                 {
                     "title": "#6019. 「いのほた本」出版に合わせて YouTube ショート動画も公開しました",
                     "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-19-1.html"
-                },
-                {
-                    "title": "#6018. 『英語語源ハンドブック』への Amazon レビューに感謝",
-                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-18-1.html"
-                },
-                {
-                    "title": "#6017. SNS投稿のためにハッシュタグ「いのほたなぜ」をお使いください",
-                    "url": "http://user.keio.ac.jp/~rhotta/hellog/2025-10-17-1.html"
                 },
                 {
                     "title": "記事一覧はこちら．",
@@ -80,6 +86,14 @@ const helData = {
             "link": "https://voicy.jp/channel/1950",
             "contentItems": [
                 {
+                    "title": "#1607. 英語帝国主義から世界英語へ",
+                    "url": "https://voicy.jp/channel/1950/7201353"
+                },
+                {
+                    "title": "#1606. don't have to と must not の違いは結局…？ --- 「英語史ライヴ2025」の懇親会2次会にて",
+                    "url": "https://voicy.jp/channel/1950/7184775"
+                },
+                {
                     "title": "#1605. まさにゃん＆川上の素朴な疑問に答えよう --- 「英語史ライヴ2025」にて have to と must の違いを徹底討論",
                     "url": "https://voicy.jp/channel/1950/7075263"
                 },
@@ -90,14 +104,6 @@ const helData = {
                 {
                     "title": "#1603. 「英語学」って何？ --- 「いのほたなぜ」のプロローグより",
                     "url": "https://voicy.jp/channel/1950/7189457"
-                },
-                {
-                    "title": "#1602. 10月25日の朝カル講座は I --- 1人称単数代名詞に注目",
-                    "url": "https://voicy.jp/channel/1950/7188849"
-                },
-                {
-                    "title": "#1601. 英仏語のアルコール漬けの語源的綴字 --- 「英語史ライヴ2025」より camin さん，寺澤志帆さん，川上さんのラリー",
-                    "url": "https://voicy.jp/channel/1950/7173298"
                 },
                 {
                     "title": "Spotify でも配信中",
@@ -131,6 +137,14 @@ const helData = {
             "link": "https://www.youtube.com/playlist?list=PL0XaI4OKflBLKqHbYjJ_kZqG2prTYg0aK",
             "contentItems": [
                 {
+                    "title": "#460. worth a try と worth the wait",
+                    "url": "https://www.youtube.com/watch?v=kOVScxsEfd8"
+                },
+                {
+                    "title": "#459. オランダ語と英語",
+                    "url": "https://www.youtube.com/watch?v=yfEvtXWVThg"
+                },
+                {
                     "title": "#458. Let's --- の4種類の否定形 ー どれを使えばいいの？",
                     "url": "https://www.youtube.com/watch?v=LdML_zLNK-w"
                 },
@@ -141,14 +155,6 @@ const helData = {
                 {
                     "title": "#456. -l なのか -ll なのか問題 ー till/until etc.",
                     "url": "https://www.youtube.com/watch?v=l0A-tImgdaY"
-                },
-                {
-                    "title": "#455. shop と store の語源",
-                    "url": "https://www.youtube.com/watch?v=Oj_gv03qspc"
-                },
-                {
-                    "title": "#454. 朝カル講座の第3回「英語の歴史と世界英語 --- 英米の英語方言」",
-                    "url": "https://www.youtube.com/watch?v=LUMOhIsAOgQ"
                 },
                 {
                     "title": "Spotify でも配信中",
@@ -177,6 +183,10 @@ const helData = {
             "link": "https://voicy.jp/channel/1950/premium",
             "contentItems": [
                 {
+                    "title": "[helwa] 【英語史の輪 #357】例の植物園より近況報告",
+                    "url": "https://voicy.jp/channel/1950/7199956"
+                },
+                {
                     "title": "[helwa] 【英語史の輪 #356】hel活ポータルを準備中",
                     "url": "https://voicy.jp/channel/1950/7192830"
                 },
@@ -191,15 +201,6 @@ const helData = {
                 {
                     "title": "[helwa] 【英語史の輪 #353】高校生からの素朴な疑問 --- 川上さん通信 (23)",
                     "url": "https://voicy.jp/channel/1950/7149030"
-                },
-                {
-                    "title": "[helwa] 【英語史の輪 #352】私はこれができません --- 「英語史ライヴ2025」より",
-                    "url": "https://voicy.jp/channel/1950/7149489"
-                },
-                {
-                    "title": "",
-                    "url": "#",
-                    "isFixed": true
                 }
             ]
         },
@@ -231,11 +232,6 @@ const helData = {
                 {
                     "title": "ゆる言語学ラジオ・水野太貴さんの『会話の0.2秒を言語学する』をいのほた視点で超解説！【いのほた言語学チャンネル（旧井上逸兵・堀田隆一英語学言語学チャンネル）第379回】",
                     "url": "https://www.youtube.com/watch?v=ZH7xSyYtjNk"
-                },
-                {
-                    "title": "",
-                    "url": "#",
-                    "isFixed": true
                 }
             ]
         },
@@ -246,7 +242,7 @@ const helData = {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"7\" y=\"2\" width=\"10\" height=\"20\" rx=\"2\" ry=\"2\"/><line x1=\"12\" y1=\"18\" x2=\"12.01\" y2=\"18\"/></svg>",
             "bgColor": "bg-teal-50",
             "description": "X (Twitter) や Facebook での気軽な情報発信はこちらから．",
-            "link": "#",
+            "link": "https://twitter.com/chariderryu",
             "contentItems": [
                 {
                     "title": "X（旧 Twitter）でのhel活",
@@ -259,7 +255,7 @@ const helData = {
                     "isFixed": true
                 },
                 {
-                    "title": "知識共有サービス「Mond」を通じて，言語学系の質問に回答．",
+                    "title": "知識共有サービス「Mond」を通じて，言語学系の質問に回答",
                     "url": "https://mond.how/rhotta",
                     "isFixed": true
                 }
@@ -272,7 +268,7 @@ const helData = {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20\"/></svg>",
             "bgColor": "bg-indigo-50",
             "description": "英語史関連の最新の書籍・記事等．",
-            "link": "#",
+            "link": "https://user.keio.ac.jp/~rhotta/hellog/inohota_naze/",
             "contentItems": [
                 {
                     "title": "井上 逸兵・堀田 隆一　『言語学でスッキリ解決！英語の「なぜ？」』　ナツメ社，2025年．",
@@ -334,7 +330,7 @@ const helData = {
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/></svg>",
             "bgColor": "bg-gray-100",
             "description": "英語史好きが集う，双方向のコミュニケーションの場．日常的に helwa，Discord，note などで集っています．「英語史ライヴ」やオフ会などのイベントも頻繁です．",
-            "link": "#",
+            "link": "https://voicy.jp/channel/1950/premium",
             "contentItems": [
                 {
                     "title": "9月28日，有志ヘルメイトによる月刊ウェブマガジン <i>Helvillian</i> 10月号が公開されました！",
@@ -359,12 +355,27 @@ const helData = {
             "shortTitle": "その他",
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"1\"/><circle cx=\"19\" cy=\"12\" r=\"1\"/><circle cx=\"5\" cy=\"12\" r=\"1\"/></svg>",
             "bgColor": "bg-green-50",
-            "description": "その他の活動や単発のイベント情報など．",
+            "description": "その他の活動やイベント情報など．",
             "link": "#",
             "contentItems": [
                 {
-                    "title": "リンク集",
-                    "url": "#",
+                    "title": "2025年10月25日（土） 15:30～17:00 に朝日カルチャーセンター新宿教室にて講座「I --- 1人称単数代名詞をめぐる物語」が開講されます．",
+                    "url": "https://www.asahiculture.com/asahiculture/asp-webapp/web/WWebKozaShosaiNyuryoku.do?kozaId=8452618",
+                    "isFixed": true
+                },
+                {
+                    "title": "2025年5月31日と8月21日の2日間，全4回にわたりYouTube 「文藝春秋PLUS 公式チャンネル」にて，英語史トーク動画の前後編が公開されました．初回は16万回以上視聴されています",
+                    "url": "https://bunshun.jp/bungeishunju/search?fulltext=英語史%E3%80%80堀田隆一",
+                    "isFixed": true
+                },
+                {
+                    "title": "2025年3月6日より5月6日まで，heldio の前身である「hellog ラジオ版」 (hellog-radio) として2020--2021年に配信していた62回の配信を YouTubeにて再放送していました．",
+                    "url": "https://www.youtube.com/playlist?list=PL0XaI4OKflBKEMpuqE-sTjoYlt9FHbbV2",
+                    "isFixed": true
+                },
+                {
+                    "title": "2025年2月28日，慶應義塾大学の 公式 YouTube チャンネル「慶應義塾 Keio University」内の研究者紹介動画として「英語史は「英語の歴史」というよりも「英語と歴史」」慶應義塾大学文学部・堀田隆一教授」</a>(4月22秒）が公開されました．",
+                    "url": "https://youtu.be/F37bgLjlQQE?si=-pMifvDA0aCta4Kg",
                     "isFixed": true
                 }
             ]

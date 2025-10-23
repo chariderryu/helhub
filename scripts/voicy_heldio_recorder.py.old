@@ -10,23 +10,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-def find_first_missing_episode_number(output_dir):
-    """
-    1から昇順にファイル番号をチェックし、
-    最初に見つからない（欠番している）配信回番号を返す。
-    """
-    episode_num = 1
-    while True:
-        base_filename = f"heldio_{episode_num:04d}"
-        file_to_trim = os.path.join(output_dir, f"{base_filename}_to_trim.mp3")
-        final_file = os.path.join(output_dir, f"{base_filename}.mp3")
-
-        if not os.path.exists(file_to_trim) and not os.path.exists(final_file):
-            print(f"連番チェックの結果、最初の未録音回は {episode_num} です。")
-            return episode_num
-        
-        episode_num += 1
-
 def parse_episodes(tsv_file, program_filter, title_prefix):
     """TSVファイルを解析し、すべての対象エピソード情報をリストで返す"""
     episodes = []
@@ -60,69 +43,82 @@ def parse_episodes(tsv_file, program_filter, title_prefix):
     
     return sorted(episodes, key=lambda x: x["episode_num"])
 
-# === 変更点: 返り値を追加 ===
 def record_episode(episode_info, duration_multiplier, output_dir, ps1_script_path):
-    """
-    単一のエピソードを録音する。
-    成功/失敗に関わらず録音を試みたらTrueを、既存ファイルのためスキップしたらFalseを返す。
-    """
-    base_filename = f"heldio_{episode_info['episode_num']:04d}"
-    output_path = os.path.join(output_dir, f"{base_filename}_to_trim.mp3")
-    final_output_path = os.path.join(output_dir, f"{base_filename}.mp3")
-    
-    if os.path.exists(output_path) or os.path.exists(final_output_path):
-        print("-" * 50)
-        print(f"処理スキップ: heldio #{episode_info['episode_num']}")
-        print(f"  ファイルが既に存在するため、カウントせずに次に進みます。")
-        return False # スキップしたことを伝える
-
+    """単一のエピソードをブラウザで再生し、PowerShell経由で録音する"""
     url_match = re.search(r"href='(.*?)'", episode_info["play_link_html"])
     if not url_match:
         print(f"URLが見つかりません。スキップします: #{episode_info['episode_num']}")
-        return True # URL不正だが処理は試みたのでカウント対象とする
+        return
     url = url_match.group(1)
 
     record_duration_sec = int(episode_info["duration_min"] * 60 * duration_multiplier)
-
+    output_filename = f"heldio_{episode_info['episode_num']:04d}_to_trim.mp3"
+    output_path = os.path.join(output_dir, output_filename)
+    
     print("-" * 50)
     print(f"処理開始: heldio #{episode_info['episode_num']}")
     print(f"  URL: {url}")
     print(f"  録音時間: {record_duration_sec}秒")
     print(f"  出力ファイル: {output_path}")
 
+    if os.path.exists(output_path):
+        print("  ファイルが既に存在するためスキップします。")
+        return
+
     driver = None
     ps_process = None
     try:
+        # 1. ブラウザを起動し、再生ボタンを見つける（まだクリックはしない）
         driver = webdriver.Chrome()
         driver.get(url)
         play_button_xpath = "//button[@aria-label='再生する']"
+        print("  再生ボタンを待機中...")
         wait = WebDriverWait(driver, 20)
         play_button = wait.until(EC.element_to_be_clickable((By.XPATH, play_button_xpath)))
 
+        # ========== ここを変更しました！ (録音と再生の順序を逆転) ==========
+        # 2. PowerShell経由で録音を先に開始する
         ps_command = [
             "powershell", "-ExecutionPolicy", "Bypass",
             "-File", ps1_script_path,
             "-DurationSec", str(record_duration_sec),
             "-OutMp3", output_path
         ]
+        print("  PowerShell経由で録音を開始します...")
         ps_process = subprocess.Popen(ps_command)
-        time.sleep(3)
+
+        # 3. FFmpegが録音を開始するまで少し待つ
+        print("  FFmpegを初期化中...")
+        time.sleep(3)  # 3秒待機
+
+        # 4. 録音が始まったのを見計らって再生ボタンをクリック
+        print("  再生ボタンをクリックします。")
         play_button.click()
+        
+        # 5. PowerShellの録音プロセスが完了するのを待つ
         ps_process.wait(timeout=record_duration_sec + 30)
         print(f"  録音完了: {output_path}")
+        # =============================================================
 
+    except TimeoutException:
+        print("  エラー: 再生ボタンが見つかりませんでした。スキップします。")
+    except subprocess.TimeoutExpired:
+        print("  エラー: PowerShellスクリプトがタイムアウトしました。")
     except Exception as e:
-        print(f"  エラーが発生しました: {e}")
+        print(f"  予期せぬエラーが発生しました: {e}")
     finally:
+        # 起動中のプロセスがあれば終了させる
         if ps_process and ps_process.poll() is None:
             ps_process.kill()
         if driver:
             driver.quit()
-    
-    return True # 録音を試みたことを伝える
+            print("  ブラウザを閉じました。")
 
 def main():
     parser = argparse.ArgumentParser(description="Voicyのheldio配信回をバッチ録音します。")
+    parser.add_argument("--start", type=int, help="録音を開始する配信回の番号。")
+    parser.add_argument("--end", type=int, help="録音を終了する配信回の番号。")
+    parser.add_argument("--target", type=int, help="指定した単一の配信回のみ録音します。")
     parser.add_argument("--tsv-file", default="C:/00work/OneDrive - keio.jp/zEtc/keioacjp/hellog/hellog-radio/list_heldio.tsv", help="配信一覧のTSVファイルパス。")
     parser.add_argument("--output-dir", default="C:/00work/zEtc/heldio_helwa/", help="MP3ファイルの保存先ディレクトリ。")
     parser.add_argument("--program-filter", default="heldio", help="TSVから抽出する番組名。")
@@ -132,50 +128,24 @@ def main():
 
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
-    
+
     all_episodes = parse_episodes(args.tsv_file, args.program_filter, args.title_prefix)
     if not all_episodes:
         return
 
-    start_num = find_first_missing_episode_number(args.output_dir)
-    
-    num_to_record = 0
-    while True:
-        try:
-            response = input(f"次の録音開始回は {start_num} です。何回分の放送を録音しますか？ (数字を入力): ")
-            num_to_record = int(response)
-            if num_to_record > 0:
-                break
-            else:
-                print("1以上の数字を入力してください。")
-        except ValueError:
-            print("エラー: 有効な数字を入力してください。")
+    if args.target:
+        episodes_to_record = [ep for ep in all_episodes if ep["episode_num"] == args.target]
+    else:
+        start = args.start if args.start is not None else 0
+        end = args.end if args.end is not None else float('inf')
+        episodes_to_record = [ep for ep in all_episodes if start <= ep["episode_num"] <= end]
 
-    # === 変更点: ループとカウンターのロジック ===
-    # 録音対象となりうる候補をすべてリストアップ
-    candidate_episodes = [ep for ep in all_episodes if ep["episode_num"] >= start_num]
-
-    if not candidate_episodes:
-        print("指定された開始回以降、TSVに録音対象のエピソードが見つかりませんでした。")
+    if not episodes_to_record:
+        print("指定された範囲に録音対象のエピソードが見つかりませんでした。")
         return
-    
-    recorded_count = 0
-    print(f"\n--- {num_to_record}回の新規録音を開始します ---")
-
-    for episode in candidate_episodes:
-        # 指定した数の録音を試みたらループを抜ける
-        if recorded_count >= num_to_record:
-            print(f"\n目標の {num_to_record} 回の録音試行が完了しました。")
-            break
-
-        # 録音関数を呼び出し、その結果（試みたか/スキップしたか）を受け取る
-        attempted_to_record = record_episode(
-            episode, args.duration_multiplier, args.output_dir, args.ps1_script_path
-        )
         
-        # 録音を試みた場合のみ、カウンターを増やす
-        if attempted_to_record:
-            recorded_count += 1
+    for episode in episodes_to_record:
+        record_episode(episode, args.duration_multiplier, args.output_dir, args.ps1_script_path)
     
     print("-" * 50)
     print("すべての処理が完了しました。")
